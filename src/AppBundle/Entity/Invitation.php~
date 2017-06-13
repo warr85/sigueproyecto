@@ -1,0 +1,39 @@
+<?php
+// src/AppBundle/Entity/Invitation.php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/** @ORM\Entity */
+class Invitation
+{
+    /** @ORM\Id @ORM\Column(type="string") */
+    protected $code;
+
+    /** @ORM\Column(type="string", length=256) */
+    protected $email;
+
+    /**
+     * @var \AppBundle\Entity\PersonaInstitucion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonaInstitucion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_persona_institucion", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idPersonaInstitucion;
+
+
+    /**
+     * When sending invitation be sure to set this value to `true`
+     *
+     * It can prevent invitations from being sent twice
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $sent = false;
+
+
+
+}
