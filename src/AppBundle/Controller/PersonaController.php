@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Persona;
 use AppBundle\Entity\PersonaSocioEconomico;
+use AppBundle\Entity\PersonaInstitucion;
+use AppBundle\Entity\Invitation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -42,18 +44,37 @@ class PersonaController extends Controller
     {
         $persona = new Persona();
         $economico = new PersonaSocioEconomico();
+        $institucion = new PersonaInstitucion();
         $form = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $formEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
+        $formInstitucion = $this->createForm('AppBundle\Form\PersonaInstitucionType', $institucion);
         $form->handleRequest($request);
         $formEconomico->handleRequest($request);
+        $formInstitucion->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($formEconomico->isValid()){
-                $em = $this->getDoctrine()->getManager();
-                $economico->setIdPersona($persona);
+             
+            if ($formEconomico->isValid() && $formInstitucion->isValid()){                
+                $em = $this->getDoctrine()->getManager();                 
+                $activo = $em->getRepository('AppBundle:Estatus')->findOneById(1);
                 $em->persist($persona);
+                $economico->setIdPersona($persona);
+                $institucion->setIdPersona($persona);
+                $institucion->setIdEstatus($activo);
+
+                $invitacion = new Invitation();
+                $invitacion->setIdPersonaInstitucion($institucion);
+                $invitacion->setCode($persona->getCedulaPasaporte());
+                $invitacion->setEmail($persona->getCorreoElectronico());
+                $invitacion->setSent(true);
+
                 $em->persist($economico);
+                $em->persist($institucion);
+                $em->persist($invitacion);
+
                 $em->flush();
+            }else{
+                return $this->redirectToRoute('admin_persona_show', array('id' => $persona->getId()));
             }
 
             return $this->redirectToRoute('admin_persona_show', array('id' => $persona->getId()));
@@ -63,6 +84,7 @@ class PersonaController extends Controller
             'persona' => $persona,
             'economico' => $economico,
             'formEconomico' => $formEconomico->createView(),
+            'formInstitucion' => $formInstitucion->createView(),
             'form' => $form->createView(),
         ));
     }

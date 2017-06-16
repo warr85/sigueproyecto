@@ -101,7 +101,13 @@ class Estatus
         return $this->id;
     }
     
-    public function __toString() {
+   /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function __toString()
+    {
         return $this->getNombre();
     }
 }

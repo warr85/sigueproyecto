@@ -169,9 +169,14 @@ class Persona
     private $idDocumentoentidad;
 
     /**
-     * @ORM\OneToOne(targetEntity="PersonaSocioEconomico", mappedBy="idPersona")
+     * @ORM\OneToOne(targetEntity="PersonaSocioEconomico", mappedBy="idPersona", cascade={"remove"})
      */
     private $socioEconomico;
+
+     /**
+     * @ORM\OneToMany(targetEntity="PersonaInstitucion", mappedBy="idPersona", cascade={"remove"})
+     */
+    private $instituciones;
 
 
 
@@ -607,4 +612,53 @@ class Persona
 
 
 
+
+    /**
+     * Set fechaRegistro
+     *
+     * @param \DateTime $fechaRegistro
+     * @return Persona
+     */
+    public function setFechaRegistro($fechaRegistro)
+    {
+        $this->fechaRegistro = $fechaRegistro;
+
+        return $this;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return Persona
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Set socioEconomico
+     *
+     * @param \AppBundle\Entity\PersonaSocioEconomico $socioEconomico
+     * @return Persona
+     */
+    public function setSocioEconomico(\AppBundle\Entity\PersonaSocioEconomico $socioEconomico = null)
+    {
+        $this->socioEconomico = $socioEconomico;
+
+        return $this;
+    }
+
+    /**
+     * Get socioEconomico
+     *
+     * @return \AppBundle\Entity\PersonaSocioEconomico 
+     */
+    public function getSocioEconomico()
+    {
+        return $this->socioEconomico;
+    }
 }

@@ -173,6 +173,11 @@ class Persona
      */
     private $socioEconomico;
 
+     /**
+     * @ORM\OneToMany(targetEntity="PersonaInstitucion", mappedBy="idPersona", cascade={"remove"})
+     */
+    private $instituciones;
+
 
 
 
@@ -655,5 +660,45 @@ class Persona
     public function getSocioEconomico()
     {
         return $this->socioEconomico;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->instituciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add instituciones
+     *
+     * @param \AppBundle\Entity\PersonaInstitucion $instituciones
+     * @return Persona
+     */
+    public function addInstitucione(\AppBundle\Entity\PersonaInstitucion $instituciones)
+    {
+        $this->instituciones[] = $instituciones;
+
+        return $this;
+    }
+
+    /**
+     * Remove instituciones
+     *
+     * @param \AppBundle\Entity\PersonaInstitucion $instituciones
+     */
+    public function removeInstitucione(\AppBundle\Entity\PersonaInstitucion $instituciones)
+    {
+        $this->instituciones->removeElement($instituciones);
+    }
+
+    /**
+     * Get instituciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInstituciones()
+    {
+        return $this->instituciones;
     }
 }

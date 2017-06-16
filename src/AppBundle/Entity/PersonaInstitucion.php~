@@ -11,7 +11,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Estatus;
 
 /**
  * PersonaInstitucion
@@ -34,7 +33,7 @@ class PersonaInstitucion
     /**
      * @var \AppBundle\Entity\Persona
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona", inversedBy="instituciones")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_persona", referencedColumnName="id", nullable=false)
      * })
@@ -44,7 +43,7 @@ class PersonaInstitucion
     /**
      * @var \AppBundle\Entity\Institucion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Institucion")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Institucion", inversedBy="instituciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_institucion", referencedColumnName="id", nullable=false)
      * })
@@ -60,6 +59,9 @@ class PersonaInstitucion
      * })
      */
     private $idEstatus;
+
+    
+
 
 
     /**
