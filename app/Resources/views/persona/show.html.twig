@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Persona</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Primernombre</th>
+                <td>{{ persona.primerNombre }}</td>
+            </tr>
+            <tr>
+                <th>Segundonombre</th>
+                <td>{{ persona.segundoNombre }}</td>
+            </tr>
+            <tr>
+                <th>Primerapellido</th>
+                <td>{{ persona.primerApellido }}</td>
+            </tr>
+            <tr>
+                <th>Segundoapellido</th>
+                <td>{{ persona.segundoApellido }}</td>
+            </tr>
+            <tr>
+                <th>Cedulapasaporte</th>
+                <td>{{ persona.cedulaPasaporte }}</td>
+            </tr>
+            <tr>
+                <th>Fechanacimiento</th>
+                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Correoelectronico</th>
+                <td>{{ persona.correoElectronico }}</td>
+            </tr>
+            <tr>
+                <th>Direccionresidencia</th>
+                <td>{{ persona.direccionResidencia }}</td>
+            </tr>
+            <tr>
+                <th>Fecharegistro</th>
+                <td>{% if persona.fechaRegistro %}{{ persona.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechaactualizacion</th>
+                <td>{% if persona.fechaActualizacion %}{{ persona.fechaActualizacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Privadolibertad</th>
+                <td>{% if persona.privadoLibertad %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Certificadoconapdis</th>
+                <td>{{ persona.certificadoConapdis }}</td>
+            </tr>
+            <tr>
+                <th>Idsucre</th>
+                <td>{{ persona.idSucre }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ persona.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_persona_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_persona_edit', { 'id': persona.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
