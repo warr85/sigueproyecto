@@ -30,7 +30,7 @@ class PersonaType extends AbstractType
             ->add('idNacionalidad')
             ->add('idGenero')
             ->add('idEstadoCivil')
-            ->add('idDocumentoentidad')            
+            ->add('idDocumentoentidad');            
     }
     
     /**

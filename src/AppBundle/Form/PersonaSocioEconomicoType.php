@@ -13,7 +13,10 @@ class PersonaSocioEconomicoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('trabaja')->add('aporte')->add('ingresoFamiliar')->add('idPersona');
+        $builder
+            ->add('trabaja')
+            ->add('aporte')
+            ->add('ingresoFamiliar');
     }
     
     /**

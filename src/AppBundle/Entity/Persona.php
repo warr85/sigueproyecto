@@ -169,7 +169,7 @@ class Persona
     private $idDocumentoentidad;
 
     /**
-     * @ORM\OneToOne(targetEntity="PersonaSocioEconomico", mappedBy="idPersona")
+     * @ORM\OneToOne(targetEntity="PersonaSocioEconomico", mappedBy="idPersona", cascade={"remove"})
      */
     private $socioEconomico;
 

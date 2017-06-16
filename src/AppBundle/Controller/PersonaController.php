@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Persona;
+use AppBundle\Entity\PersonaSocioEconomico;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -40,19 +41,28 @@ class PersonaController extends Controller
     public function newAction(Request $request)
     {
         $persona = new Persona();
+        $economico = new PersonaSocioEconomico();
         $form = $this->createForm('AppBundle\Form\PersonaType', $persona);
+        $formEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $form->handleRequest($request);
+        $formEconomico->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($persona);
-            $em->flush();
+            if ($formEconomico->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $economico->setIdPersona($persona);
+                $em->persist($persona);
+                $em->persist($economico);
+                $em->flush();
+            }
 
             return $this->redirectToRoute('admin_persona_show', array('id' => $persona->getId()));
         }
 
         return $this->render('persona/new.html.twig', array(
             'persona' => $persona,
+            'economico' => $economico,
+            'formEconomico' => $formEconomico->createView(),
             'form' => $form->createView(),
         ));
     }
@@ -82,10 +92,13 @@ class PersonaController extends Controller
     public function editAction(Request $request, Persona $persona)
     {
         $deleteForm = $this->createDeleteForm($persona);
-        $editForm = $this->createForm('AppBundle\Form\PersonaType', $persona);
-        $editForm->handleRequest($request);
+        $economico = $this->getDoctrine()->getRepository('AppBundle:PersonaSocioEconomico')->findOneByIdPersona($persona);
+        $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
+        $editEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
+        $editPersona->handleRequest($request);
+        $editEconomico->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editPersona->isSubmitted() && $editPersona->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('admin_persona_edit', array('id' => $persona->getId()));
@@ -93,7 +106,8 @@ class PersonaController extends Controller
 
         return $this->render('persona/edit.html.twig', array(
             'persona' => $persona,
-            'edit_form' => $editForm->createView(),
+            'edit_persona' => $editPersona->createView(),
+            'edit_economico' => $editEconomico->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -3,10 +3,11 @@
 {% block body %}
     <h1>Persona edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
+    {{ form_start(edit_persona) }}
+        {{ form_widget(edit_persona) }}
+        {{ form_widget(edit_economico) }}
         <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    {{ form_end(edit_persona) }}
 
     <ul>
         <li>
