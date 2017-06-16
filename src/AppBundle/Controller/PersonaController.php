@@ -91,15 +91,25 @@ class PersonaController extends Controller
      */
     public function editAction(Request $request, Persona $persona)
     {
-        $deleteForm = $this->createDeleteForm($persona);
+        $deleteForm = $this->createDeleteForm($persona);       
         $economico = $this->getDoctrine()->getRepository('AppBundle:PersonaSocioEconomico')->findOneByIdPersona($persona);
+
+
+        if(!$economico){ $economico = new PersonaSocioEconomico(); }
+
         $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $editEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $editPersona->handleRequest($request);
         $editEconomico->handleRequest($request);
 
+
         if ($editPersona->isSubmitted() && $editPersona->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $economico->setIdPersona($persona);
+            $em = $this->getDoctrine()->getManager();
+            $economico->setIdPersona($persona);
+            $em->persist($persona);
+            $em->persist($economico);
+            $em->flush();
 
             return $this->redirectToRoute('admin_persona_edit', array('id' => $persona->getId()));
         }
