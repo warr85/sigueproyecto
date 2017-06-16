@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class PersonaType extends AbstractType
 {
@@ -13,7 +14,23 @@ class PersonaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('primerNombre')->add('segundoNombre')->add('primerApellido')->add('segundoApellido')->add('cedulaPasaporte')->add('fechaNacimiento')->add('correoElectronico')->add('direccionResidencia')->add('fechaRegistro')->add('fechaActualizacion')->add('privadoLibertad')->add('certificadoConapdis')->add('idSucre')->add('idPaisNacimiento')->add('idNacionalidad')->add('idGenero')->add('idEstadoCivil')->add('idDocumentoentidad')->add('socioEconomico');
+        $builder
+            ->add('primerNombre')
+            ->add('segundoNombre')
+            ->add('primerApellido')
+            ->add('segundoApellido')
+            ->add('cedulaPasaporte')
+            ->add('fechaNacimiento')
+            ->add('correoElectronico')
+            ->add('direccionResidencia')
+            ->add('privadoLibertad')
+            ->add('certificadoConapdis')
+            ->add('idSucre')
+            ->add('idPaisNacimiento')
+            ->add('idNacionalidad')
+            ->add('idGenero')
+            ->add('idEstadoCivil')
+            ->add('idDocumentoentidad')            
     }
     
     /**
