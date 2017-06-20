@@ -141,20 +141,37 @@ class PersonaController extends Controller
     {
         $deleteForm = $this->createDeleteForm($persona);       
         $economico = $this->getDoctrine()->getRepository('AppBundle:PersonaSocioEconomico')->findOneByIdPersona($persona);
+        $discapacidades = $this->getDoctrine()->getRepository('AppBundle:PersonaDiscapacidad')->findOneByIdPersona($persona);
+        $familiares = $this->getDoctrine()->getRepository('AppBundle:PersonaFamiliar')->findOneByIdPersona($persona);
 
 
         if(!$economico){ $economico = new PersonaSocioEconomico(); }
+        if(!$discapacidades){ $discapacidades = new PersonaDiscapacidad(); }
+        if(!$familiares){ $familiares = new PersonaFamiliar(); }
 
         $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $editEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
+        $editDiscapacidades = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidades);
+        $editFamiliares = $this->createForm('AppBundle\Form\PersonaFamiliarType', $familiares);
+
         $editPersona->handleRequest($request);
         $editEconomico->handleRequest($request);
+        $editFamiliares->handleRequest($request);
+        $editDiscapacidades->handleRequest($request);
 
 
         if ($editPersona->isSubmitted() && $editPersona->isValid()) {
-            $economico->setIdPersona($persona);
+
             $em = $this->getDoctrine()->getManager();
+
             $economico->setIdPersona($persona);
+            $familiares->setIdPersona($persona);
+            if($discapacidades->getIdDiscapacidad()) {
+                $discapacidades->setIdPersona($persona);
+                $em->persist($discapacidades);
+            }
+
+            $em->persist($familiares);
             $em->persist($persona);
             $em->persist($economico);
             $em->flush();
@@ -166,6 +183,8 @@ class PersonaController extends Controller
             'persona' => $persona,
             'edit_persona' => $editPersona->createView(),
             'edit_economico' => $editEconomico->createView(),
+            'edit_familiares' => $editDiscapacidades->createView(),
+            'edit_discapacidades' => $editFamiliares->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -25,7 +25,7 @@ class PersonaDiscapacidad
     /**
      * @var \AppBundle\Entity\Persona
      *
-     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Persona")
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Persona", inversedBy="discapacidades")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_persona", referencedColumnName="id", nullable=false)
      * })

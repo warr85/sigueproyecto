@@ -180,6 +180,12 @@ class Persona
 
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonaDiscapacidad", mappedBy="idPersona", cascade={"remove"})
+     */
+    private $discapacidades;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonaFamiliar", mappedBy="idPersona", cascade={"remove"})
      */
     private $familiares;
@@ -736,5 +742,38 @@ class Persona
     public function getFamiliares()
     {
         return $this->familiares;
+    }
+
+    /**
+     * Add discapacidades
+     *
+     * @param \AppBundle\Entity\PersonaDiscapacidad $discapacidades
+     * @return Persona
+     */
+    public function addDiscapacidade(\AppBundle\Entity\PersonaDiscapacidad $discapacidades)
+    {
+        $this->discapacidades[] = $discapacidades;
+
+        return $this;
+    }
+
+    /**
+     * Remove discapacidades
+     *
+     * @param \AppBundle\Entity\PersonaDiscapacidad $discapacidades
+     */
+    public function removeDiscapacidade(\AppBundle\Entity\PersonaDiscapacidad $discapacidades)
+    {
+        $this->discapacidades->removeElement($discapacidades);
+    }
+
+    /**
+     * Get discapacidades
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDiscapacidades()
+    {
+        return $this->discapacidades;
     }
 }
