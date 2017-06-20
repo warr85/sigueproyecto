@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Persona;
+use AppBundle\Entity\PersonaDiscapacidad;
 use AppBundle\Entity\PersonaSocioEconomico;
 use AppBundle\Entity\PersonaInstitucion;
 use AppBundle\Entity\Invitation;
@@ -45,12 +46,15 @@ class PersonaController extends Controller
         $persona = new Persona();
         $economico = new PersonaSocioEconomico();
         $institucion = new PersonaInstitucion();
+        $discapacidad = new PersonaDiscapacidad();
         $form = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $formEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $formInstitucion = $this->createForm('AppBundle\Form\PersonaInstitucionType', $institucion);
+        $formDiscapacidad = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidad);
         $form->handleRequest($request);
         $formEconomico->handleRequest($request);
         $formInstitucion->handleRequest($request);
+        $formDiscapacidad->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
              
@@ -61,6 +65,12 @@ class PersonaController extends Controller
                 $economico->setIdPersona($persona);
                 $institucion->setIdPersona($persona);
                 $institucion->setIdEstatus($activo);
+
+                if ($discapacidad->getIdDiscapacidad()) {
+                    $discapacidad->setIdPersona($persona);
+                    $em->persist($discapacidad);
+
+                }
 
                 $invitacion = new Invitation();
                 $invitacion->setIdPersonaInstitucion($institucion);
@@ -85,6 +95,7 @@ class PersonaController extends Controller
             'economico' => $economico,
             'formEconomico' => $formEconomico->createView(),
             'formInstitucion' => $formInstitucion->createView(),
+            'formDiscapacidad' => $formDiscapacidad->createView(),
             'form' => $form->createView(),
         ));
     }

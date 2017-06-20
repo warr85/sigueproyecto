@@ -17,7 +17,7 @@ class Invitation
     /**
      * @var \AppBundle\Entity\PersonaInstitucion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonaInstitucion")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonaInstitucion", inversedBy="invitacion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_persona_institucion", referencedColumnName="id", nullable=false)
      * })
