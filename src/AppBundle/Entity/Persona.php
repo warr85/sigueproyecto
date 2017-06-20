@@ -179,7 +179,10 @@ class Persona
     private $instituciones;
 
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonaFamiliar", mappedBy="idPersona", cascade={"remove"})
+     */
+    private $familiares;
 
 
 
@@ -700,5 +703,38 @@ class Persona
     public function getInstituciones()
     {
         return $this->instituciones;
+    }
+
+    /**
+     * Add familiares
+     *
+     * @param \AppBundle\Entity\PersonaFamiliar $familiares
+     * @return Persona
+     */
+    public function addFamiliare(\AppBundle\Entity\PersonaFamiliar $familiares)
+    {
+        $this->familiares[] = $familiares;
+
+        return $this;
+    }
+
+    /**
+     * Remove familiares
+     *
+     * @param \AppBundle\Entity\PersonaFamiliar $familiares
+     */
+    public function removeFamiliare(\AppBundle\Entity\PersonaFamiliar $familiares)
+    {
+        $this->familiares->removeElement($familiares);
+    }
+
+    /**
+     * Get familiares
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFamiliares()
+    {
+        return $this->familiares;
     }
 }

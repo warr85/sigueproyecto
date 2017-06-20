@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a061021-7bf7-4781-8020-825036072a61" name="Default" comment="" />
+    <list default="true" id="1a061021-7bf7-4781-8020-825036072a61" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/GrupoFamiliar.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Persona.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Persona.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/PersonaFamiliar.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/PersonaFamiliar.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,21 +22,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Parentesco.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Parentesco.php">
+      <file leaf-file-name="PersonaFamiliarType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaFamiliarType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+            <state relative-caret-position="342">
+              <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GrupoFamiliar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/GrupoFamiliar.php">
+      <file leaf-file-name="Persona.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Persona.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="74" column="5" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="74" selection-end-column="5" />
+            <state relative-caret-position="378">
+              <caret line="22" column="26" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="22" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -41,28 +45,18 @@
       <file leaf-file-name="PersonaFamiliar.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PersonaFamiliar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="9" column="58" lean-forward="false" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NivelInstruccion.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/NivelInstruccion.php">
+      <file leaf-file-name="Genero.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Genero.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="74" column="5" lean-forward="false" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Discapacidad.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Discapacidad.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="74" column="5" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="74" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="25" column="20" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="25" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -73,6 +67,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>tos</find>
+      <find>dx_6ae7de1f8f781f</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -86,7 +81,6 @@
         <option value="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaDiscapacidadType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/PersonaController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Persona.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PersonaInstitucion.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Invitation.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Discapacidad.php" />
@@ -94,6 +88,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/GrupoFamiliar.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/NivelInstruccion.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Familiar.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaFamiliarType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Persona.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PersonaFamiliar.php" />
       </list>
     </option>
@@ -427,16 +423,16 @@
       <option name="presentableId" value="Default" />
       <updated>1497355930655</updated>
       <workItem from="1497355932987" duration="2793000" />
-      <workItem from="1497962943148" duration="2709000" />
+      <workItem from="1497962943148" duration="3285000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5502000" />
+    <option name="totallyTimeSpent" value="6078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1440" height="904" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19010043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -444,7 +440,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32904884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32904884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -549,14 +545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Genero.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-809">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Estatus.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -592,14 +580,6 @@
             <element signature="e#818#837#1#PHP" expanded="true" />
             <element signature="e#2203#2222#1#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Persona.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="178" column="27" lean-forward="false" selection-start-line="178" selection-start-column="27" selection-end-line="178" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -659,10 +639,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PersonaFamiliar.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Genero.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="25" column="20" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="25" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Persona.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="22" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaFamiliarType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PersonaFamiliar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="58" lean-forward="false" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
           <folding />
         </state>
       </provider>

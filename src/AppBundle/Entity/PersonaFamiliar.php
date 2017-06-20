@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PersonaFamiliar
  *
- * @ORM\Table(name="persona_familiar", uniqueConstraints={@ORM\UniqueConstraint(name="i_familiar", columns={"id_grupo_familiar", "jefe_familiar"}), @ORM\UniqueConstraint(name="uq_persona_familiar_id_persona", columns={"id_persona"})}, indexes={@ORM\Index(name="IDX_8A34CA5EFFBF489D", columns={"id_grupo_familiar"}), @ORM\Index(name="IDX_PARENTESCO", columns={"id_parentesco"})})
+ * @ORM\Table(name="persona_familiar", uniqueConstraints={@ORM\UniqueConstraint(name="uq_persona_familiar_id_persona", columns={"id_persona"})}, indexes={@ORM\Index(name="IDX_PARENTESCO", columns={"id_parentesco"})})
  * @ORM\Entity
  */
 class PersonaFamiliar
@@ -32,7 +32,7 @@ class PersonaFamiliar
     /**
      * @var \AppBundle\Entity\Persona
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona", inversedBy="familiares")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_persona", referencedColumnName="id", nullable=false)
      * })
@@ -49,15 +49,13 @@ class PersonaFamiliar
      */
     private $idParentesco;
 
+
     /**
-     * @var \AppBundle\Entity\GrupoFamiliar
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GrupoFamiliar")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_grupo_familiar", referencedColumnName="id", nullable=false)
-     * })
+     * @ORM\Column(name="nombre", type="string", length=10, nullable=false, options={"comment" = "Nombre del genero"})
      */
-    private $idGrupoFamiliar;
+    private $nombre;
 
 
 
@@ -70,10 +68,6 @@ class PersonaFamiliar
      * })
      */
     private $idNivelInstruccion;
-
-
-
-
 
 
 
@@ -157,29 +151,6 @@ class PersonaFamiliar
     }
 
     /**
-     * Set idGrupoFamiliar
-     *
-     * @param \AppBundle\Entity\GrupoFamiliar $idGrupoFamiliar
-     * @return PersonaFamiliar
-     */
-    public function setIdGrupoFamiliar(\AppBundle\Entity\GrupoFamiliar $idGrupoFamiliar)
-    {
-        $this->idGrupoFamiliar = $idGrupoFamiliar;
-
-        return $this;
-    }
-
-    /**
-     * Get idGrupoFamiliar
-     *
-     * @return \AppBundle\Entity\GrupoFamiliar 
-     */
-    public function getIdGrupoFamiliar()
-    {
-        return $this->idGrupoFamiliar;
-    }
-
-    /**
      * Set idNivelInstruccion
      *
      * @param \AppBundle\Entity\NivelInstruccion $idNivelInstruccion
@@ -200,5 +171,28 @@ class PersonaFamiliar
     public function getIdNivelInstruccion()
     {
         return $this->idNivelInstruccion;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return PersonaFamiliar
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 }

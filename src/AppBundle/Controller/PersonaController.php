@@ -72,6 +72,7 @@ class PersonaController extends Controller
 
                 }
 
+
                 $invitacion = new Invitation();
                 $invitacion->setIdPersonaInstitucion($institucion);
                 $invitacion->setCode($persona->getCedulaPasaporte());
