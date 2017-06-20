@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -30,7 +31,11 @@ class PersonaType extends AbstractType
             ->add('idNacionalidad')
             ->add('idGenero')
             ->add('idEstadoCivil')
-            ->add('idDocumentoentidad');            
+            ->add('idDocumentoentidad')
+            ->add('familiares', CollectionType::class, array(
+                'entry_type'   => PersonaFamiliarType::class,
+                'allow_add'    => true,
+            ));
     }
     
     /**

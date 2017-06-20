@@ -48,24 +48,29 @@ class PersonaController extends Controller
         $economico = new PersonaSocioEconomico();
         $institucion = new PersonaInstitucion();
         $discapacidad = new PersonaDiscapacidad();
-        $familiares = new PersonaFamiliar();
+
         $form = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $formEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $formInstitucion = $this->createForm('AppBundle\Form\PersonaInstitucionType', $institucion);
         $formDiscapacidad = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidad);
-        $formFamiliar = $this->createForm('AppBundle\Form\PersonaFamiliarType', $familiares);
+
 
 
         $form->handleRequest($request);
         $formEconomico->handleRequest($request);
         $formInstitucion->handleRequest($request);
         $formDiscapacidad->handleRequest($request);
-        $formFamiliar->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
-             
+             $em = $this->getDoctrine()->getManager();
+             //var_dump($persona->getFamiliares());
+             foreach ($persona->getFamiliares() as $familiar){
+                 $familiar->setIdPersona($persona);
+                 $persona->addFamiliare($familiar);
+             }
             if ($formEconomico->isValid() && $formInstitucion->isValid()){                
-                $em = $this->getDoctrine()->getManager();                 
+
                 $activo = $em->getRepository('AppBundle:Estatus')->findOneById(1);
                 $em->persist($persona);
                 $economico->setIdPersona($persona);
@@ -75,13 +80,6 @@ class PersonaController extends Controller
                 if ($discapacidad->getIdDiscapacidad()) {
                     $discapacidad->setIdPersona($persona);
                     $em->persist($discapacidad);
-
-                }
-
-
-                if ($familiares->getIdParentesco()) {
-                    $familiares->setIdPersona($persona);
-                    $em->persist($familiares);
 
                 }
 
@@ -110,7 +108,6 @@ class PersonaController extends Controller
             'formEconomico'     => $formEconomico->createView(),
             'formInstitucion'   => $formInstitucion->createView(),
             'formDiscapacidad'  => $formDiscapacidad->createView(),
-            'formFamiliar'      => $formFamiliar->createView(),
             'form'              => $form->createView(),
         ));
     }
@@ -142,21 +139,20 @@ class PersonaController extends Controller
         $deleteForm = $this->createDeleteForm($persona);       
         $economico = $this->getDoctrine()->getRepository('AppBundle:PersonaSocioEconomico')->findOneByIdPersona($persona);
         $discapacidades = $this->getDoctrine()->getRepository('AppBundle:PersonaDiscapacidad')->findOneByIdPersona($persona);
-        $familiares = $this->getDoctrine()->getRepository('AppBundle:PersonaFamiliar')->findOneByIdPersona($persona);
 
 
         if(!$economico){ $economico = new PersonaSocioEconomico(); }
         if(!$discapacidades){ $discapacidades = new PersonaDiscapacidad(); }
-        if(!$familiares){ $familiares = new PersonaFamiliar(); }
+
 
         $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $editEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $editDiscapacidades = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidades);
-        $editFamiliares = $this->createForm('AppBundle\Form\PersonaFamiliarType', $familiares);
+
 
         $editPersona->handleRequest($request);
         $editEconomico->handleRequest($request);
-        $editFamiliares->handleRequest($request);
+
         $editDiscapacidades->handleRequest($request);
 
 
@@ -165,13 +161,13 @@ class PersonaController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $economico->setIdPersona($persona);
-            $familiares->setIdPersona($persona);
+
             if($discapacidades->getIdDiscapacidad()) {
                 $discapacidades->setIdPersona($persona);
                 $em->persist($discapacidades);
             }
 
-            $em->persist($familiares);
+
             $em->persist($persona);
             $em->persist($economico);
             $em->flush();
@@ -183,8 +179,7 @@ class PersonaController extends Controller
             'persona' => $persona,
             'edit_persona' => $editPersona->createView(),
             'edit_economico' => $editEconomico->createView(),
-            'edit_familiares' => $editDiscapacidades->createView(),
-            'edit_discapacidades' => $editFamiliares->createView(),
+            'edit_discapacidades' => $editDiscapacidades->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
