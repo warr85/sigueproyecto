@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Persona;
 use AppBundle\Entity\PersonaDiscapacidad;
+use AppBundle\Entity\PersonaFamiliar;
 use AppBundle\Entity\PersonaSocioEconomico;
 use AppBundle\Entity\PersonaInstitucion;
 use AppBundle\Entity\Invitation;
@@ -47,14 +48,19 @@ class PersonaController extends Controller
         $economico = new PersonaSocioEconomico();
         $institucion = new PersonaInstitucion();
         $discapacidad = new PersonaDiscapacidad();
+        $familiares = new PersonaFamiliar();
         $form = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $formEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $formInstitucion = $this->createForm('AppBundle\Form\PersonaInstitucionType', $institucion);
         $formDiscapacidad = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidad);
+        $formFamiliar = $this->createForm('AppBundle\Form\PersonaFamiliarType', $familiares);
+
+
         $form->handleRequest($request);
         $formEconomico->handleRequest($request);
         $formInstitucion->handleRequest($request);
         $formDiscapacidad->handleRequest($request);
+        $formFamiliar->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
              
@@ -69,6 +75,13 @@ class PersonaController extends Controller
                 if ($discapacidad->getIdDiscapacidad()) {
                     $discapacidad->setIdPersona($persona);
                     $em->persist($discapacidad);
+
+                }
+
+
+                if ($familiares->getIdParentesco()) {
+                    $familiares->setIdPersona($persona);
+                    $em->persist($familiares);
 
                 }
 
@@ -92,12 +105,13 @@ class PersonaController extends Controller
         }
 
         return $this->render('persona/new.html.twig', array(
-            'persona' => $persona,
-            'economico' => $economico,
-            'formEconomico' => $formEconomico->createView(),
-            'formInstitucion' => $formInstitucion->createView(),
-            'formDiscapacidad' => $formDiscapacidad->createView(),
-            'form' => $form->createView(),
+            'persona'           => $persona,
+            'economico'         => $economico,
+            'formEconomico'     => $formEconomico->createView(),
+            'formInstitucion'   => $formInstitucion->createView(),
+            'formDiscapacidad'  => $formDiscapacidad->createView(),
+            'formFamiliar'      => $formFamiliar->createView(),
+            'form'              => $form->createView(),
         ));
     }
 
