@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Persona;
 use AppBundle\Entity\PersonaDiscapacidad;
-use AppBundle\Entity\PersonaFamiliar;
 use AppBundle\Entity\PersonaSocioEconomico;
 use AppBundle\Entity\PersonaInstitucion;
 use AppBundle\Entity\Invitation;
