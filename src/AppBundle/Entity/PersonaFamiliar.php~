@@ -1,0 +1,79 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PersonaFamiliar
+ *
+ * @ORM\Table(name="persona_familiar", uniqueConstraints={@ORM\UniqueConstraint(name="i_familiar", columns={"id_grupo_familiar", "jefe_familiar"}), @ORM\UniqueConstraint(name="uq_familiar_id_persona", columns={"id_persona"})}, indexes={@ORM\Index(name="IDX_8A34CA5EFFBF489D", columns={"id_grupo_familiar"}), @ORM\Index(name="IDX_8A34CA5E3B94B0C1", columns={"id_parentesco"})})
+ * @ORM\Entity
+ */
+class PersonaFamiliar
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="jefe_familiar", type="boolean", nullable=false, options={"comment" = "Indica si la persona es Jefe de Familia"})
+     */
+    private $jefeFamiliar;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false, options={"comment" = "Identificador del registro"})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\SequenceGenerator(sequenceName="familiar_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Persona
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_persona", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idPersona;
+
+    /**
+     * @var \AppBundle\Entity\Parentesco
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Parentesco")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_parentesco", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idParentesco;
+
+    /**
+     * @var \AppBundle\Entity\GrupoFamiliar
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\GrupoFamiliar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_grupo_familiar", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idGrupoFamiliar;
+
+
+
+ /**
+     * @var \AppBundle\Entity\NivelInstruccion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\NivelInstruccion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_nivel_instruccion", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idNivelInstruccion;
+
+
+
+
+
+
+}
