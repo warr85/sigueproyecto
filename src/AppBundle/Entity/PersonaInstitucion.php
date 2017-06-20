@@ -61,6 +61,12 @@ class PersonaInstitucion
      */
     private $idEstatus;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invitation", mappedBy="idPersonaInstitucion", cascade={"remove"})
+     */
+
+    private $invitacion;
+
 
     /**
      * Get id
@@ -152,4 +158,44 @@ class PersonaInstitucion
         return $this->getIdPersona()->getPrimerNombre() .  ", " . $this->getIdPersona()->getPrimerApellido();
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->invitacion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add invitacion
+     *
+     * @param \AppBundle\Entity\Invitation $invitacion
+     * @return PersonaInstitucion
+     */
+    public function addInvitacion(\AppBundle\Entity\Invitation $invitacion)
+    {
+        $this->invitacion[] = $invitacion;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitacion
+     *
+     * @param \AppBundle\Entity\Invitation $invitacion
+     */
+    public function removeInvitacion(\AppBundle\Entity\Invitation $invitacion)
+    {
+        $this->invitacion->removeElement($invitacion);
+    }
+
+    /**
+     * Get invitacion
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitacion()
+    {
+        return $this->invitacion;
+    }
 }
