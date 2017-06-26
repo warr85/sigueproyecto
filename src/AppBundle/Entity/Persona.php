@@ -173,6 +173,11 @@ class Persona
      */
     private $socioEconomico;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\PersonaVotacion", mappedBy="idPersona", cascade={"remove"})
+     */
+    private $centroVotacion;
+
      /**
      * @ORM\OneToMany(targetEntity="PersonaInstitucion", mappedBy="idPersona", cascade={"remove"})
      */
