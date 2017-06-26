@@ -1,6 +1,6 @@
-{% extends 'admin.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block page_content %}
+{% block body %}
     <h1>Persona creation</h1>
 
     {{ form_start(form) }}
@@ -13,6 +13,7 @@
         {{ form_widget(formEconomico) }}
         {{ form_widget(formDiscapacidad) }}
         {{ form_widget(formInstitucion) }}
+        {{ form_widget(formCne) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 

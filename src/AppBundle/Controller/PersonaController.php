@@ -7,6 +7,7 @@ use AppBundle\Entity\PersonaDiscapacidad;
 use AppBundle\Entity\PersonaSocioEconomico;
 use AppBundle\Entity\PersonaInstitucion;
 use AppBundle\Entity\Invitation;
+use AppBundle\Entity\PersonaVotacion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -47,11 +48,13 @@ class PersonaController extends Controller
         $economico = new PersonaSocioEconomico();
         $institucion = new PersonaInstitucion();
         $discapacidad = new PersonaDiscapacidad();
+        $cne = new PersonaVotacion();
 
         $form = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $formEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $formInstitucion = $this->createForm('AppBundle\Form\PersonaInstitucionType', $institucion);
         $formDiscapacidad = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidad);
+        $formCne = $this->createForm('AppBundle\Form\PersonaVotacionType', $cne);
 
 
 
@@ -59,6 +62,7 @@ class PersonaController extends Controller
         $formEconomico->handleRequest($request);
         $formInstitucion->handleRequest($request);
         $formDiscapacidad->handleRequest($request);
+        $formCne->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -78,6 +82,12 @@ class PersonaController extends Controller
 
                 if ($discapacidad->getIdDiscapacidad()) {
                     $discapacidad->setIdPersona($persona);
+                    $em->persist($discapacidad);
+
+                }
+
+                if ($cne->getIdCentroVotacion()) {
+                    $cne->setIdPersona($persona);
                     $em->persist($discapacidad);
 
                 }
@@ -107,6 +117,7 @@ class PersonaController extends Controller
             'formEconomico'     => $formEconomico->createView(),
             'formInstitucion'   => $formInstitucion->createView(),
             'formDiscapacidad'  => $formDiscapacidad->createView(),
+            'formCne'           => $formCne->createView(),
             'form'              => $form->createView(),
         ));
     }

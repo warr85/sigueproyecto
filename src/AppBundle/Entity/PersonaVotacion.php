@@ -34,7 +34,7 @@ class PersonaVotacion
     /**
      * @var \AppBundle\Entity\Persona
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona", inversedBy="centroVotacion")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Persona", inversedBy="centroVotacion")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_persona", referencedColumnName="id", nullable=false)
      * })
