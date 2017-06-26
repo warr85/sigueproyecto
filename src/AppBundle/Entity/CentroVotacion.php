@@ -36,7 +36,7 @@ class CentroVotacion
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo", type="decimal", precision=4, scale=0, nullable=false, options={"comment" = "Codigo del centro de votacion "})
+     * @ORM\Column(name="codigo", type="integer", nullable=false, options={"comment" = "Codigo del centro de votacion "})
      */
     private $codigo;
 
