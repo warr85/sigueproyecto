@@ -196,6 +196,12 @@ class Persona
     private $familiares;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonaMision", mappedBy="idPersona", cascade={"persist","remove"})
+     */
+    private $misiones;
+
+
 
     /**
      * Set primerNombre
@@ -687,6 +693,7 @@ class Persona
         $this->instituciones = new \Doctrine\Common\Collections\ArrayCollection();
         $this->discapacidades = new \Doctrine\Common\Collections\ArrayCollection();
         $this->familiares = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->misiones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -786,5 +793,61 @@ class Persona
     public function getFamiliares()
     {
         return $this->familiares;
+    }
+
+    /**
+     * Set centroVotacion
+     *
+     * @param \AppBundle\Entity\PersonaVotacion $centroVotacion
+     * @return Persona
+     */
+    public function setCentroVotacion(\AppBundle\Entity\PersonaVotacion $centroVotacion = null)
+    {
+        $this->centroVotacion = $centroVotacion;
+
+        return $this;
+    }
+
+    /**
+     * Get centroVotacion
+     *
+     * @return \AppBundle\Entity\PersonaVotacion 
+     */
+    public function getCentroVotacion()
+    {
+        return $this->centroVotacion;
+    }
+
+    /**
+     * Add misiones
+     *
+     * @param \AppBundle\Entity\PersonaMision $misiones
+     * @return Persona
+     */
+    public function addMisione(\AppBundle\Entity\PersonaMision $misiones)
+    {
+        $this->misiones[] = $misiones;
+
+        return $this;
+    }
+
+    /**
+     * Remove misiones
+     *
+     * @param \AppBundle\Entity\PersonaMision $misiones
+     */
+    public function removeMisione(\AppBundle\Entity\PersonaMision $misiones)
+    {
+        $this->misiones->removeElement($misiones);
+    }
+
+    /**
+     * Get misiones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMisiones()
+    {
+        return $this->misiones;
     }
 }

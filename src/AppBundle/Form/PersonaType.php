@@ -35,6 +35,10 @@ class PersonaType extends AbstractType
             ->add('familiares', CollectionType::class, array(
                 'entry_type'   => PersonaFamiliarType::class,
                 'allow_add'    => true,
+            ))
+            ->add('misiones', CollectionType::class, array(
+                'entry_type'   => PersonaMisionType::class,
+                'allow_add'    => true,
             ));
     }
     
