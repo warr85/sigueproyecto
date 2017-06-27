@@ -6,9 +6,13 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
 
-        <ul class="familiares" id="familiares" data-prototype="{{ form_widget(form.familiares.vars.prototype)|e('html_attr') }}">
+    <ul class="familiares" id="familiares" data-prototype="{{ form_widget(form.familiares.vars.prototype)|e('html_attr') }}">
 
-        </ul>
+    </ul>
+
+    <ul class="misiones" id="misiones" data-prototype="{{ form_widget(form.misiones.vars.prototype)|e('html_attr') }}">
+
+    </ul>
     {{ form_widget(form) }}
         {{ form_widget(formEconomico) }}
         {{ form_widget(formDiscapacidad) }}
@@ -32,19 +36,23 @@
 
         // setup an "add a tag" link
         var $addFamiliaresLink = $('<a href="#" class="add_familiares_link">Agregar Familiar</a>');
+        var $addMisionesLink = $('<a href="#" class="add_misiones_link">Agregar Mision</a>');
         var $newLinkLi = $('<li></li>').append($addFamiliaresLink);
+        var $newLinkLiM = $('<li></li>').append($addMisionesLink);
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of tags
             $collectionHolder = $('ul.familiares');
-            console.log($collectionHolder);
+            $collectionMision = $('ul.misiones');
 
             // add the "add a tag" anchor and li to the tags ul
             $collectionHolder.append($newLinkLi);
+            $collectionMision.append($newLinkLiM);
 
             // count the current form inputs we have (e.g. 2), use that as the new
             // index when inserting a new item (e.g. 2)
             $collectionHolder.data('index', $collectionHolder.find(':input').length);
+            $collectionMision.data('index', $collectionMision.find(':input').length);
 
             $addFamiliaresLink.on('click', function(e) {
                 // prevent the link from creating a "#" on the URL
@@ -52,6 +60,15 @@
 
                 // add a new tag form (see next code block)
                 addFamiliaresForm($collectionHolder, $newLinkLi);
+            });
+
+
+            $addMisionesLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addMisionesForm($collectionMision, $newLinkLiM);
             });
 
             function addFamiliaresForm($collectionHolder, $newLinkLi) {
@@ -81,6 +98,44 @@
 
                 // handle the removal, just for this example
                 $('.remove-familiar').click(function(e) {
+                    e.preventDefault();
+
+                    $(this).parent().remove();
+
+                    return false;
+                });
+
+
+            }
+
+
+            function addMisionesForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                console.log(prototype);
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $('<li></li>').append(newForm);
+                $newLinkLi.before($newFormLi);
+
+
+
+                $newFormLi.append('<a href="#" class="remove-mision">x</a>');
+
+                $newLinkLi.before($newFormLi);
+
+                // handle the removal, just for this example
+                $('.remove-mision').click(function(e) {
                     e.preventDefault();
 
                     $(this).parent().remove();

@@ -25,7 +25,7 @@ class PersonaMision
     /**
      * @var \AppBundle\Entity\Persona
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona", inversedBy="misiones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_persona", referencedColumnName="id", nullable=false)
      * })
