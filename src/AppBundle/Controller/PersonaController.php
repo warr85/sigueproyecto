@@ -11,6 +11,7 @@ use AppBundle\Entity\PersonaVotacion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Null;
 
 /**
  * Persona controller.
@@ -67,11 +68,16 @@ class PersonaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
              $em = $this->getDoctrine()->getManager();
-             //var_dump($persona->getFamiliares());
              foreach ($persona->getFamiliares() as $familiar){
                  $familiar->setIdPersona($persona);
                  $persona->addFamiliare($familiar);
              }
+
+            foreach ($persona->getMisiones() as $mision){
+                $mision->setIdPersona($persona);
+                $persona->addMisione($mision);
+            }
+
             if ($formEconomico->isValid() && $formInstitucion->isValid()){                
 
                 $activo = $em->getRepository('AppBundle:Estatus')->findOneById(1);
@@ -79,8 +85,8 @@ class PersonaController extends Controller
                 $economico->setIdPersona($persona);
                 $institucion->setIdPersona($persona);
                 $institucion->setIdEstatus($activo);
-
-                if ($discapacidad->getIdDiscapacidad()) {
+                //var_dump($discapacidad->getIdDiscapacidad());
+                if ($discapacidad->getIdDiscapacidad() != NULL) {
                     $discapacidad->setIdPersona($persona);
                     $em->persist($discapacidad);
 
@@ -88,7 +94,7 @@ class PersonaController extends Controller
 
                 if ($cne->getIdCentroVotacion()) {
                     $cne->setIdPersona($persona);
-                    $em->persist($discapacidad);
+                    $em->persist($cne);
 
                 }
 
