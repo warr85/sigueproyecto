@@ -43,9 +43,6 @@ class PersonaMision
     private $idMision;
 
 
-
-
-
     /**
      * Get id
      *
@@ -60,7 +57,7 @@ class PersonaMision
      * Set idPersona
      *
      * @param \AppBundle\Entity\Persona $idPersona
-     * @return MisionPersona
+     * @return PersonaMision
      */
     public function setIdPersona(\AppBundle\Entity\Persona $idPersona)
     {
@@ -83,7 +80,7 @@ class PersonaMision
      * Set idMision
      *
      * @param \AppBundle\Entity\Mision $idMision
-     * @return MisionPersona
+     * @return PersonaMision
      */
     public function setIdMision(\AppBundle\Entity\Mision $idMision)
     {
