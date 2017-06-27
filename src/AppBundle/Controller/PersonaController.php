@@ -7,6 +7,7 @@ use AppBundle\Entity\PersonaDiscapacidad;
 use AppBundle\Entity\PersonaSocioEconomico;
 use AppBundle\Entity\PersonaInstitucion;
 use AppBundle\Entity\Invitation;
+use AppBundle\Entity\PersonaSolicitud;
 use AppBundle\Entity\PersonaVotacion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -73,9 +74,31 @@ class PersonaController extends Controller
                  $persona->addFamiliare($familiar);
              }
 
-            foreach ($persona->getMisiones() as $mision){
-                $mision->setIdPersona($persona);
-                $persona->addMisione($mision);
+             if($persona->getMisiones() != NULL) {
+                 foreach ($persona->getMisiones() as $mision) {
+                     $mision->setIdPersona($persona);
+                     $persona->addMisione($mision);
+                 }
+             }
+
+            foreach ($institucion->getEstadosAcademicos() as $academico){
+                $solicitud = new PersonaSolicitud();
+                $solicitud->setIdPeriodo($this->getDoctrine()->getRepository("AppBundle:Periodo")->findOneByIdEstatus(1));
+                $solicitud->setIdPersonaInstitucion($institucion);
+                $solicitud->setIdTipoSolicitud($this->getDoctrine()->getRepository("AppBundle:TipoSolicitud")->findOneById(1));
+                $solicitud->setIdEstatusProceso($this->getDoctrine()->getRepository("AppBundle:EstatusProceso")->findOneById(2));
+
+
+                $academico->setIdPersonaInstitucion($institucion);
+                $academico->setIdPeriodo($solicitud->getIdPeriodo());
+                $academico->setIdPersonaSolicitud($solicitud);
+                $academico->setIdGradoAcademico($em->getRepository("AppBundle:GradoAcademico")->findOneById(1));
+
+
+                $em->persist($solicitud);
+                $em->persist($academico);
+
+                $institucion->addEstadosAcademico($academico);
             }
 
             if ($formEconomico->isValid() && $formInstitucion->isValid()){                

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="persona_solicitud", uniqueConstraints={@ORM\UniqueConstraint(name="i_solicitud", columns={"id_persona_institucion", "id_tipo_solicitud", "id_estatus_proceso", "id_periodo"})}, indexes={@ORM\Index(name="fki_periodo_solicitud", columns={"id_periodo"}), @ORM\Index(name="fki_tipo_solicitud_solicitud", columns={"id_tipo_solicitud"}), @ORM\Index(name="fki_estatus_proceso_solicitud", columns={"id_estatus_proceso"}), @ORM\Index(name="IDX_96D27CC0C6E707A", columns={"id_persona_institucion"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class PersonaSolicitud
 {
@@ -193,5 +194,14 @@ class PersonaSolicitud
     public function getIdEstatusProceso()
     {
         return $this->idEstatusProceso;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->fechaSolicitud = new \DateTime();
+
     }
 }
