@@ -24,6 +24,11 @@ class Invitation
      */
     private $idPersonaInstitucion;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", mappedBy="invitation", cascade={"remove"})
+     */
+    private $usuario;
+
 
     /**
      * When sending invitation be sure to set this value to `true`

@@ -21,7 +21,7 @@ class User extends BaseUser
     protected $id;
 
 	/**
-     * @ORM\OneToOne(targetEntity="Invitation")
+     * @ORM\OneToOne(targetEntity="Invitation", inversedBy="usuario")
      * @ORM\JoinColumn(referencedColumnName="code")
      * @Assert\NotNull(message="debe ingresar su número de cédula", groups={"Registration"})
      */
