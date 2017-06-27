@@ -41,8 +41,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Pfg.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Pfg.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Pfg.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Modalidad.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Modalidad.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="36">
               <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="19" />
@@ -127,6 +137,7 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/PersonaController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Periodo.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Pfg.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Modalidad.php" />
       </list>
     </option>
   </component>
@@ -482,12 +493,12 @@
       <workItem from="1497982111101" duration="51000" />
       <workItem from="1497982262558" duration="4776000" />
       <workItem from="1498491064452" duration="10113000" />
-      <workItem from="1498565819122" duration="5045000" />
+      <workItem from="1498565819122" duration="5297000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31792000" />
+    <option name="totallyTimeSpent" value="32044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1440" height="904" extended-state="6" />
@@ -523,16 +534,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaFamiliarType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -903,6 +904,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Pfg.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Modalidad.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="19" />
