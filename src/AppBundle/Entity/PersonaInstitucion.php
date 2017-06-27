@@ -69,6 +69,14 @@ class PersonaInstitucion
 
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\EstadoAcademico", mappedBy="idPersonaInstitucion", cascade={"persist", "remove"})
+     */
+
+    private $estados_academicos;
+
+
+
+    /**
      * Get id
      *
      * @return integer
@@ -164,6 +172,7 @@ class PersonaInstitucion
     public function __construct()
     {
         $this->invitacion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->estados_academicos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -197,5 +206,38 @@ class PersonaInstitucion
     public function getInvitacion()
     {
         return $this->invitacion;
+    }
+
+    /**
+     * Add estados_academicos
+     *
+     * @param \AppBundle\Entity\EstadoAcademico $estadosAcademicos
+     * @return PersonaInstitucion
+     */
+    public function addEstadosAcademico(\AppBundle\Entity\EstadoAcademico $estadosAcademicos)
+    {
+        $this->estados_academicos[] = $estadosAcademicos;
+
+        return $this;
+    }
+
+    /**
+     * Remove estados_academicos
+     *
+     * @param \AppBundle\Entity\EstadoAcademico $estadosAcademicos
+     */
+    public function removeEstadosAcademico(\AppBundle\Entity\EstadoAcademico $estadosAcademicos)
+    {
+        $this->estados_academicos->removeElement($estadosAcademicos);
+    }
+
+    /**
+     * Get estados_academicos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEstadosAcademicos()
+    {
+        return $this->estados_academicos;
     }
 }

@@ -13,7 +13,12 @@ class PersonaInstitucionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idInstitucion');
+        $builder
+            ->add('idInstitucion')
+            ->add('estados_academicos', CollectionType::class, array(
+                'entry_type'   => EstadoAcademicoType::class,
+                'allow_add'    => true,
+            ));
     }
     
     /**

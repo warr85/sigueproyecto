@@ -693,7 +693,7 @@ class Persona
         $this->instituciones = new \Doctrine\Common\Collections\ArrayCollection();
         $this->discapacidades = new \Doctrine\Common\Collections\ArrayCollection();
         $this->familiares = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->misiones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->misi = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
