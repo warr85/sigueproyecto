@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * EstadoAcademico
  *
  * @ORM\Table(name="estado_academico", indexes={@ORM\Index(name="fki_id_perido", columns={"id_periodo"}), @ORM\Index(name="fki_solicitud_estado_academico", columns={"id_persona_solicitud"}), @ORM\Index(name="fki_grado_academico_estado_academico", columns={"id_grado_academico"}), @ORM\Index(name="fki_malla_curricular_estado_academico", columns={"id_malla_curricular"}), @ORM\Index(name="fki_persona_institucion_estado_academico", columns={"id_persona_institucion"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class EstadoAcademico
 {
@@ -257,5 +259,13 @@ class EstadoAcademico
     public function getIdGradoAcademico()
     {
         return $this->idGradoAcademico;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->fecha = new \DateTime();
     }
 }
