@@ -11,5 +11,5 @@
 /bin/
 /composer.phar
 .idea/inspectionProfiles/
-.idea
+.idea/workspace.xml
 *~
