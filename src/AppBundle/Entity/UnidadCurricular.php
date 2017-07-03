@@ -125,4 +125,14 @@ class UnidadCurricular
     {
         return $this->id;
     }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }
