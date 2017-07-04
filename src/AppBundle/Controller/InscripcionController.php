@@ -76,7 +76,7 @@ class InscripcionController extends Controller
             }
         }
 
-        return $this->render('inscripcion/index.html.twig', array(
+        return $this->render('inscripcion/mostrar.html.twig', array(
             'form'          => $form->createView(),
             'estado'        => $estado
         ));

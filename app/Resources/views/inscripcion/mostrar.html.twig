@@ -12,7 +12,8 @@
     {% if estado %}
 
         {% for e in estado.hasInscripcion %}
-            {{ dump(e) }}
+
+            {{ e.idSeccion.ofertaAcademica }} Seccion: {{ e.idSeccion }}<br>
         {% endfor %}
         <ul>
             <li>
