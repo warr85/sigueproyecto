@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Inscripciones</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+
+
+    {% if estado %}
+
+        {% for e in estado.hasInscripcion %}
+            {{ dump(e) }}
+        {% endfor %}
+        <ul>
+            <li>
+                <a href="{{ path('admin_inscripcion_new', { 'id': estado.id }) }}">Crear inscripcion</a>
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}
