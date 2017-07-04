@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\OfertaAcademica;
+use AppBundle\Entity\Seccion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -43,11 +44,17 @@ class OfertaAcademicaController extends Controller
         $form = $this->createForm('AppBundle\Form\OfertaAcademicaType', $ofertaAcademica);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
             $em = $this->getDoctrine()->getManager();
+            if(!$form['idSeccion']->isValid()) {
+                $seccion = new Seccion();
+                $seccion->setNombre($form['idSeccion']->getViewData());
+                $em->persist($seccion);
+                $ofertaAcademica->setIdSeccion($seccion);
+            }
+
             $em->persist($ofertaAcademica);
             $em->flush();
-
             return $this->redirectToRoute('admin_ofertaacademica_show', array('id' => $ofertaAcademica->getId()));
         }
 

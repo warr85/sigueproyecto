@@ -107,6 +107,6 @@ class OfertaMallaCurricular
      */
     public function __toString()
     {
-        return $this->getNombre();
+        return $this->getIdMallaCurricularInstitucion()->getIdMallaCurricular()->getNombre();
     }
 }

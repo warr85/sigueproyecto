@@ -1,4 +1,8 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
     <h1>Ofertaacademica creation</h1>
@@ -13,4 +17,20 @@
             <a href="{{ path('admin_ofertaacademica_index') }}">Back to the list</a>
         </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $('select').select2({
+            tags: true,
+            language: {
+                noResults: function (params) {
+                    return "Texto No encontrado, al enviar el formulario, el nuevo texto será creado.";
+                }
+            }
+        });
+    </script>
 {% endblock %}
