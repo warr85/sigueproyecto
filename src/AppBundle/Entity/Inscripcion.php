@@ -7,8 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Inscripcion
  *
- * @ORM\Table(name="inscripcion", uniqueConstraints={@ORM\UniqueConstraint(name="i_inscripcion", columns={"id_oferta_academica", "id_persona_institucion"})}, indexes={@ORM\Index(name="oferta_academica_inscripcion", columns={"id_oferta_academica"}), @ORM\Index(name="fki_rol_institucion_inscripcion", columns={"id_persona_institucion"}), @ORM\Index(name="fki_estatus_inscripcion", columns={"id_estatus"})})
+ * @ORM\Table(name="inscripcion")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallBacks()
  */
 class Inscripcion
 {
@@ -23,24 +24,17 @@ class Inscripcion
     private $id;
 
     /**
-     * @var \AppBundle\Entity\PersonaInstitucion
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonaInstitucion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_persona_institucion", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $idPersonaInstitucion;
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\EstadoAcademico", inversedBy="hasInscripcion")
+     * @ORM\JoinColumn(name="estado_academico_id", referencedColumnName="id")
+     * */
+    private $idEstadoAcademico;
 
     /**
-     * @var \AppBundle\Entity\OfertaAcademica
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OfertaAcademica")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_oferta_academica", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $idOfertaAcademica;
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Seccion", inversedBy="hasInscripcion")
+     * @ORM\JoinColumn(name="oferta_academica_id", referencedColumnName="id")
+     * */
+    private $idSeccion;
+
 
     /**
      * @var \AppBundle\Entity\Estatus
@@ -55,9 +49,51 @@ class Inscripcion
 
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_creacion", type="date", nullable=false, options={"comment" = "fecha de creacion de la inscripcion"})
+     */
+    protected $created;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_ultima_actualizacion", type="date", nullable=false, options={"comment" = "fecha de actualizacion de la inscripcion"})
+     */
+    protected $modified;
+
+
+
+
+
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+
+        $this->created = new \DateTime();
+        $this->modified = new \DateTime();
+
+    }
+
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->modified = new \DateTime();
+
+    }
+
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -65,49 +101,49 @@ class Inscripcion
     }
 
     /**
-     * Set idPersonaInstitucion
+     * Set idEstadoAcademico
      *
-     * @param \AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion
+     * @param \AppBundle\Entity\EstadoAcademico $idEstadoAcademico
      * @return Inscripcion
      */
-    public function setIdPersonaInstitucion(\AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion = null)
+    public function setIdEstadoAcademico(\AppBundle\Entity\EstadoAcademico $idEstadoAcademico = null)
     {
-        $this->idPersonaInstitucion = $idPersonaInstitucion;
+        $this->idEstadoAcademico = $idEstadoAcademico;
 
         return $this;
     }
 
     /**
-     * Get idPersonaInstitucion
+     * Get idEstadoAcademico
      *
-     * @return \AppBundle\Entity\PersonaInstitucion 
+     * @return \AppBundle\Entity\EstadoAcademico
      */
-    public function getIdPersonaInstitucion()
+    public function getIdEstadoAcademico()
     {
-        return $this->idPersonaInstitucion;
+        return $this->idEstadoAcademico;
     }
 
     /**
-     * Set idOfertaAcademica
+     * Set idSeccion
      *
-     * @param \AppBundle\Entity\OfertaAcademica $idOfertaAcademica
+     * @param \AppBundle\Entity\Seccion $idSeccion
      * @return Inscripcion
      */
-    public function setIdOfertaAcademica(\AppBundle\Entity\OfertaAcademica $idOfertaAcademica = null)
+    public function setIdSeccion(\AppBundle\Entity\Seccion $idSeccion = null)
     {
-        $this->idOfertaAcademica = $idOfertaAcademica;
+        $this->idSeccion = $idSeccion;
 
         return $this;
     }
 
     /**
-     * Get idOfertaAcademica
+     * Get idSeccion
      *
-     * @return \AppBundle\Entity\OfertaAcademica 
+     * @return \AppBundle\Entity\Seccion
      */
-    public function getIdOfertaAcademica()
+    public function getIdSeccion()
     {
-        return $this->idOfertaAcademica;
+        return $this->idSeccion;
     }
 
     /**
@@ -116,7 +152,7 @@ class Inscripcion
      * @param \AppBundle\Entity\Estatus $idEstatus
      * @return Inscripcion
      */
-    public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus = null)
+    public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus)
     {
         $this->idEstatus = $idEstatus;
 
@@ -126,10 +162,64 @@ class Inscripcion
     /**
      * Get idEstatus
      *
-     * @return \AppBundle\Entity\Estatus 
+     * @return \AppBundle\Entity\Estatus
      */
     public function getIdEstatus()
     {
         return $this->idEstatus;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Inscripcion
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     * @return Inscripcion
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * @return string
+     *
+     */
+    public function __toString() {
+        return $this->getIdEstadoAcademico()->getIdPersonaInstitucion()->getIdPersona()->getPrimerNombre();
     }
 }

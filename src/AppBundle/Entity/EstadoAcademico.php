@@ -88,6 +88,13 @@ class EstadoAcademico
      */
     private $idGradoAcademico;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Inscripcion", mappedBy="idEstadoAcademico", cascade={"all"})
+     * */
+    protected $hasInscripcion;
+
+
+
 
 
     /**
@@ -267,5 +274,45 @@ class EstadoAcademico
     public function prePersist()
     {
         $this->fecha = new \DateTime();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->hasInscripcion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add hasInscripcion
+     *
+     * @param \AppBundle\Entity\Inscripcion $hasInscripcion
+     * @return EstadoAcademico
+     */
+    public function addHasInscripcion(\AppBundle\Entity\Inscripcion $hasInscripcion)
+    {
+        $this->hasInscripcion[] = $hasInscripcion;
+
+        return $this;
+    }
+
+    /**
+     * Remove hasInscripcion
+     *
+     * @param \AppBundle\Entity\Inscripcion $hasInscripcion
+     */
+    public function removeHasInscripcion(\AppBundle\Entity\Inscripcion $hasInscripcion)
+    {
+        $this->hasInscripcion->removeElement($hasInscripcion);
+    }
+
+    /**
+     * Get hasInscripcion
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHasInscripcion()
+    {
+        return $this->hasInscripcion;
     }
 }

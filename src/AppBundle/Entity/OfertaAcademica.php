@@ -7,24 +7,24 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * OfertaAcademica
  *
- * @ORM\Table(name="oferta_academica", uniqueConstraints={@ORM\UniqueConstraint(name="i_oferta_academica", columns={"id_unidad_curricular", "id_seccion", "id_oferta_malla_curricular"})}, indexes={@ORM\Index(name="fki_oferta_malla_curricular_oferta_academica", columns={"id_oferta_malla_curricular"}), @ORM\Index(name="fki_seccion_oferta_academica", columns={"id_seccion"}), @ORM\Index(name="fki_turno_oferta_academica", columns={"id_turno"}), @ORM\Index(name="fki_rol_institucion_oferta_academica", columns={"id_persona_institucion"}), @ORM\Index(name="fki_unidad_curricular_oferta_academica", columns={"id_unidad_curricular"})})
+ * @ORM\Table(name="oferta_academica",
+ *      uniqueConstraints=
+ *          {@ORM\UniqueConstraint(name="i_oferta_academica",
+ *              columns={"id_malla_curricular_uc", "id_oferta_malla_curricular"})
+ *          },
+ *          indexes={
+ *              @ORM\Index(name="fki_oferta_malla_curricular_oferta_academica",
+ *                      columns={"id_oferta_malla_curricular"}),
+ *              @ORM\Index(name="fki_malla_curricular_uc_oferta_academica",
+ *                  columns={"id_malla_curricular_uc"})
+ *          }
+ *  )
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class OfertaAcademica
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="aula", type="string", length=10, nullable=true, options={"comment" = "Indica el aula donde se va a dictar la unidad curricular (EN OBSERVACION, ESTE VALOR PUEDE SER VARIABLE PARA UNA MISMA OFERTA)"})
-     */
-    private $aula;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cupo", type="decimal", precision=2, scale=0, nullable=false, options={"comment" = "Indica el numero de cupos para esa oferta"})
-     */
-    private $cupo;
 
     /**
      * @var integer
@@ -37,44 +37,38 @@ class OfertaAcademica
     private $id;
 
     /**
-     * @var \AppBundle\Entity\UnidadCurricular
+     * @var \AppBundle\Entity\MallaCurricularUC
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\UnidadCurricular")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\MallaCurricularUc")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_unidad_curricular", referencedColumnName="id", nullable=false)
+     *   @ORM\JoinColumn(name="id_malla_curricular_uc", referencedColumnName="id", nullable=false)
      * })
+     *
      */
-    private $idUnidadCurricular;
+    private $idMallaCurricularUc;
+
+
+
 
     /**
-     * @var \AppBundle\Entity\Turno
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Turno")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_turno", referencedColumnName="id", nullable=false)
-     * })
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Seccion", mappedBy="ofertaAcademica")
      */
-    private $idTurno;
+    private $seccion;
 
-    /**
-     * @var \AppBundle\Entity\Seccion
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Seccion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_seccion", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $idSeccion;
 
-    /**
-     * @var \AppBundle\Entity\PersonaInstitucion
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonaInstitucion")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_persona_institucion", referencedColumnName="id", nullable=false)
-     * })
+    /** @ORM\Column(name="fecha_creacion", type="datetime", nullable=false, options={"comment" = "Fecha de creación de la solicitud"})
+
      */
-    private $idPersonaInstitucion;
+
+    private $fechaCreacion;
+
+
+    /** @ORM\Column(name="fecha_actualizacion", type="datetime", nullable=false, options={"comment" = "Fecha de actualizacion de la solicitud"})
+
+     */
+
+    private $fechaActualizacion;
+
 
     /**
      * @var \AppBundle\Entity\OfertaMallaCurricular
@@ -86,58 +80,18 @@ class OfertaAcademica
      */
     private $idOfertaMallaCurricular;
 
-
-
     /**
-     * Set aula
-     *
-     * @param string $aula
-     * @return OfertaAcademica
+     * Constructor
      */
-    public function setAula($aula)
+    public function __construct()
     {
-        $this->aula = $aula;
-
-        return $this;
-    }
-
-    /**
-     * Get aula
-     *
-     * @return string 
-     */
-    public function getAula()
-    {
-        return $this->aula;
-    }
-
-    /**
-     * Set cupo
-     *
-     * @param string $cupo
-     * @return OfertaAcademica
-     */
-    public function setCupo($cupo)
-    {
-        $this->cupo = $cupo;
-
-        return $this;
-    }
-
-    /**
-     * Get cupo
-     *
-     * @return string 
-     */
-    public function getCupo()
-    {
-        return $this->cupo;
+        $this->seccion = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -145,74 +99,60 @@ class OfertaAcademica
     }
 
     /**
-     * Set idUnidadCurricular
+     * Set idMallaCurricularUc
      *
-     * @param \AppBundle\Entity\UnidadCurricular $idUnidadCurricular
+     * @param \AppBundle\Entity\MallaCurricularUc $idMallaCurricularUc
      * @return OfertaAcademica
      */
-    public function setIdUnidadCurricular(\AppBundle\Entity\UnidadCurricular $idUnidadCurricular = null)
+    public function setIdMallaCurricularUc(\AppBundle\Entity\MallaCurricularUc $idMallaCurricularUc)
     {
-        $this->idUnidadCurricular = $idUnidadCurricular;
+        $this->idMallaCurricularUc = $idMallaCurricularUc;
 
         return $this;
     }
 
     /**
-     * Get idUnidadCurricular
+     * Get idMallaCurricularUc
      *
-     * @return \AppBundle\Entity\UnidadCurricular 
+     * @return \AppBundle\Entity\MallaCurricularUc
      */
-    public function getIdUnidadCurricular()
+    public function getIdMallaCurricularUc()
     {
-        return $this->idUnidadCurricular;
+        return $this->idMallaCurricularUc;
     }
 
     /**
-     * Set idTurno
+     * Add seccion
      *
-     * @param \AppBundle\Entity\Turno $idTurno
+     * @param \AppBundle\Entity\Seccion $seccion
      * @return OfertaAcademica
      */
-    public function setIdTurno(\AppBundle\Entity\Turno $idTurno = null)
+    public function addSeccion(\AppBundle\Entity\Seccion $seccion)
     {
-        $this->idTurno = $idTurno;
+        $this->seccion[] = $seccion;
 
         return $this;
     }
 
     /**
-     * Get idTurno
+     * Remove seccion
      *
-     * @return \AppBundle\Entity\Turno 
+     * @param \AppBundle\Entity\Seccion $seccion
      */
-    public function getIdTurno()
+    public function removeSeccion(\AppBundle\Entity\Seccion $seccion)
     {
-        return $this->idTurno;
+        $this->seccion->removeElement($seccion);
     }
 
     /**
-     * Set idSeccion
+     * Get seccion
      *
-     * @param \AppBundle\Entity\Seccion $idSeccion
-     * @return OfertaAcademica
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setIdSeccion(\AppBundle\Entity\Seccion $idSeccion = null)
+    public function getSeccion()
     {
-        $this->idSeccion = $idSeccion;
-
-        return $this;
+        return $this->seccion;
     }
-
-    /**
-     * Get idSeccion
-     *
-     * @return \AppBundle\Entity\Seccion 
-     */
-    public function getIdSeccion()
-    {
-        return $this->idSeccion;
-    }
-
 
     /**
      * Set idOfertaMallaCurricular
@@ -220,7 +160,7 @@ class OfertaAcademica
      * @param \AppBundle\Entity\OfertaMallaCurricular $idOfertaMallaCurricular
      * @return OfertaAcademica
      */
-    public function setIdOfertaMallaCurricular(\AppBundle\Entity\OfertaMallaCurricular $idOfertaMallaCurricular = null)
+    public function setIdOfertaMallaCurricular(\AppBundle\Entity\OfertaMallaCurricular $idOfertaMallaCurricular)
     {
         $this->idOfertaMallaCurricular = $idOfertaMallaCurricular;
 
@@ -230,33 +170,80 @@ class OfertaAcademica
     /**
      * Get idOfertaMallaCurricular
      *
-     * @return \AppBundle\Entity\OfertaMallaCurricular 
+     * @return \AppBundle\Entity\OfertaMallaCurricular
      */
     public function getIdOfertaMallaCurricular()
     {
         return $this->idOfertaMallaCurricular;
     }
 
+
     /**
-     * Set idPersonaInstitucion
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->fechaCreacion = new \DateTime();
+        $this->fechaActualizacion = new \DateTime();
+    }
+
+
+    /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->fechaActualizacion = new \DateTime();
+    }
+
+
+    public function __toString() {
+        return $this->getIdMallaCurricularUc()->getIdUnidadCurricular()->getNombre();
+    }
+
+    /**
+     * Set fechaCreacion
      *
-     * @param \AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion
+     * @param \DateTime $fechaCreacion
      * @return OfertaAcademica
      */
-    public function setIdPersonaInstitucion(\AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion)
+    public function setFechaCreacion($fechaCreacion)
     {
-        $this->idPersonaInstitucion = $idPersonaInstitucion;
+        $this->fechaCreacion = $fechaCreacion;
 
         return $this;
     }
 
     /**
-     * Get idPersonaInstitucion
+     * Get fechaCreacion
      *
-     * @return \AppBundle\Entity\PersonaInstitucion 
+     * @return \DateTime
      */
-    public function getIdPersonaInstitucion()
+    public function getFechaCreacion()
     {
-        return $this->idPersonaInstitucion;
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return OfertaAcademica
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
     }
 }
