@@ -1,7 +1,147 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Registro de Estudiantes</h1>
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block page_title %} Persona {% endblock %}
+{% block page_subtitle %} Registro de nueva Persona {% endblock %}
+
+{% block page_content %}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Datos Personales</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            {{ form_label(form.idPaisNacimiento) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(form.idPaisNacimiento) }}
+                                {{ form_widget(form.idPaisNacimiento) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.idDocumentoentidad) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(form.idDocumentoentidad) }}
+                                {{ form_widget(form.idDocumentoentidad) }}
+                            </div>
+                        </div>
+
+
+                            <div class="form-group">
+                                {{ form_label(form.cedulaPasaporte) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(form.cedulaPasaporte) }}
+                                    {{ form_widget(form.cedulaPasaporte) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ form_label(form.primerNombre) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(form.primerNombre) }}
+                                    {{ form_widget(form.primerNombre) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.segundoNombre) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(form.segundoNombre) }}
+                                    {{ form_widget(form.segundoNombre) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.primerApellido) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(form.primerApellido) }}
+                                    {{ form_widget(form.primerApellido) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.segundoApellido) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(form.segundoApellido) }}
+                                    {{ form_widget(form.segundoApellido) }}
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ form_label(form.fechaNacimiento) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(form.fechaNacimiento) }}
+                                    {{ form_widget(form.fechaNacimiento) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.idGenero) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(form.idGenero) }}
+                                    {{ form_widget(form.idGenero) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.idEstadoCivil) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(form.idEstadoCivil) }}
+                                    {{ form_widget(form.idEstadoCivil) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.correoElectronico) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(form.correoElectronico) }}
+                                    {{ form_widget(form.correoElectronico) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.direccionResidencia) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(form.direccionResidencia) }}
+                                    {{ form_widget(form.direccionResidencia) }}
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
@@ -33,7 +173,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
+{{ parent() }}
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script>
 
         var $collectionHolder;
