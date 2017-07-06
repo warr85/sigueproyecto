@@ -19,5 +19,5 @@
 #phpstorm
 .idea/*
 .idea*
-.idea/sym_cea.iml
+.idea/sigueproyecto.iml
 .idea/workspace.xml
