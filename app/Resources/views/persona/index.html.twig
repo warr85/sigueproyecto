@@ -1,9 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Personas list</h1>
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
+{% endblock %}
 
-    <table>
+{% block page_content %}
+<div class="box">
+    <div class="box-header">
+
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Primernombre</th>
@@ -13,12 +22,7 @@
                 <th>Cedulapasaporte</th>
                 <th>Fechanacimiento</th>
                 <th>Correoelectronico</th>
-                <th>Direccionresidencia</th>
-                <th>Fecharegistro</th>
-                <th>Fechaactualizacion</th>
-                <th>Privadolibertad</th>
-                <th>Certificadoconapdis</th>
-                <th>Idsucre</th>
+
                 <th>Id</th>
                 <th>Actions</th>
             </tr>
@@ -33,12 +37,6 @@
                 <td>{{ persona.cedulaPasaporte }}</td>
                 <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ persona.correoElectronico }}</td>
-                <td>{{ persona.direccionResidencia }}</td>
-                <td>{% if persona.fechaRegistro %}{{ persona.fechaRegistro|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if persona.fechaActualizacion %}{{ persona.fechaActualizacion|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if persona.privadoLibertad %}Yes{% else %}No{% endif %}</td>
-                <td>{{ persona.certificadoConapdis }}</td>
-                <td>{{ persona.idSucre }}</td>
                 <td>{{ persona.id }}</td>
                 <td>
                     <ul>
@@ -54,10 +52,29 @@
         {% endfor %}
         </tbody>
     </table>
-
+    </div>
+    </div>
     <ul>
         <li>
             <a href="{{ path('admin_persona_new') }}">Create a new persona</a>
         </li>
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script>
+        $('#example1').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No existe esa persona - lo siento",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros para mostrar",
+                "infoFiltered": "(Buscando en los _MAX_ registros disponibles)",
+                "search" : "Buscar:"
+            }
+        } );
+    </script>
 {% endblock %}
