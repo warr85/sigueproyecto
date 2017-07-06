@@ -10,6 +10,14 @@
 /vendor/
 /bin/
 /composer.phar
-.idea/inspectionProfiles/
-.idea/workspace.xml
+# Linux
+.*
+!.gitignore
+!.htaccess
 *~
+*.*~
+#phpstorm
+.idea/*
+.idea*
+.idea/sym_cea.iml
+.idea/workspace.xml
