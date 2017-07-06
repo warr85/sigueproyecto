@@ -81,6 +81,13 @@ class PersonaController extends Controller
                  }
              }
 
+             //asigna nacionalidad a la persona basado en su pais de nacimiento
+             if($persona->getIdPaisNacimiento()->getId() == "197"){
+                 $persona->setIdNacionalidad($this->getDoctrine()->getRepository("AppBundle:Nacionalidad")->findOneById('1'));
+             }else{
+                 $persona->setIdNacionalidad($this->getDoctrine()->getRepository("AppBundle:Nacionalidad")->findOneById('2'));
+             }
+
             foreach ($institucion->getEstadosAcademicos() as $academico){
                 $solicitud = new PersonaSolicitud();
                 $solicitud->setIdPeriodo($this->getDoctrine()->getRepository("AppBundle:Periodo")->findOneByIdEstatus(1));
