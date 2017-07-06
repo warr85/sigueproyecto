@@ -33,6 +33,13 @@ class PersonaDiscapacidad
     private $idPersona;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="certificado_conapdis", type="string", length=30, nullable=true, options={"comment" = "numero de certificado que emite CONAPDIS a los discapcitados"})
+     */
+    private $certificadoConapdis;
+
+    /**
      * @var \AppBundle\Entity\Discapacidad
      *
      * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Discapacidad")
@@ -100,5 +107,28 @@ class PersonaDiscapacidad
     public function getIdDiscapacidad()
     {
         return $this->idDiscapacidad;
+    }
+
+    /**
+     * Set certificadoConapdis
+     *
+     * @param string $certificadoConapdis
+     * @return PersonaDiscapacidad
+     */
+    public function setCertificadoConapdis($certificadoConapdis)
+    {
+        $this->certificadoConapdis = $certificadoConapdis;
+
+        return $this;
+    }
+
+    /**
+     * Get certificadoConapdis
+     *
+     * @return string
+     */
+    public function getCertificadoConapdis()
+    {
+        return $this->certificadoConapdis;
     }
 }

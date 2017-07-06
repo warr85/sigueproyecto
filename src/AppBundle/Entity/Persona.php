@@ -94,12 +94,7 @@ class Persona
      */
     private $privadoLibertad;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="certificado_conapdis", type="string", length=30, nullable=true, options={"comment" = "numero de certificado que emite CONAPDIS a los discapcitados"})
-     */
-    private $certificadoConapdis;
+
 
 
     /**
@@ -428,28 +423,7 @@ class Persona
         return $this->privadoLibertad;
     }
 
-    /**
-     * Set certificadoConapdis
-     *
-     * @param string $certificadoConapdis
-     * @return Persona
-     */
-    public function setCertificadoConapdis($certificadoConapdis)
-    {
-        $this->certificadoConapdis = $certificadoConapdis;
 
-        return $this;
-    }
-
-    /**
-     * Get certificadoConapdis
-     *
-     * @return string
-     */
-    public function getCertificadoConapdis()
-    {
-        return $this->certificadoConapdis;
-    }
 
 
     /**

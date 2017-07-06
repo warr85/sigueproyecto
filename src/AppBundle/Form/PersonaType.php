@@ -74,7 +74,6 @@ class PersonaType extends AbstractType
                 'label' => 'Dirección:'
             ))
             ->add('privadoLibertad')
-            ->add('certificadoConapdis')
 
 
             ->add('idEstadoCivil', EntityType::class, array(

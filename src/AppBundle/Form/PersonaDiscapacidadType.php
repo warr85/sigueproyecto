@@ -14,13 +14,16 @@ class PersonaDiscapacidadType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idDiscapacidad', EntityType::class, array(
-            'label'         => '¿Posee Discapacidad?',
-            'placeholder'   => 'Seleccione Discapacidad',
-            'class'         => 'AppBundle:Discapacidad',
-            'choice_label'  => 'getNombre',
-            'required'      => false
-        ));
+        $builder
+            ->add('idDiscapacidad', EntityType::class, array(
+                'label'         => '¿Posee Discapacidad?',
+                'placeholder'   => 'Seleccione Discapacidad',
+                'class'         => 'AppBundle:Discapacidad',
+                'choice_label'  => 'getNombre',
+                'required'      => false
+            ))
+            ->add('certificadoConapdis')
+        ;
     }
     
     /**
