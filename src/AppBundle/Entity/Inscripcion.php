@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Inscripcion
  *
- * @ORM\Table(name="inscripcion")
+ * @ORM\Table(name="inscripcion", uniqueConstraints={@ORM\UniqueConstraint(name="uq_estado_academico_id_seccion", columns={"estado_academico_id", "oferta_academica_id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallBacks()
  */
