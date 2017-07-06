@@ -101,12 +101,6 @@ class Persona
      */
     private $certificadoConapdis;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_sucre", type="integer", nullable=true, options={"comment" = "identificador de la persona dentro del sistema sucre"})
-     */
-    private $idSucre;
 
     /**
      * @var integer
@@ -457,28 +451,6 @@ class Persona
         return $this->certificadoConapdis;
     }
 
-    /**
-     * Set idSucre
-     *
-     * @param integer $idSucre
-     * @return Persona
-     */
-    public function setIdSucre($idSucre)
-    {
-        $this->idSucre = $idSucre;
-
-        return $this;
-    }
-
-    /**
-     * Get idSucre
-     *
-     * @return integer
-     */
-    public function getIdSucre()
-    {
-        return $this->idSucre;
-    }
 
     /**
      * Get id
