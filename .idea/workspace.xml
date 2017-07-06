@@ -24,8 +24,8 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="531">
-              <caret line="75" column="35" lean-forward="false" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+            <state relative-caret-position="225">
+              <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
               <folding>
                 <element signature="e#12#27#0#Twig" expanded="true" />
               </folding>
@@ -36,11 +36,11 @@
       <file leaf-file-name="admin.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/admin.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="620" column="85" lean-forward="false" selection-start-line="620" selection-start-column="0" selection-end-line="620" selection-end-column="85" />
+            <state relative-caret-position="274">
+              <caret line="324" column="25" lean-forward="false" selection-start-line="324" selection-start-column="25" selection-end-line="324" selection-end-column="25" />
               <folding>
                 <element signature="e#2432#2451#0#Twig" expanded="true" />
-                <element signature="e#17303#17327#0#Twig" expanded="true" />
+                <element signature="e#17299#17323#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,6 +65,7 @@
       <find>show</find>
       <find>sign</find>
       <find>Alex</find>
+      <find>Alexan</find>
     </findStrings>
     <replaceStrings>
       <replace>'bundle/adminlte</replace>
@@ -580,12 +581,12 @@
       <workItem from="1499172610324" duration="1732000" />
       <workItem from="1499179385055" duration="14438000" />
       <workItem from="1499344143978" duration="742000" />
-      <workItem from="1499345586154" duration="7527000" />
+      <workItem from="1499345586154" duration="7958000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76537000" />
+    <option name="totallyTimeSpent" value="76968000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="876" extended-state="0" />
@@ -991,19 +992,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/admin.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="620" column="85" lean-forward="false" selection-start-line="620" selection-start-column="0" selection-end-line="620" selection-end-column="85" />
+        <state relative-caret-position="274">
+          <caret line="324" column="25" lean-forward="false" selection-start-line="324" selection-start-column="25" selection-end-line="324" selection-end-column="25" />
           <folding>
             <element signature="e#2432#2451#0#Twig" expanded="true" />
-            <element signature="e#17303#17327#0#Twig" expanded="true" />
+            <element signature="e#17299#17323#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="75" column="35" lean-forward="false" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+        <state relative-caret-position="225">
+          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
           <folding>
             <element signature="e#12#27#0#Twig" expanded="true" />
           </folding>

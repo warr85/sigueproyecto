@@ -12,7 +12,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="tabla_personas" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>Primernombre</th>
@@ -54,11 +54,9 @@
     </table>
     </div>
     </div>
-    <ul>
-        <li>
-            <a href="{{ path('admin_persona_new') }}">Create a new persona</a>
-        </li>
-    </ul>
+
+            <a href="{{ path('admin_persona_new') }}" class="btn btn-primary">Registrar Nuevo Estudiante</a>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -66,7 +64,7 @@
     <script src="{{ asset('bundles/adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
     <script>
-        $('#example1').DataTable( {
+        $('#tabla_personas').DataTable( {
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros por página",
                 "zeroRecords": "No existe esa persona - lo siento",
