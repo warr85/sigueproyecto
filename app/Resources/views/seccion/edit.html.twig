@@ -1,21 +1,98 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Seccion edit</h1>
+{% block page_title %} Editando {% endblock %}
+{% block page_subtitle %} Oferta académica {% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+{% block page_content %}
+    {{ form_start(edit_form, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Nueva Oferta Académica</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+            <div class="box-body">
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.nombre) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(edit_form.nombre) }}
+                                {{ form_widget(edit_form.nombre) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.aula) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(edit_form.aula) }}
+                                {{ form_widget(edit_form.aula) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.cupo) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(edit_form.cupo) }}
+                                {{ form_widget(edit_form.cupo) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.idTurno) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(edit_form.idTurno) }}
+                                {{ form_widget(edit_form.idTurno) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.idPersonaInstitucion) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(edit_form.idPersonaInstitucion) }}
+                                {{ form_widget(edit_form.idPersonaInstitucion) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.ofertaAcademica) }}
+                            <div class="col-sm-9">
+                                {{ form_errors(edit_form.ofertaAcademica) }}
+                                {{ form_widget(edit_form.ofertaAcademica) }}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    {{ form_widget(edit_form) }}
+                    <input type="submit" value="Edit" />
+                    {{ form_end(edit_form) }}
+                </div>
+
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
+
+
+
+
 
     <ul>
         <li>
             <a href="{{ path('admin_oferta_seccion_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
         </li>
     </ul>
 {% endblock %}
