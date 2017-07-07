@@ -1,24 +1,510 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Persona edit</h1>
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 
-    {{ form_start(edit_persona) }}{{ form_start(edit_economico) }}
-        {{ form_widget(edit_persona) }}
-        {{ form_widget(edit_economico) }}
-        {{ form_widget(edit_discapacidades) }}
+{% block page_title %} Editando {% endblock %}
+{% block page_subtitle %} {{ persona.primerApellido }}  {{ persona.primerNombre }} {% endblock %}
+{% block page_content %}
+
+    <div class="row">
+        <!-- left column -->
+        {{ form_start(edit_persona, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos Personales</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.idPaisNacimiento) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_persona.idPaisNacimiento) }}
+                                    {{ form_widget(edit_persona.idPaisNacimiento) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.idDocumentoentidad) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_persona.idDocumentoentidad) }}
+                                    {{ form_widget(edit_persona.idDocumentoentidad) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.cedulaPasaporte) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_persona.cedulaPasaporte) }}
+                                    {{ form_widget(edit_persona.cedulaPasaporte) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.primerNombre) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_persona.primerNombre) }}
+                                    {{ form_widget(edit_persona.primerNombre) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.segundoNombre) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_persona.segundoNombre) }}
+                                    {{ form_widget(edit_persona.segundoNombre) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.primerApellido) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_persona.primerApellido) }}
+                                    {{ form_widget(edit_persona.primerApellido) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.segundoApellido) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_persona.segundoApellido) }}
+                                    {{ form_widget(edit_persona.segundoApellido) }}
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_label(edit_persona.fechaNacimiento) }}
+                                    <div class="col-sm-8">
+                                        {{ form_errors(edit_persona.fechaNacimiento) }}
+                                        {{ form_widget(edit_persona.fechaNacimiento) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(edit_persona.idGenero) }}
+                                    <div class="col-sm-8">
+                                        {{ form_errors(edit_persona.idGenero) }}
+                                        {{ form_widget(edit_persona.idGenero) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(edit_persona.idEstadoCivil) }}
+                                    <div class="col-sm-8">
+                                        {{ form_errors(edit_persona.idEstadoCivil) }}
+                                        {{ form_widget(edit_persona.idEstadoCivil) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(edit_persona.correoElectronico) }}
+                                    <div class="col-sm-8">
+                                        {{ form_errors(edit_persona.correoElectronico) }}
+                                        {{ form_widget(edit_persona.correoElectronico) }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(edit_persona.direccionResidencia) }}
+                                    <div class="col-sm-8">
+                                        {{ form_errors(edit_persona.direccionResidencia) }}
+                                        {{ form_widget(edit_persona.direccionResidencia) }}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="familiares form-group col-sm-12" id="familiares" data-prototype="{{ form_widget(edit_persona.familiares.vars.prototype)|e('html_attr') }}">
+                                    {% for familia in edit_persona.familiares %}
+                                    <div class="form-group">
+                                        {{ form_label(familia.nombre) }}
+
+                                            {{ form_widget(familia.nombre) }}
+
+                                    </div>
+
+                                        <div class="form-group">
+                                            {{ form_label(familia.idParentesco) }}
+
+                                                {{ form_widget(familia.idParentesco) }}
+
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            {{ form_label(familia.jefeFamiliar) }}
+
+                                                {{ form_widget(familia.jefeFamiliar) }}
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            {{ form_label(familia.idNivelInstruccion) }}
+
+                                                {{ form_widget(familia.idNivelInstruccion) }}
+
+                                        </div>
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+
+                    </div>
+
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos Academicos</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="academicos form-group col-sm-12" id="academicos" data-prototype="{{ form_widget(edit_instituciones.estados_academicos.vars.prototype)|e('html_attr') }}">
+
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    {{ form_label(edit_instituciones.idInstitucion) }}
+
+                                    {{ form_errors(edit_instituciones.idInstitucion) }}
+                                    {{ form_widget(edit_instituciones.idInstitucion) }}
+
+                                    {{ form_widget(edit_instituciones) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+
+                    </div>
+
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos Socio-económicos</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="misiones col-sm-12 form-group"  id="misiones" data-prototype="{{ form_widget(edit_persona.misiones.vars.prototype)|e('html_attr') }}">
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                {{ form_label(edit_economico.trabaja) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_economico.trabaja) }}
+                                    {{ form_widget(edit_economico.trabaja) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_economico.aporte) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_economico.aporte) }}
+                                    {{ form_widget(edit_economico.aporte) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_economico.ingresoFamiliar) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_economico.ingresoFamiliar) }}
+                                    {{ form_widget(edit_economico.ingresoFamiliar) }}
+                                </div>
+                            </div>
+                            {{ form_widget(edit_economico) }}
+                        </div>
+                        <div class="col-sm-6">
+                            {#<div class="form-group">
+                                {{ form_label(formCne.idCentroVotacion) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(formCne.idCentroVotacion) }}
+                                    {{ form_widget(formCne.idCentroVotacion) }}
+                                </div>
+                                {{ form_widget(formCne) }}
+                            </div>#}
+
+
+                            <div class="form-group">
+                                {{ form_label(edit_discapacidades.idDiscapacidad) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_discapacidades.idDiscapacidad) }}
+                                    {{ form_widget(edit_discapacidades.idDiscapacidad) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_discapacidades.certificadoConapdis) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_discapacidades.certificadoConapdis) }}
+                                    {{ form_widget(edit_discapacidades.certificadoConapdis) }}
+                                </div>
+                                {{ form_widget(edit_discapacidades) }}
+                            </div>
+
+
+                            {{ form_widget(edit_persona) }}
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+
+                    </div>
+
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
 
         <input type="submit" value="Edit" />
-    {{ form_end(edit_persona) }}{{ form_end(edit_economico) }}
+        {{ form_end(edit_persona) }}{{ form_end(edit_economico) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_persona_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
+        <ul>
+            <li>
+                <a href="{{ path('admin_persona_index') }}">Back to the list</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script>
+
+        var $collectionHolder;
+
+        // setup an "add a tag" link
+        var $addFamiliaresLink = $('<a href="#" class="add_familiares_link">Agregar Familiar</a>');
+        var $addMisionesLink = $('<a href="#" class="add_misiones_link">Agregar Mision</a>');
+        var $addAcademicoLink = $('<a href="#" class="add_academico_link">Agregar Nuevo Estado Académico</a>');
+        var $newLinkLi = $("<div></div>").prepend($addFamiliaresLink);
+        var $newLinkLiM = $('<div></div>').prepend($addMisionesLink);
+        var $newLinkLiA = $("<div></div>").prepend($addAcademicoLink);
+
+        jQuery(document).ready(function() {
+            // Get the ul that holds the collection of tags
+            $collectionHolder = $('div.familiares');
+            $collectionMision = $('div.misiones');
+            $collectionAcademico = $('div.academicos');
+
+            // add the "add a tag" anchor and li to the tags ul
+            $collectionHolder.prepend($newLinkLi);
+            $collectionMision.prepend($newLinkLiM);
+            $collectionAcademico.prepend($newLinkLiA);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+            $collectionMision.data('index', $collectionMision.find(':input').length);
+            $collectionAcademico.data('index', $collectionAcademico.find(':input').length);
+
+            $addFamiliaresLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addFamiliaresForm($collectionHolder, $newLinkLi);
+            });
+
+
+            $addMisionesLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addMisionesForm($collectionMision, $newLinkLiM);
+            });
+
+            $addAcademicoLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addAcademicoForm($collectionAcademico, $newLinkLiA);
+            });
+
+            function addFamiliaresForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                console.log(prototype);
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $("<div></div>").prepend(newForm);
+                console.log(newForm);
+                $newLinkLi.after($newFormLi);
+
+
+
+                $newFormLi.prepend('<a href="#" class="remove-familiar">x</a>');
+
+                $newLinkLi.after($newFormLi);
+
+                // handle the removal, just for this example
+                $('.remove-familiar').click(function(e) {
+                    e.preventDefault();
+
+                    $(this).parent().remove();
+
+                    return false;
+                });
+
+
+            }
+
+
+            function addMisionesForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                console.log(prototype);
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $('<div></div>').prepend(newForm);
+                $newLinkLi.after($newFormLi);
+
+
+
+                $newFormLi.prepend('<a href="#" class="remove-mision">x</a>');
+
+                $newLinkLi.after($newFormLi);
+
+                // handle the removal, just for this example
+                $('.remove-mision').click(function(e) {
+                    e.preventDefault();
+
+                    $(this).parent().remove();
+
+                    return false;
+                });
+
+
+            }
+
+
+
+            function addAcademicoForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                console.log(prototype);
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $('<div></div>').prepend(newForm);
+                $newLinkLi.after($newFormLi);
+
+
+
+                $newFormLi.prepend('<a href="#" class="remove-academico">x</a>');
+
+                $newLinkLi.after($newFormLi);
+
+                // handle the removal, just for this example
+                $('.remove-academico').click(function(e) {
+                    e.preventDefault();
+
+                    $(this).parent().remove();
+
+                    return false;
+                });
+
+
+            }
+
+
+        });
+
+    </script>
 {% endblock %}

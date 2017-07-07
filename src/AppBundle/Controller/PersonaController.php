@@ -185,15 +185,17 @@ class PersonaController extends Controller
         $deleteForm = $this->createDeleteForm($persona);       
         $economico = $this->getDoctrine()->getRepository('AppBundle:PersonaSocioEconomico')->findOneByIdPersona($persona);
         $discapacidades = $this->getDoctrine()->getRepository('AppBundle:PersonaDiscapacidad')->findOneByIdPersona($persona);
-
+        $instituciones = $this->getDoctrine()->getRepository('AppBundle:PersonaInstitucion')->findOneByIdPersona($persona);
 
         if(!$economico){ $economico = new PersonaSocioEconomico(); }
         if(!$discapacidades){ $discapacidades = new PersonaDiscapacidad(); }
+        if(!$instituciones){ $discapacidades = new PersonaInstitucion(); }
 
 
         $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $editEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $editDiscapacidades = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidades);
+        $editInstituciones = $this->createForm('AppBundle\Form\PersonaInstitucionType', $instituciones);
 
 
         $editPersona->handleRequest($request);
@@ -203,6 +205,11 @@ class PersonaController extends Controller
 
 
         if ($editPersona->isSubmitted() && $editPersona->isValid()) {
+
+            foreach ($persona->getFamiliares() as $familiar){
+                $familiar->setIdPersona($persona);
+                $persona->addFamiliare($familiar);
+            }
 
             $em = $this->getDoctrine()->getManager();
 
@@ -226,6 +233,7 @@ class PersonaController extends Controller
             'edit_persona' => $editPersona->createView(),
             'edit_economico' => $editEconomico->createView(),
             'edit_discapacidades' => $editDiscapacidades->createView(),
+            'edit_instituciones' => $editInstituciones->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
