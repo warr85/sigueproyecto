@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -44,7 +45,16 @@ class SeccionType extends AbstractType
                 'attr' => array('class' => 'form-control'),
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
                 'label' => 'Docente Asignado',
-                'placeholder' => "Seleccione Docente"
+                'placeholder' => "Seleccione Docente",
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->orderBy('p.idPersona', 'ASC')
+                        ->innerJoin('p.invitacion', 'i')
+                        ->innerJoin('i.usuario', 'u')
+                        ->where('u.roles LIKE :roles')
+                        ->setParameter('roles', '%"ROLE_ADMIN"%'); //Que el usuario solo sea docente
+
+                },
 
             ))
             ->add('ofertaAcademica', EntityType::class, array(
