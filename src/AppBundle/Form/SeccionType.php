@@ -2,7 +2,9 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +15,47 @@ class SeccionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('aula')->add('cupo')->add('idTurno')->add('idPersonaInstitucion')->add('ofertaAcademica');
+        $builder
+            ->add('nombre', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Nombre de la Sección'
+            ))
+            ->add('aula', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Aula'
+            ))
+            ->add('cupo', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Cupos Disponibles'
+            ))
+            ->add('idTurno', EntityType::class, array(
+                'class' => 'AppBundle\Entity\Turno',
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Turno',
+                'placeholder' => "Seleccione Turnos"
+
+            ))
+            ->add('idPersonaInstitucion', EntityType::class, array(
+                'class' => 'AppBundle\Entity\PersonaInstitucion',
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Docente Asignado',
+                'placeholder' => "Seleccione Docente"
+
+            ))
+            ->add('ofertaAcademica', EntityType::class, array(
+                'class' => 'AppBundle\Entity\OfertaAcademica',
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Malla',
+                'placeholder' => "Seleccione Malla"
+
+            ))
+            ;
     }
     
     /**
