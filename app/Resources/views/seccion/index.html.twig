@@ -1,12 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Seccions list</h1>
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
+{% endblock %}
 
-    <table>
+{% block page_title %} Oferta Académica {% endblock %}
+{% block page_subtitle %} Disponibles {% endblock %}
+
+{% block page_content %}
+
+
+    <table id="tabla_ofertas" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Nombre</th>
+                <th>PFG</th>
+                <th>Unidad Curricular</th>
+                <th>Sección</th>
                 <th>Aula</th>
                 <th>Cupo</th>
                 <th>Id</th>
@@ -16,6 +26,8 @@
         <tbody>
         {% for seccion in seccions %}
             <tr>
+                <td>{{ seccion.ofertaAcademica.idMallaCurricularUc.idMallaCurricular }}</td>
+                <td>{{ seccion.ofertaAcademica }}</td>
                 <td><a href="{{ path('admin_oferta_seccion_show', { 'id': seccion.id }) }}">{{ seccion.nombre }}</a></td>
                 <td>{{ seccion.aula }}</td>
                 <td>{{ seccion.cupo }}</td>
@@ -40,4 +52,23 @@
             <a href="{{ path('admin_oferta_seccion_new') }}">Create a new seccion</a>
         </li>
     </ul>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script>
+        $('#tabla_ofertas').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No existe esa persona - lo siento",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros para mostrar",
+                "infoFiltered": "(Buscando en los _MAX_ registros disponibles)",
+                "search" : "Buscar:"
+            }
+        } );
+    </script>
 {% endblock %}
