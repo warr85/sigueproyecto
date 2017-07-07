@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,8 +15,13 @@ class EstadoAcademicoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('observacion')
-            ->add('idMallaCurricular');
+            ->add('idMallaCurricular', EntityType::class, array(
+                'class' => 'AppBundle\Entity\MallaCurricular',
+                'attr' => array('class' => 'form-control'),
+                'label' => 'PFG',
+                'placeholder' => "Seleccione Malla"
+            ))
+        ;
     }
     
     /**

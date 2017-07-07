@@ -16,7 +16,7 @@ use AppBundle\Entity\Estatus;
 /**
  * PersonaVotacion
  *
- * @ORM\Table(name="persona_votacion", uniqueConstraints={@ORM\UniqueConstraint(name="i_persona_centro_votacion", columns={"id_centro_votacion", "id_persona"})}, indexes={ @ORM\Index(name="fki_persona_centro_votacion", columns={"id_persona"}), @ORM\Index(name="IDX_centro_votacion", columns={"id_centro_votacion"})})
+ * @ORM\Table(name="persona_votacion", uniqueConstraints={@ORM\UniqueConstraint(name="i_persona_centro_votacion", columns={"id_centro_votacion", "id_persona"})})
  * @ORM\Entity
  */
 class PersonaVotacion

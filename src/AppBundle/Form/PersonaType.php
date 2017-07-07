@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -73,7 +74,10 @@ class PersonaType extends AbstractType
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
                 'label' => 'Dirección:'
             ))
-            ->add('privadoLibertad')
+            ->add('privadoLibertad', CheckboxType::class, array(
+                'label' => '¿Privado de libertad?',
+
+            ))
 
 
             ->add('idEstadoCivil', EntityType::class, array(
@@ -93,10 +97,12 @@ class PersonaType extends AbstractType
 
             ))
             ->add('familiares', CollectionType::class, array(
+                'label' => false,
                 'entry_type'   => PersonaFamiliarType::class,
                 'allow_add'    => true,
             ))
             ->add('misiones', CollectionType::class, array(
+                'label' => false,
                 'entry_type'   => PersonaMisionType::class,
                 'allow_add'    => true,
             ));

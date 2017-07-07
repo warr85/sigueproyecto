@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,10 +16,17 @@ class PersonaInstitucionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('idInstitucion')
+            ->add('idInstitucion', EntityType::class, array(
+                'class' => 'AppBundle\Entity\Institucion',
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Sede',
+                'placeholder' => "Seleccione Eje"
+
+            ))
             ->add('estados_academicos', CollectionType::class, array(
                 'entry_type'   => EstadoAcademicoType::class,
                 'allow_add'    => true,
+                'label' => false
             ));
     }
     

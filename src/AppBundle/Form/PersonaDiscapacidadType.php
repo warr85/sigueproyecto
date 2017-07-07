@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,13 +17,19 @@ class PersonaDiscapacidadType extends AbstractType
     {
         $builder
             ->add('idDiscapacidad', EntityType::class, array(
-                'label'         => '¿Posee Discapacidad?',
-                'placeholder'   => 'Seleccione Discapacidad',
+                'label'         => 'Discap.',
+                'placeholder'   => 'Discapacidades',
                 'class'         => 'AppBundle:Discapacidad',
                 'choice_label'  => 'getNombre',
-                'required'      => false
+                'required'      => false,
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
             ))
-            ->add('certificadoConapdis')
+            ->add('certificadoConapdis', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Conapdis'
+            ))
         ;
     }
     

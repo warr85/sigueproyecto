@@ -11,6 +11,7 @@
 
 <div class="row">
     <!-- left column -->
+    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
     <div class="col-md-6">
         <!-- general form elements -->
         <div class="box box-primary">
@@ -19,7 +20,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
                 <div class="box-body">
                 <div class="row">
                     <div class="col-sm-6">
@@ -123,53 +124,173 @@
                                     {{ form_errors(form.direccionResidencia) }}
                                     {{ form_widget(form.direccionResidencia) }}
                                 </div>
+
                             </div>
-
-
-
-
                         </div>
+
+                        <div class="col-sm-6">
+                            <div class="familiares form-group col-sm-12" id="familiares" data-prototype="{{ form_widget(form.familiares.vars.prototype)|e('html_attr') }}">
+
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
                 </div>
-            </form>
+
         </div>
         <!-- /.box -->
     </div>
 </div>
 
 
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
 
-    <ul class="familiares" id="familiares" data-prototype="{{ form_widget(form.familiares.vars.prototype)|e('html_attr') }}">
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Datos Academicos</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
 
-    </ul>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="academicos form-group col-sm-12" id="academicos" data-prototype="{{ form_widget(formInstitucion.estados_academicos.vars.prototype)|e('html_attr') }}">
 
-    <ul class="misiones" id="misiones" data-prototype="{{ form_widget(form.misiones.vars.prototype)|e('html_attr') }}">
+                        </div>
+                    </div>
 
-    </ul>
+                    <hr>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                            {{ form_label(formInstitucion.idInstitucion) }}
 
-    <ul class="academicos" id="academicos" data-prototype="{{ form_widget(formInstitucion.estados_academicos.vars.prototype)|e('html_attr') }}">
+                                {{ form_errors(formInstitucion.idInstitucion) }}
+                                {{ form_widget(formInstitucion.idInstitucion) }}
 
-    </ul>
-    {{ form_widget(form) }}
-        {{ form_widget(formEconomico) }}
-        {{ form_widget(formDiscapacidad) }}
-        {{ form_widget(formInstitucion) }}
-        {{ form_widget(formCne) }}
-        <input type="submit" value="Create" />
+                            {{ form_widget(formInstitucion) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+
+                </div>
+
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Datos Socio-económicos</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="misiones col-sm-12 form-group"  id="misiones" data-prototype="{{ form_widget(form.misiones.vars.prototype)|e('html_attr') }}">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <div class="form-group">
+                            {{ form_label(formEconomico.trabaja) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formEconomico.trabaja) }}
+                                {{ form_widget(formEconomico.trabaja) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formEconomico.aporte) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formEconomico.aporte) }}
+                                {{ form_widget(formEconomico.aporte) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formEconomico.ingresoFamiliar) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formEconomico.ingresoFamiliar) }}
+                                {{ form_widget(formEconomico.ingresoFamiliar) }}
+                            </div>
+                        </div>
+                        {{ form_widget(formEconomico) }}
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(formCne.idCentroVotacion) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formCne.idCentroVotacion) }}
+                                {{ form_widget(formCne.idCentroVotacion) }}
+                            </div>
+                            {{ form_widget(formCne) }}
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ form_label(formDiscapacidad.idDiscapacidad) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formDiscapacidad.idDiscapacidad) }}
+                                {{ form_widget(formDiscapacidad.idDiscapacidad) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formDiscapacidad.certificadoConapdis) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formDiscapacidad.certificadoConapdis) }}
+                                {{ form_widget(formDiscapacidad.certificadoConapdis) }}
+                            </div>
+                            {{ form_widget(formDiscapacidad) }}
+                        </div>
+
+
+                    {{ form_widget(form) }}
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+
+                </div>
+
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
+
+        <input type="submit" class="btn btn-success" value="Registrar" /><a class="btn btn-default" href="{{ path('admin_persona_index') }}">Regresar al listado</a>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_persona_index') }}">Back to the list</a>
-        </li>
-    </ul>
+</div>
+
+
+
+
 {% endblock %}
 
 {% block javascripts %}
@@ -182,21 +303,21 @@
         // setup an "add a tag" link
         var $addFamiliaresLink = $('<a href="#" class="add_familiares_link">Agregar Familiar</a>');
         var $addMisionesLink = $('<a href="#" class="add_misiones_link">Agregar Mision</a>');
-        var $addAcademicoLink = $('<a href="#" class="add_academico_link">Agregar Estado Academico</a>');
-        var $newLinkLi = $('<li></li>').append($addFamiliaresLink);
-        var $newLinkLiM = $('<li></li>').append($addMisionesLink);
-        var $newLinkLiA = $('<li></li>').append($addAcademicoLink);
+        var $addAcademicoLink = $('<a href="#" class="add_academico_link">Agregar Nuevo Estado Académico</a>');
+        var $newLinkLi = $("<div></div>").prepend($addFamiliaresLink);
+        var $newLinkLiM = $('<div></div>').prepend($addMisionesLink);
+        var $newLinkLiA = $("<div></div>").prepend($addAcademicoLink);
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of tags
-            $collectionHolder = $('ul.familiares');
-            $collectionMision = $('ul.misiones');
-            $collectionAcademico = $('ul.academicos');
+            $collectionHolder = $('div.familiares');
+            $collectionMision = $('div.misiones');
+            $collectionAcademico = $('div.academicos');
 
             // add the "add a tag" anchor and li to the tags ul
-            $collectionHolder.append($newLinkLi);
-            $collectionMision.append($newLinkLiM);
-            $collectionAcademico.append($newLinkLiA);
+            $collectionHolder.prepend($newLinkLi);
+            $collectionMision.prepend($newLinkLiM);
+            $collectionAcademico.prepend($newLinkLiA);
 
             // count the current form inputs we have (e.g. 2), use that as the new
             // index when inserting a new item (e.g. 2)
@@ -245,14 +366,15 @@
                 $collectionHolder.data('index', index + 1);
 
                 // Display the form in the page in an li, before the "Add a tag" link li
-                var $newFormLi = $('<li></li>').append(newForm);
-                $newLinkLi.before($newFormLi);
+                var $newFormLi = $("<div></div>").prepend(newForm);
+                console.log(newForm);
+                $newLinkLi.after($newFormLi);
 
 
 
-                $newFormLi.append('<a href="#" class="remove-familiar">x</a>');
+                $newFormLi.prepend('<a href="#" class="remove-familiar">x</a>');
 
-                $newLinkLi.before($newFormLi);
+                $newLinkLi.after($newFormLi);
 
                 // handle the removal, just for this example
                 $('.remove-familiar').click(function(e) {
@@ -283,14 +405,14 @@
                 $collectionHolder.data('index', index + 1);
 
                 // Display the form in the page in an li, before the "Add a tag" link li
-                var $newFormLi = $('<li></li>').append(newForm);
-                $newLinkLi.before($newFormLi);
+                var $newFormLi = $('<div></div>').prepend(newForm);
+                $newLinkLi.after($newFormLi);
 
 
 
-                $newFormLi.append('<a href="#" class="remove-mision">x</a>');
+                $newFormLi.prepend('<a href="#" class="remove-mision">x</a>');
 
-                $newLinkLi.before($newFormLi);
+                $newLinkLi.after($newFormLi);
 
                 // handle the removal, just for this example
                 $('.remove-mision').click(function(e) {
@@ -322,17 +444,17 @@
                 $collectionHolder.data('index', index + 1);
 
                 // Display the form in the page in an li, before the "Add a tag" link li
-                var $newFormLi = $('<li></li>').append(newForm);
-                $newLinkLi.before($newFormLi);
+                var $newFormLi = $('<div></div>').prepend(newForm);
+                $newLinkLi.after($newFormLi);
 
 
 
-                $newFormLi.append('<a href="#" class="remove-mision">x</a>');
+                $newFormLi.prepend('<a href="#" class="remove-academico">x</a>');
 
-                $newLinkLi.before($newFormLi);
+                $newLinkLi.after($newFormLi);
 
                 // handle the removal, just for this example
-                $('.remove-mision').click(function(e) {
+                $('.remove-academico').click(function(e) {
                     e.preventDefault();
 
                     $(this).parent().remove();

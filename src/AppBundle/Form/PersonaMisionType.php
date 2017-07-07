@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +14,12 @@ class PersonaMisionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idMision');
+        $builder->add('idMision', EntityType::class, array(
+            'class' => 'AppBundle\Entity\Mision',
+            'attr' => array('class' => 'form-control'),
+            'label' => 'Seleccione la misión a la cual Pertenece',
+            'placeholder' => "Misiones"
+        ));
     }
     
     /**

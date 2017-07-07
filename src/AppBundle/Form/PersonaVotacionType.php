@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +14,13 @@ class PersonaVotacionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idCentroVotacion');
+        $builder->add('idCentroVotacion', EntityType::class, array(
+            'class' => 'AppBundle\Entity\CentroVotacion',
+            'attr' => array('class' => 'form-control'),
+            'label' => 'Votación',
+            'label_attr' => array('class' => 'col-sm-3 control-label'),
+            'placeholder' => "¿Donde Vota?"
+        ));
     }
     
     /**

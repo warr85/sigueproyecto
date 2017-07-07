@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,9 +16,20 @@ class PersonaSocioEconomicoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('trabaja')
-            ->add('aporte')
-            ->add('ingresoFamiliar');
+            ->add('trabaja', CheckboxType::class, array(
+                'label' => '¿trabaja?',
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+
+            ))
+            ->add('aporte', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+            ))
+            ->add('ingresoFamiliar', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+            ))
+        ;
     }
     
     /**
