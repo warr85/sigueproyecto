@@ -1,9 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Seccion</h1>
+{% block page_title %} Mostrando {% endblock %}
+{% block page_subtitle %} Oferta académica {% endblock %}
 
-    <table>
+{% block page_content %}
+
+    <table id="tabla_seccion" class="table table-bordered table-striped">
         <tbody>
             <tr>
                 <th>Nombre</th>
