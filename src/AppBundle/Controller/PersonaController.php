@@ -205,13 +205,43 @@ class PersonaController extends Controller
 
 
         if ($editPersona->isSubmitted() && $editPersona->isValid()) {
-
+            $em = $this->getDoctrine()->getManager();
             foreach ($persona->getFamiliares() as $familiar){
                 $familiar->setIdPersona($persona);
                 $persona->addFamiliare($familiar);
             }
 
-            $em = $this->getDoctrine()->getManager();
+            if($persona->getMisiones() != NULL) {
+                foreach ($persona->getMisiones() as $mision) {
+                    $mision->setIdPersona($persona);
+                    $persona->addMisione($mision);
+                }
+            }
+
+            foreach ($instituciones->getEstadosAcademicos() as $academico){
+                $existe = $em->getRepository("AppBundle:EstadoAcademico")->findOneById($academico->getId());
+                if(!$existe) {
+                    $solicitud = new PersonaSolicitud();
+                    $solicitud->setIdPeriodo($this->getDoctrine()->getRepository("AppBundle:Periodo")->findOneByIdEstatus(1));
+                    $solicitud->setIdPersonaInstitucion($instituciones);
+                    $solicitud->setIdTipoSolicitud($this->getDoctrine()->getRepository("AppBundle:TipoSolicitud")->findOneById(1));
+                    $solicitud->setIdEstatusProceso($this->getDoctrine()->getRepository("AppBundle:EstatusProceso")->findOneById(2));
+
+
+                    $academico->setIdPersonaInstitucion($instituciones);
+                    $academico->setIdPeriodo($solicitud->getIdPeriodo());
+                    $academico->setIdPersonaSolicitud($solicitud);
+                    $academico->setIdGradoAcademico($em->getRepository("AppBundle:GradoAcademico")->findOneById(1));
+
+
+                    $em->persist($solicitud);
+                    $em->persist($academico);
+
+                    $instituciones->addEstadosAcademico($academico);
+                }
+            }
+
+
 
             $economico->setIdPersona($persona);
 
