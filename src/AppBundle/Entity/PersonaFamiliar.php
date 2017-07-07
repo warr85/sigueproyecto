@@ -53,7 +53,7 @@ class PersonaFamiliar
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=10, nullable=false, options={"comment" = "Nombre del genero"})
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false, options={"comment" = "Nombre del genero"})
      */
     private $nombre;
 
