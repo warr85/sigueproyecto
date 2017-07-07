@@ -75,6 +75,13 @@ class PersonaInstitucion
     private $estados_academicos;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\PersonaSolicitud", mappedBy="idPersonaInstitucion", cascade={"persist", "remove"})
+     */
+
+    private $solicitudes;
+
+
 
     /**
      * Get id
@@ -239,5 +246,38 @@ class PersonaInstitucion
     public function getEstadosAcademicos()
     {
         return $this->estados_academicos;
+    }
+
+    /**
+     * Add solicitudes
+     *
+     * @param \AppBundle\Entity\PersonaSolicitud $solicitudes
+     * @return PersonaInstitucion
+     */
+    public function addSolicitude(\AppBundle\Entity\PersonaSolicitud $solicitudes)
+    {
+        $this->solicitudes[] = $solicitudes;
+
+        return $this;
+    }
+
+    /**
+     * Remove solicitudes
+     *
+     * @param \AppBundle\Entity\PersonaSolicitud $solicitudes
+     */
+    public function removeSolicitude(\AppBundle\Entity\PersonaSolicitud $solicitudes)
+    {
+        $this->solicitudes->removeElement($solicitudes);
+    }
+
+    /**
+     * Get solicitudes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSolicitudes()
+    {
+        return $this->solicitudes;
     }
 }
