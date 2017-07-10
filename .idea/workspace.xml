@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a061021-7bf7-4781-8020-825036072a61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/admin.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/admin.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,20 +23,24 @@
       <file leaf-file-name="admin.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/admin.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="649" column="85" lean-forward="true" selection-start-line="649" selection-start-column="4" selection-end-line="649" selection-end-column="85" />
+            <state relative-caret-position="220">
+              <caret line="311" column="24" lean-forward="false" selection-start-line="311" selection-start-column="21" selection-end-line="311" selection-end-column="24" />
               <folding>
-                <element signature="e#19208#19217#0#Twig" expanded="true" />
-                <element signature="e#21003#21026#0#Twig" expanded="true" />
-                <marker date="1499704933720" expanded="false" signature="19959:19978" ph="admin/persona/" />
-                <marker date="1499704933720" expanded="false" signature="20088:20105" ph="admin/persona/new" />
-                <marker date="1499704933720" expanded="false" signature="20662:20688" ph="admin/oferta_seccion/" />
-                <marker date="1499704933720" expanded="false" signature="20793:20817" ph="admin/oferta_seccion/new" />
-                <marker date="1499704933720" expanded="false" signature="22339:22345" ph="©" />
-                <marker date="1499704933720" expanded="false" signature="25697:25707" ph="..." />
-                <marker date="1499704933720" expanded="false" signature="26272:26282" ph="..." />
-                <marker date="1499704933720" expanded="false" signature="26853:26863" ph="..." />
-                <marker date="1499704933720" expanded="false" signature="27433:27443" ph="..." />
+                <element signature="e#19212#19221#0#Twig" expanded="true" />
+                <element signature="e#21007#21030#0#Twig" expanded="true" />
+                <marker date="1499709272128" expanded="false" signature="11539:11549" ph="..." />
+                <marker date="1499709272128" expanded="false" signature="12509:12519" ph="..." />
+                <marker date="1499709272128" expanded="false" signature="13480:13490" ph="..." />
+                <marker date="1499709272128" expanded="false" signature="14458:14468" ph="..." />
+                <marker date="1499709272128" expanded="false" signature="19963:19982" ph="admin/persona/" />
+                <marker date="1499709272128" expanded="false" signature="20092:20109" ph="admin/persona/new" />
+                <marker date="1499709272128" expanded="false" signature="20666:20692" ph="admin/oferta_seccion/" />
+                <marker date="1499709272128" expanded="false" signature="20797:20821" ph="admin/oferta_seccion/new" />
+                <marker date="1499709272128" expanded="false" signature="22343:22349" ph="©" />
+                <marker date="1499709272128" expanded="false" signature="25701:25711" ph="..." />
+                <marker date="1499709272128" expanded="false" signature="26276:26286" ph="..." />
+                <marker date="1499709272128" expanded="false" signature="26857:26867" ph="..." />
+                <marker date="1499709272128" expanded="false" signature="27437:27447" ph="..." />
               </folding>
             </state>
           </provider>
@@ -249,6 +252,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sigueproyecto" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sigueproyecto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sigueproyecto" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -581,18 +598,18 @@
       <workItem from="1499179385055" duration="14438000" />
       <workItem from="1499344143978" duration="742000" />
       <workItem from="1499345586154" duration="32803000" />
-      <workItem from="1499688996780" duration="15819000" />
+      <workItem from="1499688996780" duration="16771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117632000" />
+    <option name="totallyTimeSpent" value="118584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="876" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22955523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22955523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1096,20 +1113,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/admin.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="649" column="85" lean-forward="true" selection-start-line="649" selection-start-column="4" selection-end-line="649" selection-end-column="85" />
+        <state relative-caret-position="220">
+          <caret line="311" column="24" lean-forward="false" selection-start-line="311" selection-start-column="21" selection-end-line="311" selection-end-column="24" />
           <folding>
-            <element signature="e#19208#19217#0#Twig" expanded="true" />
-            <element signature="e#21003#21026#0#Twig" expanded="true" />
-            <marker date="1499704933720" expanded="false" signature="19959:19978" ph="admin/persona/" />
-            <marker date="1499704933720" expanded="false" signature="20088:20105" ph="admin/persona/new" />
-            <marker date="1499704933720" expanded="false" signature="20662:20688" ph="admin/oferta_seccion/" />
-            <marker date="1499704933720" expanded="false" signature="20793:20817" ph="admin/oferta_seccion/new" />
-            <marker date="1499704933720" expanded="false" signature="22339:22345" ph="©" />
-            <marker date="1499704933720" expanded="false" signature="25697:25707" ph="..." />
-            <marker date="1499704933720" expanded="false" signature="26272:26282" ph="..." />
-            <marker date="1499704933720" expanded="false" signature="26853:26863" ph="..." />
-            <marker date="1499704933720" expanded="false" signature="27433:27443" ph="..." />
+            <element signature="e#19212#19221#0#Twig" expanded="true" />
+            <element signature="e#21007#21030#0#Twig" expanded="true" />
+            <marker date="1499709272128" expanded="false" signature="11539:11549" ph="..." />
+            <marker date="1499709272128" expanded="false" signature="12509:12519" ph="..." />
+            <marker date="1499709272128" expanded="false" signature="13480:13490" ph="..." />
+            <marker date="1499709272128" expanded="false" signature="14458:14468" ph="..." />
+            <marker date="1499709272128" expanded="false" signature="19963:19982" ph="admin/persona/" />
+            <marker date="1499709272128" expanded="false" signature="20092:20109" ph="admin/persona/new" />
+            <marker date="1499709272128" expanded="false" signature="20666:20692" ph="admin/oferta_seccion/" />
+            <marker date="1499709272128" expanded="false" signature="20797:20821" ph="admin/oferta_seccion/new" />
+            <marker date="1499709272128" expanded="false" signature="22343:22349" ph="©" />
+            <marker date="1499709272128" expanded="false" signature="25701:25711" ph="..." />
+            <marker date="1499709272128" expanded="false" signature="26276:26286" ph="..." />
+            <marker date="1499709272128" expanded="false" signature="26857:26867" ph="..." />
+            <marker date="1499709272128" expanded="false" signature="27437:27447" ph="..." />
           </folding>
         </state>
       </provider>

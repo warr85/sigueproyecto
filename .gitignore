@@ -21,3 +21,5 @@
 .idea*
 .idea/sigueproyecto.iml
 .idea/workspace.xml
+/web
+web/images/
