@@ -91,6 +91,8 @@ class InscripcionController extends Controller
     public function newAction(EstadoAcademico $estado, Request $request)
     {
 
+        //var_dump($request->isMethod("POST")); exit;
+
         $oferta = $this->getDoctrine()->getRepository('AppBundle:OfertaAcademica')->findBy(
             array('idOfertaMallaCurricular'   =>  $estado->getIdMallaCurricular()),
             array('idMallaCurricularUc' => 'ASC')

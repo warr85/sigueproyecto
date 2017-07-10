@@ -3,10 +3,25 @@
 {% block body %}
     <h1>Inscripcion edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <form class="form-inline" method="post" name="seccion">
+        <div id="seccion">
+
+            {% for o in oferta %}
+                <div class="form-group">
+                    <b>{{ o.idMallaCurricularUc }}</b>
+                    {% for seccion in o.seccion %}
+                        <div class="form-group">
+                            <label>
+                                <input class="flat-red" id="seccion_idSeccion_{{seccion.id}}" type="radio" value="{{seccion.id}}" name="seccion[idSeccion][{{o.idMallaCurricularUc}}]">{{ seccion.nombre }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div><br>
+            {% endfor %}
+        </div>
+        <input id="seccion__token" type="hidden" value="WbDyIPXIxm9WxU4oOf2a4_4CnXg3rxuY46e_TbVAggY" name="seccion[_token]">
+        <input type="submit" value="Create" />
+    </form>
 
     <ul>
         <li>
