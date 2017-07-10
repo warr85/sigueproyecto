@@ -26,8 +26,8 @@ class DefaultController extends Controller
     {
         // replace this example code with whatever you need
         $query = $this->getDoctrine()->getEntityManager()
-            ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role'
-            )->setParameter('role', '%"ROLE_USER"%' );
+            ->createQuery('SELECT u FROM AppBundle:User u WHERE NOT u.roles LIKE :role'
+            )->setParameter('role', '%"ROLE_ADMIN"%' );
         $users = $query->getResult();
 
         return $this->render('default/admin_index.html.twig', array(
