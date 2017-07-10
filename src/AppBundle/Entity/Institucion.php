@@ -290,7 +290,7 @@ class Institucion
 
 
     public function __toString(){
-        return $this->getIdEjeParroquia()->getIdEje()->getNombre();
+        return $this->getIdEjeParroquia()->getIdEje()->getNombre() . " -> " . $this->getIdEjeParroquia()->getEstado() ;
     }
 
 

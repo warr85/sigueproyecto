@@ -35,6 +35,11 @@ class PersonaInstitucionType extends AbstractType
                     'ROLE_DOCENTE' => 'Docente',
                     'ROLE_ADMINISTRADOR' => 'Administrador',
                 ),
+                'label' => '¿Que Rol tiene la persona?',
+                'choice_attr' => function($val, $key, $index) {
+                    // adds a class like attending_yes, attending_no, etc
+                    return ['class' => 'checkbox-inline'];
+                },
                 'multiple' => true,
                 'expanded' => true
             ))
