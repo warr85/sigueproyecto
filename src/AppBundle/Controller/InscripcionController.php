@@ -123,7 +123,7 @@ class InscripcionController extends Controller
         }
 
         return $this->render('inscripcion/new.html.twig', array(
-            'estado_academico'  => $estado,
+            'estado'  => $estado,
             'oferta'       => $oferta,
             'seccion'       => $seccion,
         ));
