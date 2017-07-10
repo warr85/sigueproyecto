@@ -23,8 +23,12 @@ class FindEstadoAcademicoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cedula', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Buscar'));
+            ->add('cedula', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Cedula / Pasaporte'
+            ))
+           ;
     }
 
 

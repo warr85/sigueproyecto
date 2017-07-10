@@ -1,10 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Inscripciones</h1>
+{% block page_content %}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+
+    <div class="form-group">
+        {{ form_label(form.cedula) }}
+        <div class="col-sm-4">
+            {{ form_errors(form.cedula) }}
+            {{ form_widget(form.cedula) }}
+        </div>
+        <div class="col-sm-4">
+            <input class="btn btn-primary" type="submit" value="Buscar">
+        </div>
+    </div>
 
     {{ form_end(form) }}
 
