@@ -1,20 +1,76 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Inscripcion</h1>
+{% block page_title %} Inscripciones {% endblock %}
+{% block page_subtitle %} Borrar Unidad Curricular {% endblock %}
 
-    <table>
+{% block page_content %}
+
+
+    <div class="col-sm-12">
+        <div class="box">
+            <div class="box-header">
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="tabla_personas" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Cedulapasaporte</th>
+                        <th>Primernombre</th>
+                        <th>Primerapellido</th>
+                        <th>PFG</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td><a href="{{ path('admin_persona_show', { 'id': inscripcion.idEstadoAcademico.idPersonaInstitucion.idPersona.id }) }}">{{ inscripcion.idEstadoAcademico.idPersonaInstitucion.idPersona.cedulaPasaporte }}</a></td>
+                        <td>{{ inscripcion.idEstadoAcademico.idPersonaInstitucion.idPersona.primerNombre }}</td>
+                        <td>{{ inscripcion.idEstadoAcademico.idPersonaInstitucion.idPersona.primerApellido }}</td>
+                        <td>{{ inscripcion.idEstadoAcademico.idMallaCurricular.idPfg }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('admin_persona_show', { 'id': inscripcion.idEstadoAcademico.idPersonaInstitucion.idPersona.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('admin_persona_edit', { 'id': inscripcion.idEstadoAcademico.idPersonaInstitucion.idPersona.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <table id="tabla_personas" class="table table-bordered table-striped">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ inscripcion.id }}</td>
             </tr>
+
             <tr>
-                <th>Created</th>
+                <th>Uc</th>
+                <td>{{ inscripcion.idSeccion.ofertaAcademica.idMallaCurricularUc.idUnidadCurricular.nombre }}</td>
+            </tr>
+
+            <tr>
+                <th>Seccion</th>
+                <td>{{ inscripcion.idSeccion }}</td>
+            </tr>
+
+            <tr>
+                <th>Inscrita en fecha</th>
                 <td>{% if inscripcion.created %}{{ inscripcion.created|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Modified</th>
+                <th>Modificada en Fecha</th>
                 <td>{% if inscripcion.modified %}{{ inscripcion.modified|date('Y-m-d') }}{% endif %}</td>
             </tr>
         </tbody>
