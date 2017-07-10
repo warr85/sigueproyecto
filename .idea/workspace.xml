@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a061021-7bf7-4781-8020-825036072a61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Institucion.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Institucion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/PersonaInstitucionType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/PersonaInstitucionType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="282" column="24" lean-forward="false" selection-start-line="282" selection-start-column="24" selection-end-line="282" selection-end-column="24" />
+            <state relative-caret-position="652">
+              <caret line="282" column="0" lean-forward="false" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
               <folding>
                 <element signature="e#7535#7563#0#Twig" expanded="true" />
               </folding>
@@ -86,10 +84,40 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="TelefonoPersona.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/TelefonoPersona.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CodigoArea.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CodigoArea.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-493">
+              <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TipoTelefono.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/TipoTelefono.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="PersonaInstitucionType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaInstitucionType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
+            <state relative-caret-position="306">
               <caret line="40" column="57" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
               <folding />
             </state>
@@ -120,8 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>constr</find>
-      <find>show</find>
       <find>sign</find>
       <find>Alex</find>
       <find>Alexan</find>
@@ -150,16 +176,18 @@
       <find>followe</find>
       <find>admin</find>
       <find>datos aca</find>
+      <find>privado</find>
+      <find>Surubv\AdminBundle</find>
     </findStrings>
     <replaceStrings>
       <replace>'bundle/adminlte</replace>
-      <replace>AppBundle</replace>
       <replace>id_persona_institucion</replace>
       <replace>edit_institucion.</replace>
       <replace>edit_</replace>
       <replace>edit_economico</replace>
       <replace>edit_discapacidades</replace>
       <replace>edit_form.</replace>
+      <replace>AppBundle</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -173,9 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/OfertaAcademica.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/EstadoAcademico.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/InscripcionType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Inscripcion.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/macros.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base-layout.html.twig" />
@@ -224,6 +249,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Institucion.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaInstitucionType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/TelefonoPersona.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/CodigoArea.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/TipoTelefono.php" />
       </list>
     </option>
   </component>
@@ -800,12 +828,12 @@
       <workItem from="1499179385055" duration="14438000" />
       <workItem from="1499344143978" duration="742000" />
       <workItem from="1499345586154" duration="32803000" />
-      <workItem from="1499688996780" duration="20511000" />
+      <workItem from="1499688996780" duration="21577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122324000" />
+    <option name="totallyTimeSpent" value="123390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="876" extended-state="0" />
@@ -860,34 +888,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaVotacionType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="71" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="71" />
-          <folding>
-            <element signature="e#34#83#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaSocioEconomicoType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="22" column="14" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="22" selection-end-column="14" />
-          <folding>
-            <element signature="e#34#74#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/PersonaSolicitud.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="45" column="97" lean-forward="false" selection-start-line="45" selection-start-column="97" selection-end-line="45" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaFamiliarType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -1325,7 +1325,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaInstitucionType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
+        <state relative-caret-position="306">
           <caret line="40" column="57" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
           <folding />
         </state>
@@ -1333,11 +1333,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="282" column="24" lean-forward="false" selection-start-line="282" selection-start-column="24" selection-end-line="282" selection-end-column="24" />
+        <state relative-caret-position="652">
+          <caret line="282" column="0" lean-forward="false" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
           <folding>
             <element signature="e#7535#7563#0#Twig" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/TipoTelefono.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/CodigoArea.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="15" column="19" lean-forward="true" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/TelefonoPersona.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="6" lean-forward="true" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
