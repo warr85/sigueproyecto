@@ -15,38 +15,34 @@
         <table id="tabla_personas" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Primernombre</th>
-                <th>Segundonombre</th>
-                <th>Primerapellido</th>
-                <th>Segundoapellido</th>
-                <th>Cedulapasaporte</th>
-                <th>Fechanacimiento</th>
-                <th>Correoelectronico</th>
-
                 <th>Id</th>
+                <th>Cedulapasaporte</th>
+                <th>Nombres</th>
+                <th>Fechanacimiento</th>
+                <th>Inscrito</th>
+                <th>Correoelectronico</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for persona in personas %}
             <tr>
-                <td><a href="{{ path('admin_persona_show', { 'id': persona.id }) }}">{{ persona.primerNombre }}</a></td>
-                <td>{{ persona.segundoNombre }}</td>
-                <td>{{ persona.primerApellido }}</td>
-                <td>{{ persona.segundoApellido }}</td>
-                <td>{{ persona.cedulaPasaporte }}</td>
-                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ persona.correoElectronico }}</td>
                 <td>{{ persona.id }}</td>
+                <td>{{ persona.cedulaPasaporte }}</td>
+                <td><a href="{{ path('admin_persona_show', { 'id': persona.id }) }}">{{ persona | upper }}</a></td>
+                <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_persona_show', { 'id': persona.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_persona_edit', { 'id': persona.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    {% if persona.instituciones.first.EstadosAcademicos.first.hasInscripcion | length > 0 %}
+                        <span class="label label-success">Inscrito</span>
+                    {% endif %}
+                </td>
+                <td>{{ persona.correoElectronico }}</td>
+                <td>
+
+                            <a class="btn btn-xs btn-default" href="{{ path('admin_persona_show', { 'id': persona.id }) }}">ver mas</a>
+
+                            <a class="btn btn-xs btn-warning" href="{{ path('admin_persona_edit', { 'id': persona.id }) }}">edit</a>
+
                 </td>
             </tr>
         {% endfor %}
