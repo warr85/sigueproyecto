@@ -88,6 +88,7 @@ class PersonaController extends Controller
                  $persona->setIdNacionalidad($this->getDoctrine()->getRepository("AppBundle:Nacionalidad")->findOneById('2'));
              }
 
+
             foreach ($institucion->getEstadosAcademicos() as $academico){
                 $solicitud = new PersonaSolicitud();
                 $solicitud->setIdPeriodo($this->getDoctrine()->getRepository("AppBundle:Periodo")->findOneByIdEstatus(1));
@@ -189,7 +190,7 @@ class PersonaController extends Controller
 
         if(!$economico){ $economico = new PersonaSocioEconomico(); }
         if(!$discapacidades){ $discapacidades = new PersonaDiscapacidad(); }
-        if(!$instituciones){ $discapacidades = new PersonaInstitucion(); }
+        if(!$instituciones){ $instituciones = new PersonaInstitucion(); }
 
 
         $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
@@ -202,6 +203,7 @@ class PersonaController extends Controller
         $editEconomico->handleRequest($request);
 
         $editDiscapacidades->handleRequest($request);
+        $editInstituciones->handleRequest($request);
 
 
         if ($editPersona->isSubmitted() && $editPersona->isValid()) {
@@ -218,7 +220,9 @@ class PersonaController extends Controller
                 }
             }
 
+
             foreach ($instituciones->getEstadosAcademicos() as $academico){
+
                 $existe = $em->getRepository("AppBundle:EstadoAcademico")->findOneById($academico->getId());
                 if(!$existe) {
                     $solicitud = new PersonaSolicitud();
