@@ -30,8 +30,20 @@ class DefaultController extends Controller
             )->setParameter('role', '%"ROLE_ADMIN"%' );
         $users = $query->getResult();
 
+
+        $personas = $this->getDoctrine()->getRepository("AppBundle:Persona")->findAll();
+        $ea = $this->getDoctrine()->getRepository("AppBundle:EstadoAcademico")->findAll();
+        $count = 0;
+        foreach ($ea as $estado){
+            foreach ($estado->getHasInscripcion() as $inscrito) {
+                $count++; break;
+            }
+        }
+
         return $this->render('default/admin_index.html.twig', array(
-            'registrados' => $users
+            'registrados' => $users,
+            'inscritos' => $count,
+            'personas' => $personas
         ));
     }
 }
