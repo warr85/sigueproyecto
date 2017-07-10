@@ -42,6 +42,7 @@
                             <a class="btn btn-xs btn-default" href="{{ path('admin_persona_show', { 'id': persona.id }) }}">ver mas</a>
 
                             <a class="btn btn-xs btn-warning" href="{{ path('admin_persona_edit', { 'id': persona.id }) }}">edit</a>
+                            <a class="btn btn-xs btn-primary" href="{{ path('admin_inscripcion_mostrar', { 'id': persona.instituciones.first.EstadosAcademicos.first.id }) }}">Inscripcion</a>
 
                 </td>
             </tr>
