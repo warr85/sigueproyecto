@@ -54,14 +54,13 @@
                 <div class="form-group">
                 <b>{{ o.idMallaCurricularUc }}</b>
                 {% for seccion in o.seccion %}
-                    <div class="radio">
+                    <div class="form-group">
                         <label>
-                            <input id="seccion_idSeccion_{{seccion.id}}" type="radio" value="{{seccion.id}}" name="seccion[idSeccion][{{o.idMallaCurricularUc}}]">
-                            {{ seccion.nombre }}
+                            <input class="flat-red" id="seccion_idSeccion_{{seccion.id}}" type="radio" value="{{seccion.id}}" name="seccion[idSeccion][{{o.idMallaCurricularUc}}]">{{ seccion.nombre }}
                         </label>
                     </div>
-                {% endfor %}<br>
-                </div>
+                {% endfor %}
+                </div><br>
             {% endfor %}
         </div>
         <input id="seccion__token" type="hidden" value="WbDyIPXIxm9WxU4oOf2a4_4CnXg3rxuY46e_TbVAggY" name="seccion[_token]">
@@ -74,22 +73,13 @@
 
     <script>
         $(function () {
-            alert("hola");
-            //iCheck for checkbox and radio inputs
-            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-                checkboxClass: 'icheckbox_minimal-blue',
-                radioClass: 'iradio_minimal-blue'
-            });
-            //Red color scheme for iCheck
-            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-                checkboxClass: 'icheckbox_minimal-red',
-                radioClass: 'iradio_minimal-red'
-            });
+
             //Flat red color scheme for iCheck
             $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
                 checkboxClass: 'icheckbox_flat-green',
                 radioClass: 'iradio_flat-green'
             });
+
         });
     </script>
 {% endblock %}
