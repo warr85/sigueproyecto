@@ -1,20 +1,115 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
-    <h1>Inscripciones</h1>
+{% block page_title %} Inscripción {% endblock %}
+{% block page_subtitle %} Mostrar Estudiante {% endblock %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+{% block page_content %}
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
+
+
+    <div class="form-group">
+        {{ form_label(form.cedula) }}
+        <div class="col-sm-4">
+            {{ form_errors(form.cedula) }}
+            {{ form_widget(form.cedula) }}
+        </div>
+        <div class="col-sm-4">
+            <input class="btn btn-primary" type="submit" value="Buscar">
+        </div>
+    </div>
 
     {{ form_end(form) }}
 
 
     {% if estado %}
 
-        {% for e in estado.hasInscripcion %}
+        <div class="row">
 
-            {{ e.idSeccion.ofertaAcademica }} Seccion: {{ e.idSeccion }}<br>
-        {% endfor %}
+
+            <div class="col-sm-6">
+                <div class="box">
+                    <div class="box-header">
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="tabla_personas" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Cedulapasaporte</th>
+                                <th>Primernombre</th>
+                                <th>Primerapellido</th>
+                                <th>PFG</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td><a href="{{ path('admin_persona_show', { 'id': estado.idPersonaInstitucion.idPersona.id }) }}">{{ estado.idPersonaInstitucion.idPersona.cedulaPasaporte }}</a></td>
+                                    <td>{{ estado.idPersonaInstitucion.idPersona.primerNombre }}</td>
+                                    <td>{{ estado.idPersonaInstitucion.idPersona.primerApellido }}</td>
+                                    <td>{{ estado.idMallaCurricular.idPfg }}</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('admin_persona_show', { 'id': estado.idPersonaInstitucion.idPersona.id }) }}">show</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('admin_persona_edit', { 'id': estado.idPersonaInstitucion.idPersona.id }) }}">edit</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            {% if estado.hasInscripcion | length > 0 %}
+            <div class="col-sm-6">
+                <div class="box">
+                    <div class="box-header">
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="tabla_personas" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre Unidad Curricular</th>
+                                    <th>Sección</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for e in estado.hasInscripcion %}
+                                <tr>
+                                    <td>{{ e.idSeccion.ofertaAcademica }}</a></td>
+                                    <td>{{ e.idSeccion }}</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('admin_inscripcion_mostrar', { 'id': e.id }) }}">show</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('admin_inscripcion_edit', { 'id': e.id }) }}">edit</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+        {% endif %}
+
         <ul>
             <li>
                 <a href="{{ path('admin_inscripcion_new', { 'id': estado.id }) }}">Crear inscripcion</a>

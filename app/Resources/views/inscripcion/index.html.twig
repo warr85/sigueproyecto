@@ -1,8 +1,10 @@
 {% extends 'admin.html.twig' %}
 
+{% block page_title %} Inscripción {% endblock %}
+{% block page_subtitle %} Buscar Estudiante {% endblock %}
+
 {% block page_content %}
     {{ form_start(form, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
-
 
 
     <div class="form-group">
@@ -18,16 +20,4 @@
 
     {{ form_end(form) }}
 
-
-    {% if estado %}
-
-        {% for e in estado.hasInscripcion %}
-            {{ dump(e) }}
-        {% endfor %}
-        <ul>
-            <li>
-                <a href="{{ path('admin_inscripcion_new', { 'id': estado.id }) }}">Crear inscripcion</a>
-            </li>
-        </ul>
-    {% endif %}
 {% endblock %}
