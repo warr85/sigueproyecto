@@ -49,10 +49,8 @@ class SeccionType extends AbstractType
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('p')
                         ->orderBy('p.idPersona', 'ASC')
-                        ->innerJoin('p.invitacion', 'i')
-                        ->innerJoin('i.usuario', 'u')
-                        ->where('u.roles LIKE :roles')
-                        ->setParameter('roles', '%"ROLE_ADMIN"%'); //Que el usuario solo sea docente
+                        ->where('p.roles LIKE :roles')
+                        ->setParameter('roles', '%"ROLE_DOCENTE"%'); //Que el usuario solo sea docente
 
                 },
 

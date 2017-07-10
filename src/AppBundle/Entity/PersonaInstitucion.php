@@ -61,6 +61,13 @@ class PersonaInstitucion
      */
     private $idEstatus;
 
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $roles = array();
+
+
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invitation", mappedBy="idPersonaInstitucion", cascade={"remove"})
      */
@@ -120,7 +127,7 @@ class PersonaInstitucion
      * Set idInstitucion
      *
      * @param \AppBundle\Entity\Institucion $idInstitucion
-     * @return RolInstitucion
+     * @return PersonaInstitucion
      */
     public function setIdInstitucion(\AppBundle\Entity\Institucion $idInstitucion = null)
     {
@@ -143,7 +150,7 @@ class PersonaInstitucion
      * Set idEstatus
      *
      * @param \AppBundle\Entity\Estatus $idEstatus
-     * @return RolInstitucion
+     * @return PersonaInstitucion
      */
     public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus = null)
     {
@@ -280,4 +287,22 @@ class PersonaInstitucion
     {
         return $this->solicitudes;
     }
+
+
+    public function getRoles()
+    {
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+
+        // allows for chaining
+        return $this;
+    }
+
 }
