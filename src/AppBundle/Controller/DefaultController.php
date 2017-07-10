@@ -18,4 +18,20 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ));
     }
+
+    /**
+     * @Route("/admin", name="adminpage")
+     */
+    public function adminAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role'
+            )->setParameter('role', '%"ROLE_USER"%' );
+        $users = $query->getResult();
+
+        return $this->render('default/admin_index.html.twig', array(
+            'registrados' => $users
+        ));
+    }
 }
