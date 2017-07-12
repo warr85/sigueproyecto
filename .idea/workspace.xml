@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1a061021-7bf7-4781-8020-825036072a61" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/PersonaSocioEconomico.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/PersonaSocioEconomico.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/PersonaSocioEconomicoType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/PersonaSocioEconomicoType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/PersonaVotacionType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/PersonaVotacionType.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="246" column="73" lean-forward="false" selection-start-line="246" selection-start-column="73" selection-end-line="246" selection-end-column="73" />
+            <state relative-caret-position="-144">
+              <caret line="274" column="34" lean-forward="false" selection-start-line="274" selection-start-column="34" selection-end-line="274" selection-end-column="34" />
               <folding>
                 <element signature="e#7851#7879#0#Twig" expanded="true" />
               </folding>
@@ -44,11 +43,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonaSocioEconomicoType.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PersonaSocioEconomicoType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaSocioEconomicoType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="23" column="31" lean-forward="false" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state relative-caret-position="324">
+              <caret line="22" column="14" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="22" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonaVotacionType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaVotacionType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -129,7 +138,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PersonaVotacion.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/EstadoAcademicoType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaFamiliarType.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaVotacionType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaDiscapacidadType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaMisionType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/persona/show.html.twig" />
@@ -170,8 +178,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/PersonaController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/admin.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PersonaSocioEconomico.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaSocioEconomicoType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/PersonaVotacionType.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/persona/new.html.twig" />
       </list>
     </option>
   </component>
@@ -566,12 +575,12 @@
       <workItem from="1499179385055" duration="14438000" />
       <workItem from="1499344143978" duration="742000" />
       <workItem from="1499345586154" duration="32803000" />
-      <workItem from="1499688996780" duration="26465000" />
+      <workItem from="1499688996780" duration="27469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128278000" />
+    <option name="totallyTimeSpent" value="129282000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1440" height="904" extended-state="6" />
@@ -626,14 +635,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/EstadoAcademicoType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="22" column="14" lean-forward="false" selection-start-line="17" selection-start-column="37" selection-end-line="22" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -1074,21 +1075,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/new.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaSocioEconomicoType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="246" column="73" lean-forward="false" selection-start-line="246" selection-start-column="73" selection-end-line="246" selection-end-column="73" />
-          <folding>
-            <element signature="e#7851#7879#0#Twig" expanded="true" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="22" column="14" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="22" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaSocioEconomicoType.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/PersonaVotacionType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="23" column="31" lean-forward="false" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        <state relative-caret-position="270">
+          <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/new.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="274" column="34" lean-forward="false" selection-start-line="274" selection-start-column="34" selection-end-line="274" selection-end-column="34" />
+          <folding>
+            <element signature="e#7851#7879#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
