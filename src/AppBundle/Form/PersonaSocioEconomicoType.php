@@ -21,6 +21,10 @@ class PersonaSocioEconomicoType extends AbstractType
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
 
             ))
+            ->add('lugarTrabajo', TextType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+            ))
             ->add('aporte', TextType::class, array(
                 'attr' => array('class' => 'form-control'),
                 'label_attr' => array('class' => 'col-sm-3 control-label'),

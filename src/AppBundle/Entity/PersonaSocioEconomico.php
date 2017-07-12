@@ -47,16 +47,23 @@ class PersonaSocioEconomico
      */
     private $trabaja;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lugar_trabajo", type="string", length=70, nullable=true, options={"comment" = "lugar de trabajo"})
+     */
+    private $lugarTrabajo;
+
 
     /**
-     * @var decimal
+     * @var double
      *  @ORM\Column(name="aporte", type="decimal", nullable=true, options={"comment" = "indica si la persona aporta ecnomicamente a su hogar"}) 
      *  
      */
     private $aporte;
 
     /**
-     * @var decimal
+     * @var double
      *  @ORM\Column(name="ingreso_familiar", type="decimal", nullable=true, options={"comment" = "indica el ingreso total familiar"}) 
      *  
      */
@@ -223,5 +230,28 @@ class PersonaSocioEconomico
     public function getIngresoFamiliar()
     {
         return $this->ingresoFamiliar;
+    }
+
+    /**
+     * Set lugarTrabajo
+     *
+     * @param string $lugarTrabajo
+     * @return PersonaSocioEconomico
+     */
+    public function setLugarTrabajo($lugarTrabajo)
+    {
+        $this->lugarTrabajo = $lugarTrabajo;
+
+        return $this;
+    }
+
+    /**
+     * Get lugarTrabajo
+     *
+     * @return string 
+     */
+    public function getLugarTrabajo()
+    {
+        return $this->lugarTrabajo;
     }
 }
