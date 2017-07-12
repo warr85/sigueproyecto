@@ -81,6 +81,13 @@ class PersonaController extends Controller
                  }
              }
 
+            if($persona->getTelefonos() != NULL) {
+                foreach ($persona->getTelefonos() as $telefono) {
+                    $telefono->setIdPersona($persona);
+                    $persona->addTelefono($telefono);
+                }
+            }
+
              //asigna nacionalidad a la persona basado en su pais de nacimiento
              if($persona->getIdPaisNacimiento()->getId() == "197"){
                  $persona->setIdNacionalidad($this->getDoctrine()->getRepository("AppBundle:Nacionalidad")->findOneById('1'));

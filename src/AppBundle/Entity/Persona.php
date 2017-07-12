@@ -191,6 +191,12 @@ class Persona
     private $misiones;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\TelefonoPersona", mappedBy="idPersona", cascade={"persist","remove"})
+     */
+    private $telefonos;
+
+
 
     /**
      * Set primerNombre
@@ -639,7 +645,8 @@ class Persona
         $this->instituciones = new \Doctrine\Common\Collections\ArrayCollection();
         $this->discapacidades = new \Doctrine\Common\Collections\ArrayCollection();
         $this->familiares = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->misi = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->misiones = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->telefonos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -795,5 +802,38 @@ class Persona
     public function getMisiones()
     {
         return $this->misiones;
+    }
+
+    /**
+     * Add telefonos
+     *
+     * @param \AppBundle\Entity\TelefonoPersona $telefonos
+     * @return Persona
+     */
+    public function addTelefono(\AppBundle\Entity\TelefonoPersona $telefonos)
+    {
+        $this->telefonos[] = $telefonos;
+
+        return $this;
+    }
+
+    /**
+     * Remove telefonos
+     *
+     * @param \AppBundle\Entity\TelefonoPersona $telefonos
+     */
+    public function removeTelefono(\AppBundle\Entity\TelefonoPersona $telefonos)
+    {
+        $this->telefonos->removeElement($telefonos);
+    }
+
+    /**
+     * Get telefonos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTelefonos()
+    {
+        return $this->telefonos;
     }
 }

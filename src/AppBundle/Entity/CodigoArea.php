@@ -13,9 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
 class CodigoArea
 {
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="nombre", type="integer", nullable=false, options={"comment" = "Nombre del Codigo de area (Numero)"})
+     * @ORM\Column(name="nombre", type="string", nullable=false, options={"comment" = "Nombre del Codigo de area (Numero)"})
      */
     private $nombre;
 

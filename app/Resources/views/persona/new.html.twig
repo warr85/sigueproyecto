@@ -128,11 +128,17 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
-                            <div class="familiares form-group col-sm-12" id="familiares" data-prototype="{{ form_widget(form.familiares.vars.prototype)|e('html_attr') }}">
+                            <div class="col-sm-6">
+                                <div class="telefonos form-group col-sm-12" id="telefonos" data-prototype="{{ form_widget(form.telefonos.vars.prototype)|e('html_attr') }}">
 
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="col-sm-6">
+                                <div class="familiares form-group col-sm-12" id="familiares" data-prototype="{{ form_widget(form.familiares.vars.prototype)|e('html_attr') }}">
+
+                                </div>
+                            </div>
 
 
 
@@ -315,26 +321,31 @@
         var $addFamiliaresLink = $('<a href="#" class="add_familiares_link">Agregar Familiar</a>');
         var $addMisionesLink = $('<a href="#" class="add_misiones_link">Agregar Mision</a>');
         var $addAcademicoLink = $('<a href="#" class="add_academico_link">Agregar Nuevo Estado Académico</a>');
+        var $addTelefonosLink = $('<a href="#" class="add_telefono_link">Agregar Nuevo Telefono</a>');
         var $newLinkLi = $("<div></div>").prepend($addFamiliaresLink);
         var $newLinkLiM = $('<div></div>').prepend($addMisionesLink);
         var $newLinkLiA = $("<div></div>").prepend($addAcademicoLink);
+        var $newLinkLiT = $("<div></div>").prepend($addTelefonosLink);
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of tags
             $collectionHolder = $('div.familiares');
             $collectionMision = $('div.misiones');
             $collectionAcademico = $('div.academicos');
+            $collectionTelefonos = $('div.telefonos');
 
             // add the "add a tag" anchor and li to the tags ul
             $collectionHolder.prepend($newLinkLi);
             $collectionMision.prepend($newLinkLiM);
             $collectionAcademico.prepend($newLinkLiA);
+            $collectionTelefonos.prepend($newLinkLiT);
 
             // count the current form inputs we have (e.g. 2), use that as the new
             // index when inserting a new item (e.g. 2)
             $collectionHolder.data('index', $collectionHolder.find(':input').length);
             $collectionMision.data('index', $collectionMision.find(':input').length);
             $collectionAcademico.data('index', $collectionAcademico.find(':input').length);
+            $collectionTelefonos.data('index', $collectionTelefonos.find(':input').length);
 
             $addFamiliaresLink.on('click', function(e) {
                 // prevent the link from creating a "#" on the URL
@@ -359,6 +370,14 @@
 
                 // add a new tag form (see next code block)
                 addAcademicoForm($collectionAcademico, $newLinkLiA);
+            });
+
+            $addTelefonosLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addTelefonosForm($collectionTelefonos, $newLinkLiT);
             });
 
             function addFamiliaresForm($collectionHolder, $newLinkLi) {
@@ -466,6 +485,44 @@
 
                 // handle the removal, just for this example
                 $('.remove-academico').click(function(e) {
+                    e.preventDefault();
+
+                    $(this).parent().remove();
+
+                    return false;
+                });
+
+
+            }
+
+
+            function addTelefonosForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                console.log(prototype);
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $('<div></div>').prepend(newForm);
+                $newLinkLi.after($newFormLi);
+
+
+
+                $newFormLi.prepend('<a href="#" class="remove-telefonos">x</a>');
+
+                $newLinkLi.after($newFormLi);
+
+                // handle the removal, just for this example
+                $('.remove-telefonos').click(function(e) {
                     e.preventDefault();
 
                     $(this).parent().remove();

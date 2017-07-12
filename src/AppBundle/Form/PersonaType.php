@@ -105,6 +105,11 @@ class PersonaType extends AbstractType
                 'label' => false,
                 'entry_type'   => PersonaMisionType::class,
                 'allow_add'    => true,
+            ))
+            ->add('telefonos', CollectionType::class, array(
+                'label' => false,
+                'entry_type'   => TelefonoPersonaType::class,
+                'allow_add'    => true,
             ));
     }
     
