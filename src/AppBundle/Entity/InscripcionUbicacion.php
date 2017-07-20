@@ -57,7 +57,7 @@ class InscripcionUbicacion
     /**
      * @var string
      *
-     * @ORM\Column(name="consejo_comunal", type="string", length=20, nullable=false, options={"comment" = "nombre del consejo comunal"})
+     * @ORM\Column(name="consejo_comunal", type="string", length=255, nullable=true, options={"comment" = "nombre del consejo comunal"})
      */
     private $consejoComunal;
 
@@ -65,7 +65,7 @@ class InscripcionUbicacion
     /**
      * @var string
      *
-     * @ORM\Column(name="institucion", type="string", length=20, nullable=false, options={"comment" = "nombre de la institucion"})
+     * @ORM\Column(name="institucion", type="string", length=255, nullable=true, options={"comment" = "nombre de la institucion"})
      */
     private $institucion;
 
@@ -73,7 +73,7 @@ class InscripcionUbicacion
     /**
      * @var string
      *
-     * @ORM\Column(name="organizacion_base", type="string", length=20, nullable=false, options={"comment" = "nombre de la organizacion base"})
+     * @ORM\Column(name="organizacion_base", type="string", length=255, nullable=true, options={"comment" = "nombre de la organizacion base"})
      */
     private $organizacionBase;
 

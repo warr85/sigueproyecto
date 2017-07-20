@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,9 +19,11 @@ class InscripcionUbicacionType extends AbstractType
             ->add('idSeccionComunidad', EntityType::class, array(
                 'placeholder'   => 'Seleccione ubicación de la comunidad',
                 'class'         => 'AppBundle\Entity\SeccionComunidad',
-                'label'         => 'Comunidad del Núcleo de Investigación'
+                'label'         => 'Comunidad NAI'
             ))
-            ->add('nombreProyecto')
+            ->add('nombreProyecto', TextType::class, array(
+                'label'     => 'Nombre Proyecto'
+            ))
             ->add('comuna')
             ->add('consejoComunal')
             ->add('institucion')
