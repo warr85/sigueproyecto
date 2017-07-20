@@ -264,7 +264,39 @@
                             </div>
                         </div>
                         {{ form_widget(formEconomico) }}
+
+
+                        <div class="form-group">
+                            {{ form_label(formComunitaria.comunitaria) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formComunitaria.comunitaria) }}
+                                {{ form_widget(formComunitaria.comunitaria) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formComunitaria.nombre) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formComunitaria.nombre) }}
+                                {{ form_widget(formComunitaria.nombre) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(formComunitaria.ubicacion) }}
+                            <div class="col-sm-8">
+                                {{ form_errors(formComunitaria.ubicacion) }}
+                                {{ form_widget(formComunitaria.ubicacion) }}
+                            </div>
+                            {{ form_widget(formComunitaria) }}
+                        </div>
+
+
                     </div>
+
+
+
+
                     <div class="col-sm-6">
 
                         <div class="form-group">

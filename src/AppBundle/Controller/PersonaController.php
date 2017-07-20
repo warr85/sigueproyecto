@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Persona;
+use AppBundle\Entity\PersonaComunitaria;
 use AppBundle\Entity\PersonaDiscapacidad;
 use AppBundle\Entity\PersonaSocioEconomico;
 use AppBundle\Entity\PersonaInstitucion;
@@ -51,12 +52,14 @@ class PersonaController extends Controller
         $institucion = new PersonaInstitucion();
         $discapacidad = new PersonaDiscapacidad();
         $cne = new PersonaVotacion();
+        $comunitaria = new PersonaComunitaria();
 
         $form = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $formEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $formInstitucion = $this->createForm('AppBundle\Form\PersonaInstitucionType', $institucion);
         $formDiscapacidad = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidad);
         $formCne = $this->createForm('AppBundle\Form\PersonaVotacionType', $cne);
+        $formComunitaria = $this->createForm('AppBundle\Form\PersonaComunitariaType', $comunitaria);
 
 
 
@@ -65,6 +68,7 @@ class PersonaController extends Controller
         $formInstitucion->handleRequest($request);
         $formDiscapacidad->handleRequest($request);
         $formCne->handleRequest($request);
+        $formComunitaria->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -130,6 +134,12 @@ class PersonaController extends Controller
 
                 }
 
+                if ($comunitaria->getNombre() != NULL) {
+                    $comunitaria->setIdPersona($persona);
+                    $em->persist($comunitaria);
+
+                }
+
                 if ($cne->getIdCentroVotacion()) {
                     $cne->setIdPersona($persona);
                     $em->persist($cne);
@@ -163,6 +173,7 @@ class PersonaController extends Controller
             'formDiscapacidad'  => $formDiscapacidad->createView(),
             'formCne'           => $formCne->createView(),
             'form'              => $form->createView(),
+            'formComunitaria'   => $formComunitaria->createView(),
         ));
     }
 
