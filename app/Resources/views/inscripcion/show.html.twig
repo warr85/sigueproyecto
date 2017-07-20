@@ -50,10 +50,6 @@
 
     <table id="tabla_personas" class="table table-bordered table-striped">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ inscripcion.id }}</td>
-            </tr>
 
             <tr>
                 <th>Uc</th>
@@ -65,17 +61,17 @@
                 <td>{{ inscripcion.idSeccion }}</td>
             </tr>
 
-            <tr>
-                <th>Inscrita en fecha</th>
-                <td>{% if inscripcion.created %}{{ inscripcion.created|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modificada en Fecha</th>
-                <td>{% if inscripcion.modified %}{{ inscripcion.modified|date('Y-m-d') }}{% endif %}</td>
-            </tr>
         </tbody>
     </table>
+    <div class="col-md-6">
+    {{ form_start(formUbicacion, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
 
+    {% form_theme formUbicacion 'bootstrap_3_layout.html.twig' %}
+        {{ form_widget(formUbicacion) }}
+        <input type="submit" value="Crear Ubicacion">
+    {{ form_end(formUbicacion) }}
+    </div>
+    <div class="col-md-6">
     <ul>
         <li>
             <a href="{{ path('admin_inscripcion_mostrar' , { 'id': inscripcion.idEstadoAcademico.id }) }}">Regresar a la Inscripcion</a>
@@ -86,4 +82,5 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+    </div>
 {% endblock %}

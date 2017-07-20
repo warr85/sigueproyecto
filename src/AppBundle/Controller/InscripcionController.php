@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\EstadoAcademico;
 use AppBundle\Entity\Inscripcion;
+use AppBundle\Entity\InscripcionUbicacion;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -135,15 +136,34 @@ class InscripcionController extends Controller
      * Finds and displays a inscripcion entity.
      *
      * @Route("/{id}", name="admin_inscripcion_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Inscripcion $inscripcion)
+    public function showAction(Inscripcion $inscripcion, Request $request)
     {
         $deleteForm = $this->createDeleteForm($inscripcion);
+        $ubicacion = $this->getDoctrine()->getRepository("AppBundle:InscripcionUbicacion")->findOneByIdInscripcion($inscripcion);
+        if(!$ubicacion){ $ubicacion = new InscripcionUbicacion(); }
+        $formUbicacion = $this->createForm('AppBundle\Form\InscripcionUbicacionType', $ubicacion);
+
+        $formUbicacion->handleRequest($request);
+
+        if ($formUbicacion->isSubmitted() && $formUbicacion->isValid()) {
+
+            $ubicacion->setIdInscripcion($inscripcion);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($ubicacion);
+            $em->flush();
+            //$estado = $this->getDoctrine()->getRepository("AppBundle:EstadoAcademico")->findOneByIdPersonaInstitucion($inscripcion->getIdEstadoAcademico()->getInstituciones()[0]);
+            return $this->redirectToRoute('admin_inscripcion_mostrar', array(
+                'id'        => $inscripcion->getIdEstadoAcademico()->getId()
+            ));
+
+        }
 
         return $this->render('inscripcion/show.html.twig', array(
             'inscripcion' => $inscripcion,
             'delete_form' => $deleteForm->createView(),
+            'formUbicacion' => $formUbicacion->createView(),
         ));
     }
 
