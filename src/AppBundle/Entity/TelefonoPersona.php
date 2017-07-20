@@ -32,7 +32,7 @@ class TelefonoPersona
     /**
      * @var \AppBundle\Entity\Persona
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Persona", inversedBy="telefonos")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_persona", referencedColumnName="id", nullable=false)
      * })

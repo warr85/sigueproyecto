@@ -205,16 +205,19 @@ class PersonaController extends Controller
         $economico = $this->getDoctrine()->getRepository('AppBundle:PersonaSocioEconomico')->findOneByIdPersona($persona);
         $discapacidades = $this->getDoctrine()->getRepository('AppBundle:PersonaDiscapacidad')->findOneByIdPersona($persona);
         $instituciones = $this->getDoctrine()->getRepository('AppBundle:PersonaInstitucion')->findOneByIdPersona($persona);
+        $comunitaria = $this->getDoctrine()->getRepository('AppBundle:PersonaComunitaria')->findOneByIdPersona($persona);
 
         if(!$economico){ $economico = new PersonaSocioEconomico(); }
         if(!$discapacidades){ $discapacidades = new PersonaDiscapacidad(); }
         if(!$instituciones){ $instituciones = new PersonaInstitucion(); }
+        if(!$comunitaria){ $comunitaria = new PersonaComunitaria(); }
 
 
         $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
         $editEconomico = $this->createForm('AppBundle\Form\PersonaSocioEconomicoType', $economico);
         $editDiscapacidades = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidades);
         $editInstituciones = $this->createForm('AppBundle\Form\PersonaInstitucionType', $instituciones);
+        $editComunitaria = $this->createForm('AppBundle\Form\PersonaComunitariaType', $comunitaria);
 
 
         $editPersona->handleRequest($request);
@@ -222,6 +225,7 @@ class PersonaController extends Controller
 
         $editDiscapacidades->handleRequest($request);
         $editInstituciones->handleRequest($request);
+        $editComunitaria->handleRequest($request);
 
 
         if ($editPersona->isSubmitted() && $editPersona->isValid()) {
@@ -272,6 +276,11 @@ class PersonaController extends Controller
                 $em->persist($discapacidades);
             }
 
+            if($comunitaria->getNombre()) {
+                $comunitaria->setIdPersona($persona);
+                $em->persist($comunitaria);
+            }
+
 
             $em->persist($persona);
             $em->persist($economico);
@@ -286,6 +295,7 @@ class PersonaController extends Controller
             'edit_economico' => $editEconomico->createView(),
             'edit_discapacidades' => $editDiscapacidades->createView(),
             'edit_instituciones' => $editInstituciones->createView(),
+            'edit_comunitaria' => $editComunitaria->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
