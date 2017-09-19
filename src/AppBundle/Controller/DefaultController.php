@@ -25,24 +25,19 @@ class DefaultController extends Controller
     public function adminAction(Request $request)
     {
         // replace this example code with whatever you need
-        $query = $this->getDoctrine()->getEntityManager()
+        /*$query = $this->getDoctrine()->getEntityManager()
             ->createQuery('SELECT u FROM AppBundle:User u WHERE NOT u.roles LIKE :role'
             )->setParameter('role', '%"ROLE_ADMIN"%' );
-        $users = $query->getResult();
+        $users = $query->getResult();*/
 
 
-        $personas = $this->getDoctrine()->getRepository("AppBundle:Persona")->findAll();
-        $ea = $this->getDoctrine()->getRepository("AppBundle:EstadoAcademico")->findAll();
+        $personas = count($this->getDoctrine()->getRepository("AppBundle:Persona")->findAll());
+        $ea = count($this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findAll());
         $count = 0;
-        foreach ($ea as $estado){
-            foreach ($estado->getHasInscripcion() as $inscrito) {
-                $count++; break;
-            }
-        }
+
 
         return $this->render('default/admin_index.html.twig', array(
-            'registrados' => $users,
-            'inscritos' => $count,
+            'inscritos' => $ea,
             'personas' => $personas
         ));
     }
