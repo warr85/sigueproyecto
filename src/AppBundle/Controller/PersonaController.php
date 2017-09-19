@@ -32,10 +32,13 @@ class PersonaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $personas = $em->getRepository('AppBundle:Persona')->findAll();
+        $personas = $em->getRepository('AppBundle:Persona')->findBy(array(), array('id' => 'ASC'));
+        $inscritos = $em->getRepository('AppBundle:Inscripcion')->findBy(array(), array('id' => 'ASC'));
+
 
         return $this->render('persona/index.html.twig', array(
             'personas' => $personas,
+            'inscritos' => $inscritos
         ));
     }
 

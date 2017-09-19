@@ -33,7 +33,6 @@ class DefaultController extends Controller
 
         $personas = count($this->getDoctrine()->getRepository("AppBundle:Persona")->findAll());
         $ea = count($this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findAll());
-        $count = 0;
 
 
         return $this->render('default/admin_index.html.twig', array(

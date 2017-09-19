@@ -32,16 +32,19 @@
                 <td><a href="{{ path('admin_persona_show', { 'id': persona.id }) }}">{{ persona | upper }}</a></td>
                 <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
                 <td>
-                    {% if persona.instituciones.first.EstadosAcademicos.first.hasInscripcion | length > 0 %}
-                        <span class="label label-success">Inscrito</span>
-                    {% endif %}
+
+
+
+                    {#{% if persona.instituciones.first.EstadosAcademicos.first.hasInscripcion is defined and persona.instituciones.first.EstadosAcademicos.first.hasInscripcion | length > 0  %}
+                        <a href="{{ path('admin_inscripcion_mostrar', { 'id': persona.instituciones.first.EstadosAcademicos.first.id }) }}"> <span class="label label-success">Inscrito</span></a>
+                    {% endif %}#}
                 </td>
                 <td>{{ persona.correoElectronico }}</td>
                 <td>
 
                     <a class="btn btn-xs btn-default" href="{{ path('admin_persona_show', { 'id': persona.id }) }}">ver mas</a>
                     <a class="btn btn-xs btn-warning" href="{{ path('admin_persona_edit', { 'id': persona.id }) }}">edit</a>
-                    <a class="btn btn-xs btn-primary" href="{{ path('admin_inscripcion_mostrar', { 'id': persona.instituciones.first.EstadosAcademicos.first.id }) }}">Inscripcion</a>
+
 
                 </td>
             </tr>
