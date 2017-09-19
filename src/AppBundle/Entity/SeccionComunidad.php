@@ -5,11 +5,11 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * SeccionUbicacion
+ * SeccionComunidad
  *
  * @ORM\Table(name="seccion_comunidad",
  *      uniqueConstraints=
- *          {@ORM\UniqueConstraint(name="uq_seccion_ubicacion", 
+ *          {@ORM\UniqueConstraint(name="uq_seccion_comunidad",
  *              columns={"nombre", "id_seccion"})
  *          }
  *  )
