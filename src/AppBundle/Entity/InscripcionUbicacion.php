@@ -27,7 +27,7 @@ class InscripcionUbicacion
     /**
      * @var \AppBundle\Entity\Inscripcion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Inscripcion")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Inscripcion", inversedBy="ubicaciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_inscripcion", referencedColumnName="id", nullable=false)
      * })

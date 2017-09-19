@@ -37,6 +37,12 @@ class Inscripcion
 
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\InscripcionUbicacion", mappedBy="idInscripcion", cascade={"persist","remove"})
+     */
+    private $ubicaciones;
+
+
+    /**
      * @var \AppBundle\Entity\Estatus
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Estatus")
