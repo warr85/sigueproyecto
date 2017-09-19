@@ -1,0 +1,74 @@
+{% extends 'admin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block page_title %} Editando {% endblock %}
+{% block page_subtitle %} {{ seccionComunidad.nombre }}  -> {{ seccionComunidad.idSeccion }} {% endblock %}
+{% block page_content %}
+
+    <div class="row">
+        <!-- left column -->
+        {{ form_start(edit_form, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Datos Comunidad</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                {{ form_label(edit_form.idSeccion) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_form.idSeccion) }}
+                                    {{ form_widget(edit_form.idSeccion) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_form.nombre) }}
+                                <div class="col-sm-9">
+                                    {{ form_errors(edit_form.nombre) }}
+                                    {{ form_widget(edit_form.nombre) }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+
+                </div>
+
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+    <h1>Seccioncomunidad edit</h1>
+
+
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" class="btn btn-success" />
+    {{ form_end(edit_form) }}
+    {{ form_start(delete_form) }}
+        <a href="{{ path('admin_comunidad_index') }}" class="btn btn-default">Regresar al listado</a>
+
+
+
+    <input type="submit" value="Delete" class="btn btn-danger">
+    {{ form_end(delete_form) }}
+
+
+
+
+{% endblock %}
