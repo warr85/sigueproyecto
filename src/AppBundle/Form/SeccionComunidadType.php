@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,7 +27,8 @@ class SeccionComunidadType extends AbstractType
                 'attr' => array('class' => 'form-control'),
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
                 'label' => 'Secciones NAI',
-                'placeholder' => "Secciones Registradas"
+                'placeholder' => "Secciones Registradas",
+
 
             ))
             ;

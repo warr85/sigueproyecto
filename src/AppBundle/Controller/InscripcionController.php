@@ -143,7 +143,7 @@ class InscripcionController extends Controller
         $deleteForm = $this->createDeleteForm($inscripcion);
         $ubicacion = $this->getDoctrine()->getRepository("AppBundle:InscripcionUbicacion")->findOneByIdInscripcion($inscripcion);
         if(!$ubicacion){ $ubicacion = new InscripcionUbicacion(); }
-        $formUbicacion = $this->createForm('AppBundle\Form\InscripcionUbicacionType', $ubicacion);
+        $formUbicacion = $this->createForm('AppBundle\Form\InscripcionUbicacionType', $ubicacion, array('id_seccion' => $inscripcion->getIdSeccion()));
 
         $formUbicacion->handleRequest($request);
 

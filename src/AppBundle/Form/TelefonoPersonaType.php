@@ -22,9 +22,7 @@ class TelefonoPersonaType extends AbstractType
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
                 'label' => 'Código de Área',
                 'placeholder' => "Codigo de Area",
-                'required'      => false,
-                'attr' => array('class' => 'form-control'),
-                'label_attr' => array('class' => 'control-label'),
+                'required'      => false
 
             ))
             ->add('numero', TextType::class, array(
