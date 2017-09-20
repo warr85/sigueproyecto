@@ -93,9 +93,18 @@ class InscripcionController extends Controller
     {
 
         //var_dump($request->isMethod("POST")); exit;
+        var_dump($estado->getIdMallaCurricular()->getId());
+
+
+        $mallaCurricularUc = $this->getDoctrine()->getRepository('AppBundle:MallaCurricularUc')->findBy(
+            array('idMallaCurricular'   =>  $estado->getIdMallaCurricular()),
+            array('idMallaCurricular' => 'ASC')
+        );
+
+
 
         $oferta = $this->getDoctrine()->getRepository('AppBundle:OfertaAcademica')->findBy(
-            array('idOfertaMallaCurricular'   =>  $estado->getIdMallaCurricular()),
+            array('idMallaCurricularUc'   =>  $mallaCurricularUc),
             array('idMallaCurricularUc' => 'ASC')
         );
 
@@ -176,7 +185,7 @@ class InscripcionController extends Controller
     public function editAction(Request $request, Inscripcion $inscripcion)
     {
         $deleteForm = $this->createDeleteForm($inscripcion);
-        $editForm = $this->createForm('AppBundle\Form\InscripcionType', $inscripcion);
+        $editForm = $this->createForm('AppBundle\Form\InscripcionType', $inscripcion, array('estado_academico' => $inscripcion->getIdSeccion()));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
