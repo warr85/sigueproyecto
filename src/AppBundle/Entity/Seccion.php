@@ -88,6 +88,12 @@ class Seccion
     private $ofertaAcademica;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SeccionComunidad" , mappedBy="idSeccion" , cascade={"all"})
+     * */
+    protected $hasComunidades;
+
+
 
 
 
@@ -292,4 +298,38 @@ class Seccion
     }
 
 
+
+    /**
+     * Add hasComunidade
+     *
+     * @param \AppBundle\Entity\SeccionComunidad $hasComunidade
+     *
+     * @return Seccion
+     */
+    public function addHasComunidade(\AppBundle\Entity\SeccionComunidad $hasComunidade)
+    {
+        $this->hasComunidades[] = $hasComunidade;
+
+        return $this;
+    }
+
+    /**
+     * Remove hasComunidade
+     *
+     * @param \AppBundle\Entity\SeccionComunidad $hasComunidade
+     */
+    public function removeHasComunidade(\AppBundle\Entity\SeccionComunidad $hasComunidade)
+    {
+        $this->hasComunidades->removeElement($hasComunidade);
+    }
+
+    /**
+     * Get hasComunidades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHasComunidades()
+    {
+        return $this->hasComunidades;
+    }
 }

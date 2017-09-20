@@ -32,7 +32,7 @@ class SeccionComunidad
     /**
      * @var \AppBundle\Entity\Seccion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Seccion")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Seccion", inversedBy="hasComunidades" , cascade={"all"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_seccion", referencedColumnName="id", nullable=false)
      * })
@@ -46,6 +46,11 @@ class SeccionComunidad
      * @ORM\Column(name="nombre", type="string", length=20, nullable=false, options={"comment" = "nombre de la Comunidad de ese Nucleo de proyecto"})
      */
     private $nombre;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\InscripcionUbicacion" , mappedBy="idSeccionComunidad" , cascade={"all"})
+     * */
+    protected $hasUbicaciones;
 
     /**
      *
@@ -115,5 +120,46 @@ class SeccionComunidad
     public function getIdSeccion()
     {
         return $this->idSeccion;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->hasUbicaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add hasUbicacione
+     *
+     * @param \AppBundle\Entity\InscripcionUbicacion $hasUbicacione
+     *
+     * @return SeccionComunidad
+     */
+    public function addHasUbicacione(\AppBundle\Entity\InscripcionUbicacion $hasUbicacione)
+    {
+        $this->hasUbicaciones[] = $hasUbicacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove hasUbicacione
+     *
+     * @param \AppBundle\Entity\InscripcionUbicacion $hasUbicacione
+     */
+    public function removeHasUbicacione(\AppBundle\Entity\InscripcionUbicacion $hasUbicacione)
+    {
+        $this->hasUbicaciones->removeElement($hasUbicacione);
+    }
+
+    /**
+     * Get hasUbicaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHasUbicaciones()
+    {
+        return $this->hasUbicaciones;
     }
 }

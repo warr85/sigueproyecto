@@ -38,7 +38,7 @@ class InscripcionUbicacion
     /**
      * @var \AppBundle\Entity\SeccionComunidad
      *
-     * @ORM\ManyToOne(targetEntity="SeccionComunidad")
+     * @ORM\ManyToOne(targetEntity="SeccionComunidad", inversedBy="hasUbicaciones", cascade={"all"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_seccion_comunidad", referencedColumnName="id", nullable=false)
      * })
