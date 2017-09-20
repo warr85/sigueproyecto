@@ -93,7 +93,7 @@ class InscripcionController extends Controller
     {
 
         //var_dump($request->isMethod("POST")); exit;
-        var_dump($estado->getIdMallaCurricular()->getId());
+
 
 
         $mallaCurricularUc = $this->getDoctrine()->getRepository('AppBundle:MallaCurricularUc')->findBy(
@@ -112,20 +112,22 @@ class InscripcionController extends Controller
 
         $seccion = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findAll();
         if ($request->isMethod("POST")) {
-            //var_dump($request->request->get('seccion')['idSeccion']); exit;
+
             $em = $this->getDoctrine()->getManager();
 
-            foreach ($request->request->get('seccion')['idSeccion'] as $s ){
+            foreach ($request->request->get('seccion') as $s ){
+                if (strlen($s) == 1) {
 
-                $secc = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findOneById($s);
-                $estatus = $this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(2);
+                    $secc = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findOneById($s);
+                    $estatus = $this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(2);
 
-                $inscripcion = new Inscripcion();
-                $inscripcion->setIdEstadoAcademico($estado);
-                $inscripcion->setIdSeccion($secc);
-                $inscripcion->setIdEstatus($estatus);
-                $em->persist($inscripcion);
-                $em->flush();
+                    $inscripcion = new Inscripcion();
+                    $inscripcion->setIdEstadoAcademico($estado);
+                    $inscripcion->setIdSeccion($secc);
+                    $inscripcion->setIdEstatus($estatus);
+                    $em->persist($inscripcion);
+                    $em->flush();
+                }
             }
 
 

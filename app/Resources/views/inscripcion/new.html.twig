@@ -46,26 +46,36 @@
         </div>
     </div>
 
-
+    <div class="row">
+        <div class="col-lg-12">
     <form class="form-inline" method="post" name="seccion">
         <div id="seccion">
 
             {% for o in oferta %}
-                <div class="form-group">
+                <div class="form-group col-lg-8">
                 <b>{{ o.idMallaCurricularUc }}</b>
+                    </div>
+                    <div class="col-lg-3">
+                    <select name="seccion[{{ o.idMallaCurricularUc }}]" class="form-control">
+                        <option value="">Seleccione una sección</option>
                 {% for seccion in o.seccion %}
-                    <div class="form-group">
+                    <option value="{{seccion.id}}">{{ seccion.nombre }}</option>
+                   {# <div class="form-group">
                         <label>
                             <input class="flat-red" id="seccion_idSeccion_{{seccion.id}}" type="radio" value="{{seccion.id}}" name="seccion[idSeccion][{{o.idMallaCurricularUc}}]">{{ seccion.nombre }}
                         </label>
-                    </div>
+                    </div>#}
                 {% endfor %}
-                </div><br>
+                    </select>
+                    </div>
+
             {% endfor %}
         </div>
         <input id="seccion__token" type="hidden" value="WbDyIPXIxm9WxU4oOf2a4_4CnXg3rxuY46e_TbVAggY" name="seccion[_token]">
-        <input type="submit" value="Create" />
+        <input type="submit" class="btn btn-success" value="Inscribir" />
     </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
