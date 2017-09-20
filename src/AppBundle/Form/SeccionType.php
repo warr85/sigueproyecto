@@ -17,6 +17,14 @@ class SeccionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('ofertaAcademica', EntityType::class, array(
+                'class' => 'AppBundle\Entity\OfertaAcademica',
+                'attr' => array('class' => 'form-control col-sm-12', 'data-select' => 'true'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Malla',
+                'placeholder' => "Escribe el PFG que deses buscar",
+                'group_by' => 'idOfertaMallaCurricular',
+            ))
             ->add('nombre', TextType::class, array(
                 'attr' => array('class' => 'form-control'),
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
@@ -42,10 +50,10 @@ class SeccionType extends AbstractType
             ))
             ->add('idPersonaInstitucion', EntityType::class, array(
                 'class' => 'AppBundle\Entity\PersonaInstitucion',
-                'attr' => array('class' => 'form-control'),
+                'attr' => array('class' => 'form-control col-sm-12', 'data-select' => 'true'),
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
                 'label' => 'Docente Asignado',
-                'placeholder' => "Seleccione Docente",
+                'placeholder' => "Escriba el nombre del docente a buscar",
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('p')
                         ->orderBy('p.idPersona', 'ASC')
@@ -54,16 +62,7 @@ class SeccionType extends AbstractType
 
                 },
 
-            ))
-            ->add('ofertaAcademica', EntityType::class, array(
-                'class' => 'AppBundle\Entity\OfertaAcademica',
-                'attr' => array('class' => 'form-control'),
-                'label_attr' => array('class' => 'col-sm-3 control-label'),
-                'label' => 'Malla',
-                'placeholder' => "Seleccione Malla"
-
-            ))
-            ;
+            ));
     }
     
     /**
