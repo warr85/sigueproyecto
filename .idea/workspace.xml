@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a061021-7bf7-4781-8020-825036072a61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/persona/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/persona/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/SeccionType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/SeccionType.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="new.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="122" column="72" lean-forward="false" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
+            <state relative-caret-position="523">
+              <caret line="138" column="33" lean-forward="false" selection-start-line="138" selection-start-column="33" selection-end-line="138" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -70,10 +68,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeccionType.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SeccionType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/SeccionType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
+            <state relative-caret-position="338">
               <caret line="55" column="72" lean-forward="false" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
               <folding />
             </state>
@@ -187,8 +185,8 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/PersonaController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/persona/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/SeccionType.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig" />
       </list>
     </option>
   </component>
@@ -611,12 +609,12 @@
       <workItem from="1500558077246" duration="10848000" />
       <workItem from="1505738636645" duration="688000" />
       <workItem from="1505740330952" duration="21720000" />
-      <workItem from="1505912267395" duration="4769000" />
+      <workItem from="1505912267395" duration="6023000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179853000" />
+    <option name="totallyTimeSpent" value="181107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="876" extended-state="6" />
@@ -1070,18 +1068,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/SeccionType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="122" column="72" lean-forward="false" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
+        <state relative-caret-position="338">
+          <caret line="55" column="72" lean-forward="false" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/SeccionType.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/seccion/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="55" column="72" lean-forward="false" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
+        <state relative-caret-position="523">
+          <caret line="138" column="33" lean-forward="false" selection-start-line="138" selection-start-column="33" selection-end-line="138" selection-end-column="33" />
           <folding />
         </state>
       </provider>
