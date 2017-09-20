@@ -116,17 +116,19 @@ class InscripcionController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             foreach ($request->request->get('seccion') as $s ){
-                if (strlen($s) == 1) {
+                if (strlen($s) >= 1 && strlen($s) <= 5) {
 
                     $secc = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findOneById($s);
-                    $estatus = $this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(2);
+                    if($secc) {
+                        $estatus = $this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(2);
 
-                    $inscripcion = new Inscripcion();
-                    $inscripcion->setIdEstadoAcademico($estado);
-                    $inscripcion->setIdSeccion($secc);
-                    $inscripcion->setIdEstatus($estatus);
-                    $em->persist($inscripcion);
-                    $em->flush();
+                        $inscripcion = new Inscripcion();
+                        $inscripcion->setIdEstadoAcademico($estado);
+                        $inscripcion->setIdSeccion($secc);
+                        $inscripcion->setIdEstatus($estatus);
+                        $em->persist($inscripcion);
+                        $em->flush();
+                    }
                 }
             }
 

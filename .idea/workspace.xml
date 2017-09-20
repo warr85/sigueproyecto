@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1a061021-7bf7-4781-8020-825036072a61" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/inscripcion/new.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/inscripcion/new.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/InscripcionController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/InscripcionController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/InscripcionUbicacion.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/InscripcionUbicacion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Seccion.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Seccion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/SeccionComunidad.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/SeccionComunidad.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -73,15 +75,45 @@
       <file leaf-file-name="InscripcionController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/InscripcionController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="225" column="7" lean-forward="false" selection-start-line="225" selection-start-column="7" selection-end-line="225" selection-end-column="7" />
+            <state relative-caret-position="510">
+              <caret line="130" column="21" lean-forward="false" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
               <folding>
                 <element signature="e#3107#3136#1#PHP" expanded="true" />
-                <element signature="e#3864#3883#1#PHP" expanded="true" />
-                <element signature="e#3970#3989#1#PHP" expanded="true" />
-                <element signature="e#4539#4566#0#PHP" expanded="true" />
-                <element signature="e#7797#7822#1#PHP" expanded="true" />
+                <element signature="e#3883#3902#1#PHP" expanded="true" />
+                <element signature="e#4025#4044#1#PHP" expanded="true" />
+                <element signature="e#4640#4667#0#PHP" expanded="true" />
+                <element signature="e#7898#7923#1#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SeccionComunidad.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/SeccionComunidad.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="50" column="105" lean-forward="false" selection-start-line="50" selection-start-column="105" selection-end-line="50" selection-end-column="105" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InscripcionUbicacion.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/InscripcionUbicacion.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="415">
+              <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Seccion.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Seccion.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="91" column="101" lean-forward="false" selection-start-line="91" selection-start-column="96" selection-end-line="91" selection-end-column="101" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,9 +141,8 @@
             <state relative-caret-position="577">
               <caret line="74" column="51" lean-forward="false" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
               <folding>
-                <element signature="e#859#877#0#Twig" expanded="true" />
-                <element signature="e#1410#1428#0#Twig" expanded="true" />
-                <element signature="e#1625#1643#0#Twig" expanded="true" />
+                <element signature="e#12#27#0#Twig" expanded="false" />
+                <marker date="1505928717460" expanded="true" signature="2093:3033" ph="{% for o in oferta ...%}" />
               </folding>
             </state>
           </provider>
@@ -121,8 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>img</find>
-      <find>user</find>
       <find>app.u</find>
       <find>morri</find>
       <find>followe</find>
@@ -138,7 +167,6 @@
       <find>seccion</find>
       <find>php</find>
       <find>cas</find>
-      <find>casca</find>
       <find>copyrig</find>
       <find>form.</find>
       <find>person</find>
@@ -151,6 +179,9 @@
       <find>findby</find>
       <find>createForm</find>
       <find>InscripcionType</find>
+      <find>var_d</find>
+      <find>sec</find>
+      <find>casca</find>
     </findStrings>
     <replaceStrings>
       <replace>'bundle/adminlte</replace>
@@ -175,7 +206,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Resources/views/seccion/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/seccion/show.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/FindEstadoAcademicoType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/inscripcion/index.html.twig" />
@@ -205,8 +235,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/TelefonoPersona.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/SeccionUbicacion.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Inscripcion.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/InscripcionUbicacion.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/SeccionComunidad.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/seccioncomunidad/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/SeccionComunidadController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/seccioncomunidad/new.html.twig" />
@@ -225,6 +253,9 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/SeccionType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/inscripcion/show.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/inscripcion/new.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Seccion.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/SeccionComunidad.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/InscripcionUbicacion.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/InscripcionController.php" />
       </list>
     </option>
@@ -674,16 +705,16 @@
       <workItem from="1500558077246" duration="10848000" />
       <workItem from="1505738636645" duration="688000" />
       <workItem from="1505740330952" duration="21720000" />
-      <workItem from="1505912267395" duration="13533000" />
+      <workItem from="1505912267395" duration="15143000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188617000" />
+    <option name="totallyTimeSpent" value="190227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24390244" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -691,7 +722,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277635" sideWeight="0.49713057" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277635" sideWeight="0.49713057" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -896,22 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/InscripcionUbicacion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/SeccionComunidad.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/EstadoAcademicoType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1050,14 +1065,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Seccion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="50" column="30" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="50" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/persona/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1148,23 +1155,46 @@
         <state relative-caret-position="577">
           <caret line="74" column="51" lean-forward="false" selection-start-line="74" selection-start-column="51" selection-end-line="74" selection-end-column="51" />
           <folding>
-            <element signature="e#859#877#0#Twig" expanded="true" />
-            <element signature="e#1410#1428#0#Twig" expanded="true" />
-            <element signature="e#1625#1643#0#Twig" expanded="true" />
+            <element signature="e#12#27#0#Twig" expanded="false" />
+            <marker date="1505928717460" expanded="true" signature="2093:3033" ph="{% for o in oferta ...%}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/SeccionComunidad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="50" column="105" lean-forward="false" selection-start-line="50" selection-start-column="105" selection-end-line="50" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Seccion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="91" column="101" lean-forward="false" selection-start-line="91" selection-start-column="96" selection-end-line="91" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/InscripcionUbicacion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/InscripcionController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="225" column="7" lean-forward="false" selection-start-line="225" selection-start-column="7" selection-end-line="225" selection-end-column="7" />
+        <state relative-caret-position="510">
+          <caret line="130" column="21" lean-forward="false" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
           <folding>
             <element signature="e#3107#3136#1#PHP" expanded="true" />
-            <element signature="e#3864#3883#1#PHP" expanded="true" />
-            <element signature="e#3970#3989#1#PHP" expanded="true" />
-            <element signature="e#4539#4566#0#PHP" expanded="true" />
-            <element signature="e#7797#7822#1#PHP" expanded="true" />
+            <element signature="e#3883#3902#1#PHP" expanded="true" />
+            <element signature="e#4025#4044#1#PHP" expanded="true" />
+            <element signature="e#4640#4667#0#PHP" expanded="true" />
+            <element signature="e#7898#7923#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
