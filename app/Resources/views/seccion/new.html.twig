@@ -81,7 +81,8 @@
 
                 <div class="box-footer">
                     {{ form_widget(form) }}
-                    <input type="submit" value="Create" />
+                    <input class="btn btn-success btn-xs" type="submit" value="Crear Nueva Oferta" />
+                    <a href="{{ path('admin_oferta_seccion_index') }}" class="btn btn-xs btn-primary">Regresar al listado</a>
                     {{ form_end(form) }}
                 </div>
 
@@ -92,14 +93,6 @@
 
 
 
-
-
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_oferta_seccion_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
 
 {% block javascripts %}

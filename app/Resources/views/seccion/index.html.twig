@@ -9,7 +9,12 @@
 {% block page_subtitle %} {{ periodo }} {% endblock %}
 
 {% block page_content %}
+<div class="box">
+    <div class="box-header">
 
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
 
     <table id="tabla_ofertas" class="table table-bordered table-striped">
         <thead>
@@ -17,41 +22,33 @@
                 <th>PFG</th>
                 <th>Unidad Curricular</th>
                 <th>Sección</th>
+                <th>Docente</th>
                 <th>Aula</th>
                 <th>Cupo</th>
-                <th>Id</th>
-                <th>Actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for seccion in seccions %}
             <tr>
-                <td>{{ seccion.ofertaAcademica.idMallaCurricularUc.idMallaCurricular }}</td>
+                <td>{{ seccion.ofertaAcademica.idMallaCurricularUc.idMallaCurricular.idPfg.codigo }}</td>
                 <td>{{ seccion.ofertaAcademica }}</td>
                 <td><a href="{{ path('admin_oferta_seccion_show', { 'id': seccion.id }) }}">{{ seccion.nombre }}</a></td>
-                <td>{{ seccion.aula }}</td>
+                <td>{{ seccion.idPersonaInstitucion.idPersona }} </td>
+                <td>Aula: {{ seccion.aula }}</td>
                 <td>{{ seccion.cupo }}</td>
-                <td>{{ seccion.id }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_oferta_seccion_show', { 'id': seccion.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_oferta_seccion_edit', { 'id': seccion.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-xs btn-primary" href="{{ path('admin_oferta_seccion_show', { 'id': seccion.id }) }}">ver</a>
+                    <a class="btn btn-xs btn-default" href="{{ path('admin_oferta_seccion_edit', { 'id': seccion.id }) }}">edit</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    </div>
+</div>
+    <a class="btn btn-success btn-xs" href="{{ path('admin_oferta_seccion_new') }}">Crear una nueva oferta Academica</a>
 
-    <ul>
-        <li>
-            <a class="btn btn-success" href="{{ path('admin_oferta_seccion_new') }}">Crear una nueva oferta Academica</a>
-        </li>
-    </ul>
 {% endblock %}
 
 
