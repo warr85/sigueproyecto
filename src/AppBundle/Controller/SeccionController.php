@@ -24,10 +24,31 @@ class SeccionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $seccions = $em->getRepository('AppBundle:Seccion')->findAll();
+        $institucionCoordinador = $this->getUser()->getInvitation()->getIdPersonaInstitucion()->getIdInstitucion()->getId();
+        $peridoActivo = $em->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
+        $mallaInstitucion = $em->getRepository("AppBundle:MallaCurricularInstitucion")->findBy(array(
+            'idInstitucion' => $institucionCoordinador
+        ));
+
+        $ofertaMalla = $em->getRepository("AppBundle:OfertaMallaCurricular")->findBy(array(
+            'idPeriodo' => $peridoActivo,
+            'idMallaCurricularInstitucion' => $mallaInstitucion
+        ));
+
+        $ofertaAcademica = $em->getRepository("AppBundle:OfertaAcademica")->findBy(array(
+            'idOfertaMallaCurricular' => $ofertaMalla
+        ));
+
+
+
+        $seccions = $em->getRepository('AppBundle:Seccion')->findBy(array(
+            'ofertaAcademica' => $ofertaAcademica
+        ));
+
 
         return $this->render('seccion/index.html.twig', array(
-            'seccions' => $seccions,
+            'seccions'  =>  $seccions,
+            'periodo'   =>  $peridoActivo
         ));
     }
 
@@ -39,12 +60,13 @@ class SeccionController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $seccion = new Seccion();
+        $periodo = $em->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
         $form = $this->createForm('AppBundle\Form\SeccionType', $seccion);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($seccion);
             $em->flush();
 
@@ -54,6 +76,7 @@ class SeccionController extends Controller
         return $this->render('seccion/new.html.twig', array(
             'seccion' => $seccion,
             'form' => $form->createView(),
+            'periodo' => $periodo
         ));
     }
 
