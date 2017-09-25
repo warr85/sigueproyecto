@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="seccion_comunidad",
  *      uniqueConstraints=
  *          {@ORM\UniqueConstraint(name="uq_seccion_comunidad",
- *              columns={"nombre", "id_seccion"})
+ *              columns={"nombre"})
  *          }
  *  )
  * @ORM\Entity
@@ -32,10 +32,9 @@ class SeccionComunidad
     /**
      * @var \AppBundle\Entity\Seccion
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Seccion", inversedBy="hasComunidades" , cascade={"all"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_seccion", referencedColumnName="id", nullable=false)
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Seccion", inversedBy="comunidades" , cascade={"persist"})
+     * @ORM\JoinTable(name="secciones_comunidades")
+     *
      */
     private $idSeccion;
 
@@ -47,10 +46,7 @@ class SeccionComunidad
      */
     private $nombre;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\InscripcionUbicacion" , mappedBy="idSeccionComunidad" , cascade={"all"})
-     * */
-    protected $hasUbicaciones;
+
 
     /**
      *
@@ -64,22 +60,31 @@ class SeccionComunidad
 
 
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idSeccion = new \Doctrine\Common\Collections\ArrayCollection();
+
+    }
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
 
-
-
     /**
      * Set nombre
      *
      * @param string $nombre
+     *
      * @return SeccionComunidad
      */
     public function setNombre($nombre)
@@ -92,7 +97,7 @@ class SeccionComunidad
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -100,66 +105,38 @@ class SeccionComunidad
     }
 
     /**
-     * Set idSeccion
+     * Add idSeccion
      *
      * @param \AppBundle\Entity\Seccion $idSeccion
+     *
      * @return SeccionComunidad
      */
-    public function setIdSeccion(\AppBundle\Entity\Seccion $idSeccion)
+    public function addIdSeccion(\AppBundle\Entity\Seccion $idSeccion)
     {
-        $this->idSeccion = $idSeccion;
+        $this->idSeccion[] = $idSeccion;
 
         return $this;
+    }
+
+    /**
+     * Remove idSeccion
+     *
+     * @param \AppBundle\Entity\Seccion $idSeccion
+     */
+    public function removeIdSeccion(\AppBundle\Entity\Seccion $idSeccion)
+    {
+        $this->idSeccion->removeElement($idSeccion);
     }
 
     /**
      * Get idSeccion
      *
-     * @return \AppBundle\Entity\Seccion 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIdSeccion()
     {
         return $this->idSeccion;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->hasUbicaciones = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
-    /**
-     * Add hasUbicacione
-     *
-     * @param \AppBundle\Entity\InscripcionUbicacion $hasUbicacione
-     *
-     * @return SeccionComunidad
-     */
-    public function addHasUbicacione(\AppBundle\Entity\InscripcionUbicacion $hasUbicacione)
-    {
-        $this->hasUbicaciones[] = $hasUbicacione;
 
-        return $this;
-    }
-
-    /**
-     * Remove hasUbicacione
-     *
-     * @param \AppBundle\Entity\InscripcionUbicacion $hasUbicacione
-     */
-    public function removeHasUbicacione(\AppBundle\Entity\InscripcionUbicacion $hasUbicacione)
-    {
-        $this->hasUbicaciones->removeElement($hasUbicacione);
-    }
-
-    /**
-     * Get hasUbicaciones
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getHasUbicaciones()
-    {
-        return $this->hasUbicaciones;
-    }
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * InscripcionUbicacion
  *
- * @ORM\Table(name="inscripcion_ubicacion", uniqueConstraints={@ORM\UniqueConstraint(name="uq_id_inscripcion_ubicacion_seccion", columns={"id_inscripcion", "id_seccion_comunidad"})})
+ * @ORM\Table(name="inscripcion_ubicacion", uniqueConstraints={@ORM\UniqueConstraint(name="uq_id_inscripcion_ubicacion_seccion", columns={"id_inscripcion"})})
  * @ORM\Entity
  */
 class InscripcionUbicacion
@@ -35,15 +35,6 @@ class InscripcionUbicacion
     private $idInscripcion;
 
 
-    /**
-     * @var \AppBundle\Entity\SeccionComunidad
-     *
-     * @ORM\ManyToOne(targetEntity="SeccionComunidad", inversedBy="hasUbicaciones", cascade={"all"})
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_seccion_comunidad", referencedColumnName="id", nullable=false)
-     * })
-     */
-    private $idSeccionComunidad;
 
 
     /**
@@ -242,26 +233,5 @@ class InscripcionUbicacion
         return $this->idInscripcion;
     }
 
-    /**
-     * Set idSeccionComunidad
-     *
-     * @param \AppBundle\Entity\SeccionComunidad $idSeccionComunidad
-     * @return InscripcionUbicacion
-     */
-    public function setIdSeccionComunidad(\AppBundle\Entity\SeccionComunidad $idSeccionComunidad)
-    {
-        $this->idSeccionComunidad = $idSeccionComunidad;
 
-        return $this;
-    }
-
-    /**
-     * Get idSeccionComunidad
-     *
-     * @return \AppBundle\Entity\SeccionComunidad
-     */
-    public function getIdSeccionComunidad()
-    {
-        return $this->idSeccionComunidad;
-    }
 }

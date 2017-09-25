@@ -48,8 +48,7 @@ class SeccionComunidadController extends Controller
             $em->persist($seccionComunidad);
             $em->flush();
 
-            //return $this->redirectToRoute('admin_comunidad_show', array('id' => $seccionComunidad->getId()));
-            return $this->redirectToRoute('admin_comunidad_index');
+            return $this->redirectToRoute('admin_comunidad_show', array('id' => $seccionComunidad->getId()));
         }
 
         return $this->render('seccioncomunidad/new.html.twig', array(

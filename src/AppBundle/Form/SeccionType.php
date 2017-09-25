@@ -72,6 +72,7 @@ class SeccionType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Seccion'
+
         ));
     }
 

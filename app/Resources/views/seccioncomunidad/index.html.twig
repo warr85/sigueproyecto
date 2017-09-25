@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
 {% endblock %}
 
-{% block page_title %} Comunidades por sección {% endblock %}
-{% block page_subtitle %} dentro de los Núcleos {% endblock %}
+{% block page_title %} Comunidades {% endblock %}
+{% block page_subtitle %} Activas {% endblock %}
 
 {% block page_content %}
+
 <div class="box">
     <div class="box-header">
 
@@ -16,24 +17,29 @@
     <!-- /.box-header -->
     <div class="box-body">
 
-    <table id="tabla_comunidades" class="table table-bordered table-striped">
+        <table id="tabla_ofertas" class="table table-bordered table-striped">
+
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Sección del Núcleo</th>
                 <th>Nombre</th>
-                <th>Actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for seccionComunidad in seccionComunidads %}
             <tr>
                 <td><a href="{{ path('admin_comunidad_show', { 'id': seccionComunidad.id }) }}">{{ seccionComunidad.id }}</a></td>
-                <td>{{ seccionComunidad.idSeccion }}</td>
                 <td>{{ seccionComunidad.nombre }}</td>
                 <td>
-                    <a class="btn btn-xs btn-primary" href="{{ path('admin_comunidad_show', { 'id': seccionComunidad.id }) }}">Mostrar</a>
-                    <a class="btn btn-xs btn-warning" href="{{ path('admin_comunidad_edit', { 'id': seccionComunidad.id }) }}">editar</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_comunidad_show', { 'id': seccionComunidad.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_comunidad_edit', { 'id': seccionComunidad.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
@@ -42,8 +48,11 @@
     </div>
 </div>
 
-    <a href="{{ path('admin_comunidad_new') }}" class="btn btn-primary">Crear Nueva Comunidad</a>
-
+    <ul>
+        <li>
+            <a href="{{ path('admin_comunidad_new') }}">Create a new seccionComunidad</a>
+        </li>
+    </ul>
 {% endblock %}
 
 {% block javascripts %}
@@ -51,7 +60,7 @@
     <script src="{{ asset('bundles/adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
     <script>
-        $('#tabla_comunidades').DataTable( {
+        $('#tabla_ofertas').DataTable( {
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros por página",
                 "zeroRecords": "No existe esa persona - lo siento",

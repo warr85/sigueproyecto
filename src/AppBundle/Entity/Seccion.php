@@ -89,10 +89,9 @@ class Seccion
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SeccionComunidad" , mappedBy="idSeccion" , cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\SeccionComunidad" , mappedBy="idSeccion" , cascade={"persist"})
      * */
-    protected $hasComunidades;
-
+    protected $comunidades;
 
 
 
@@ -103,13 +102,14 @@ class Seccion
     public function __construct()
     {
         $this->hasInscripcion = new \Doctrine\Common\Collections\ArrayCollection();
-
+        $this->comunidades = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Set nombre
      *
      * @param string $nombre
+     *
      * @return Seccion
      */
     public function setNombre($nombre)
@@ -133,6 +133,7 @@ class Seccion
      * Set aula
      *
      * @param string $aula
+     *
      * @return Seccion
      */
     public function setAula($aula)
@@ -156,6 +157,7 @@ class Seccion
      * Set cupo
      *
      * @param string $cupo
+     *
      * @return Seccion
      */
     public function setCupo($cupo)
@@ -189,6 +191,7 @@ class Seccion
      * Add hasInscripcion
      *
      * @param \AppBundle\Entity\Inscripcion $hasInscripcion
+     *
      * @return Seccion
      */
     public function addHasInscripcion(\AppBundle\Entity\Inscripcion $hasInscripcion)
@@ -222,6 +225,7 @@ class Seccion
      * Set idTurno
      *
      * @param \AppBundle\Entity\Turno $idTurno
+     *
      * @return Seccion
      */
     public function setIdTurno(\AppBundle\Entity\Turno $idTurno)
@@ -245,6 +249,7 @@ class Seccion
      * Set idPersonaInstitucion
      *
      * @param \AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion
+     *
      * @return Seccion
      */
     public function setIdPersonaInstitucion(\AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion)
@@ -268,6 +273,7 @@ class Seccion
      * Set ofertaAcademica
      *
      * @param \AppBundle\Entity\OfertaAcademica $ofertaAcademica
+     *
      * @return Seccion
      */
     public function setOfertaAcademica(\AppBundle\Entity\OfertaAcademica $ofertaAcademica = null)
@@ -288,48 +294,46 @@ class Seccion
     }
 
     /**
+     * Add comunidade
      *
-     * @return string
-     */
-
-    public function __toString()
-    {
-        return $this->getNombre();
-    }
-
-
-
-    /**
-     * Add hasComunidade
-     *
-     * @param \AppBundle\Entity\SeccionComunidad $hasComunidade
+     * @param \AppBundle\Entity\SeccionComunidad $comunidade
      *
      * @return Seccion
      */
-    public function addHasComunidade(\AppBundle\Entity\SeccionComunidad $hasComunidade)
+    public function addComunidade(\AppBundle\Entity\SeccionComunidad $comunidade)
     {
-        $this->hasComunidades[] = $hasComunidade;
+        $this->comunidades[] = $comunidade;
 
         return $this;
     }
 
     /**
-     * Remove hasComunidade
+     * Remove comunidade
      *
-     * @param \AppBundle\Entity\SeccionComunidad $hasComunidade
+     * @param \AppBundle\Entity\SeccionComunidad $comunidade
      */
-    public function removeHasComunidade(\AppBundle\Entity\SeccionComunidad $hasComunidade)
+    public function removeComunidade(\AppBundle\Entity\SeccionComunidad $comunidade)
     {
-        $this->hasComunidades->removeElement($hasComunidade);
+        $this->comunidades->removeElement($comunidade);
     }
 
     /**
-     * Get hasComunidades
+     * Get comunidades
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getHasComunidades()
+    public function getComunidades()
     {
-        return $this->hasComunidades;
+        return $this->comunidades;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNombre();
     }
 }

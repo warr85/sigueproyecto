@@ -2,7 +2,6 @@
 
 namespace AppBundle\Form;
 
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,18 +19,17 @@ class SeccionComunidadType extends AbstractType
             ->add('nombre', TextType::class, array(
                 'attr' => array('class' => 'form-control'),
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
-                'label' => 'Nombre de la Comunidad'
+                'label' => 'Nombre de la Sección'
             ))
             ->add('idSeccion', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Seccion',
-                'attr' => array('class' => 'form-control'),
+                'attr' => array('class' => 'form-control col-sm-12', 'data-select' => 'true'),
                 'label_attr' => array('class' => 'col-sm-3 control-label'),
-                'label' => 'Secciones NAI',
-                'placeholder' => "Secciones Registradas",
-
-
-            ))
-            ;
+                'label' => 'Malla',
+                'placeholder' => "Escribe el PFG que deses buscar",
+                'group_by' => 'ofertaAcademica',
+                'multiple' => true
+            ));
     }
     
     /**

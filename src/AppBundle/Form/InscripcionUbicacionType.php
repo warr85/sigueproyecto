@@ -18,19 +18,7 @@ class InscripcionUbicacionType extends AbstractType
     {
         $this->id_seccion = $options['id_seccion'];
         $builder
-            ->add('idSeccionComunidad', EntityType::class, array(
-                'placeholder'   => 'Seleccione ubicación de la comunidad',
-                'class'         => 'AppBundle\Entity\SeccionComunidad',
-                'label'         => 'Comunidad NAI',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->orderBy('u.id', 'ASC')
-                        ->where('u.idSeccion = ?1') //que las comunidades coincidan con la seccion inscrita
-                        ->setParameters(array(
-                            1 => $this->id_seccion->getId(),
-                        ));
-                },
-            ))
+
             ->add('nombreProyecto', TextType::class, array(
                 'label'     => 'Nombre Proyecto'
             ))
