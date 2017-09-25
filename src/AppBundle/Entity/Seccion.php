@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="seccion",
  *      uniqueConstraints=
- *          {@ORM\UniqueConstraint(name="uq_seccion", 
- *              columns={"nombre", "id_turno"})
+ *          {@ORM\UniqueConstraint(name="uq_seccion_oferta",
+ *              columns={"nombre", "id_turno", "oferta_academica_id"})
  *          },
  *          indexes={ 
  *              @ORM\Index(name="fki_turno_oferta_academica",
