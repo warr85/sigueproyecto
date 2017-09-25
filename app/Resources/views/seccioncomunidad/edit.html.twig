@@ -7,18 +7,19 @@
     <h1>Seccioncomunidad edit</h1>
 
     {{ form_start(edit_form) }}
+    <div class="row">
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+    </div>
+    <div class="row">
+        <input class="btn btn-success btn-xs" type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_comunidad_index') }}">Back to the list</a>
-        </li>
-        <li>
+
+            <a class="btn btn-xs btn-primary" href="{{ path('admin_comunidad_index') }}">Regresar</a>
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="btn btn-xs btn-danger" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    </div>
 {% endblock %}

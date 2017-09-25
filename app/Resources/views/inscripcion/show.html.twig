@@ -52,13 +52,16 @@
         <tbody>
 
             <tr>
-                <th>Uc</th>
-                <td>{{ inscripcion.idSeccion.ofertaAcademica.idMallaCurricularUc.idUnidadCurricular.nombre }}</td>
+                <th>Inscripción</th>
+                <td>
+                    {{ inscripcion.idSeccion.ofertaAcademica.idMallaCurricularUc.idUnidadCurricular.nombre }}
+                    <span class="bnt btn-xs btn-warning">{{ inscripcion.idSeccion }}</span>
+                </td>
             </tr>
 
             <tr>
-                <th>Seccion</th>
-                <td>{{ inscripcion.idSeccion }}</td>
+                <th>Ubicación de la comunidad</th>
+                <td><span class="bnt btn-xs btn-default">{{ inscripcion.idSeccion.comunidades.first }}</span></td>
             </tr>
 
         </tbody>
@@ -68,17 +71,17 @@
 
     {% form_theme formUbicacion 'bootstrap_3_horizontal_layout.html.twig' %}
         {{ form_widget(formUbicacion) }}
-        <input type="submit" value="Crear Ubicacion">
+        <input type="submit" class="btn btn-xs btn-success" value="Crear proyecto">
     {{ form_end(formUbicacion) }}
     </div>
     <div class="col-md-6">
     <ul>
         <li>
-            <a href="{{ path('admin_inscripcion_mostrar' , { 'id': inscripcion.idEstadoAcademico.id }) }}">Regresar a la Inscripcion</a>
+            <a class="btn btn-primary btn-xs" href="{{ path('admin_inscripcion_mostrar' , { 'id': inscripcion.idEstadoAcademico.id }) }}">Regresar a la Inscripcion</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="eliminar UC">
+                <input type="submit" value="eliminar UC" class="btn btn-xs btn-danger">
             {{ form_end(delete_form) }}
         </li>
     </ul>

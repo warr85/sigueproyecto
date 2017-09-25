@@ -32,14 +32,10 @@
                 <td><a href="{{ path('admin_comunidad_show', { 'id': seccionComunidad.id }) }}">{{ seccionComunidad.id }}</a></td>
                 <td>{{ seccionComunidad.nombre }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('admin_comunidad_show', { 'id': seccionComunidad.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_comunidad_edit', { 'id': seccionComunidad.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a class="btn btn-xs btn-bitbucket" href="{{ path('admin_comunidad_show', { 'id': seccionComunidad.id }) }}">Ver</a>
+
+                    <a class="btn btn-xs  btn-reddit" href="{{ path('admin_comunidad_edit', { 'id': seccionComunidad.id }) }}">edit</a>
+
                 </td>
             </tr>
         {% endfor %}
@@ -48,11 +44,9 @@
     </div>
 </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_comunidad_new') }}">Create a new seccionComunidad</a>
-        </li>
-    </ul>
+
+    <a class="btn btn-xs btn-success" href="{{ path('admin_comunidad_new') }}">Crear nueva Comunidad</a>
+
 {% endblock %}
 
 {% block javascripts %}

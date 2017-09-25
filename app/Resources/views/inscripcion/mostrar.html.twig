@@ -52,14 +52,9 @@
                                     <td>{{ estado.idPersonaInstitucion.idPersona.primerApellido }}</td>
                                     <td>{{ estado.idMallaCurricular.idPfg }}</td>
                                     <td>
-                                        <ul>
-                                            <li>
-                                                <a href="{{ path('admin_persona_show', { 'id': estado.idPersonaInstitucion.idPersona.id }) }}">show</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ path('admin_persona_edit', { 'id': estado.idPersonaInstitucion.idPersona.id }) }}">edit</a>
-                                            </li>
-                                        </ul>
+                                        <a class="btn btn-xs btn-bitbucket" href="{{ path('admin_persona_show', { 'id': estado.idPersonaInstitucion.idPersona.id }) }}">Ver</a>
+                                        <a class="btn btn-xs btn-warning" href="{{ path('admin_persona_edit', { 'id': estado.idPersonaInstitucion.idPersona.id }) }}">edit</a>
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -90,12 +85,7 @@
                                     <td>{{ e.idSeccion.ofertaAcademica }}</a></td>
                                     <td>{{ e.idSeccion }}</td>
                                     <td>
-                                        <ul>
-                                            <li>
-                                                <a href="{{ path('admin_inscripcion_delete', { 'id': e.id }) }}">Ver UC</a>
-                                            </li>
-
-                                        </ul>
+                                        <a class="btn btn-success btn-xs" href="{{ path('admin_inscripcion_delete', { 'id': e.id }) }}">Crear Datos</a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -107,11 +97,7 @@
     </div>
 
         {% endif %}
+                <a class="btn btn-primary btn-xs" href="{{ path('admin_inscripcion_new', { 'id': estado.id }) }}">Crear inscripcion</a>
 
-        <ul>
-            <li>
-                <a href="{{ path('admin_inscripcion_new', { 'id': estado.id }) }}">Crear inscripcion</a>
-            </li>
-        </ul>
     {% endif %}
 {% endblock %}

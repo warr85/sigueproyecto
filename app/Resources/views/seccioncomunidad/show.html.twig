@@ -1,36 +1,22 @@
 {% extends 'admin.html.twig' %}
 
-{% block page_title %} Mostrando {% endblock %}
-{% block page_subtitle %} Comunidad {% endblock %}
+{% block page_title %} Mostrando {{ seccionComunidad.nombre }} {% endblock %}
+{% block page_subtitle %} Abarca {% endblock %}
 
 {% block page_content %}
 
-    <h1>Seccioncomunidad</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ seccionComunidad.id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ seccionComunidad.nombre }}</td>
-            </tr>
-        </tbody>
+            {% for seccion in seccionComunidad.idSeccion %}
+                {{ seccion.ofertaAcademica }} {{ seccion }} <br>
+            {% endfor %}
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_comunidad_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_comunidad_edit', { 'id': seccionComunidad.id }) }}">Edit</a>
-        </li>
-        <li>
+
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <a class="btn btn-xs btn-primary" href="{{ path('admin_comunidad_index') }}">Regresar al listado</a>
+                <a class="btn btn-xs btn-warning" href="{{ path('admin_comunidad_edit', { 'id': seccionComunidad.id }) }}">Edit</a>
+                <input class="btn btn-xs btn-danger" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
 {% endblock %}
