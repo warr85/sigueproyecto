@@ -98,4 +98,14 @@ class Periodo
     {
         return $this->idEstatus;
     }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }
