@@ -40,7 +40,7 @@ class InscripcionUbicacion
     /**
      * @var string
      *
-     * @ORM\Column(name="comuna", type="string", length=20, nullable=false, options={"comment" = "nombre de la comuna"})
+     * @ORM\Column(name="comuna", type="string", length=200, nullable=false, options={"comment" = "nombre de la comuna"})
      */
     private $comuna;
 
@@ -72,7 +72,7 @@ class InscripcionUbicacion
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_proyecto", type="string", length=20, nullable=false, options={"comment" = "nombre del proyecto de investigacion"})
+     * @ORM\Column(name="nombre_proyecto", type="string", length=255, nullable=false, options={"comment" = "nombre del proyecto de investigacion"})
      */
     private $nombreProyecto;
 
