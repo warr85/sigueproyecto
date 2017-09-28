@@ -29,6 +29,11 @@ class SeccionComunidadType extends AbstractType
                 'placeholder' => "Escribe el PFG que deses buscar",
                 'group_by' => 'ofertaAcademica',
                 'multiple' => true
+            ))
+            ->add('ubicacion', TextType::class, array(
+                'attr' => array('class' => 'form-control coordenadas'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'coordenadas de la comunidad'
             ));
     }
     

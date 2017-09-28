@@ -42,9 +42,16 @@ class SeccionComunidad
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=20, nullable=false, options={"comment" = "nombre de la Comunidad de ese Nucleo de proyecto"})
+     * @ORM\Column(name="nombre", type="string", length=200, nullable=false, options={"comment" = "nombre de la Comunidad de ese Nucleo de proyecto"})
      */
     private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ubicacion", type="text", nullable=true, options={"comment" = "Coordenadas poligonales de la ubicacion de la comunidad"})
+     */
+    private $ubicacion;
 
 
 
@@ -139,4 +146,28 @@ class SeccionComunidad
     }
 
 
+
+    /**
+     * Set ubicacion
+     *
+     * @param string $ubicacion
+     *
+     * @return SeccionComunidad
+     */
+    public function setUbicacion($ubicacion)
+    {
+        $this->ubicacion = $ubicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get ubicacion
+     *
+     * @return string
+     */
+    public function getUbicacion()
+    {
+        return $this->ubicacion;
+    }
 }

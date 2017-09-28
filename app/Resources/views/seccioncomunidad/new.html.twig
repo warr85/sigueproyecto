@@ -1,8 +1,39 @@
 {% extends 'admin.html.twig' %}
 
+
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/select2/select2.min.css') }}">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+        .pac-container {
+            font-family: Roboto;
+        }
+
+
+    </style>
+
 {% endblock %}
 
 {% block page_title %} Registrar Comunidad {% endblock %}
@@ -65,6 +96,12 @@
         </div>
     </div>
 
+    <input id="pac-input" class="controls" type="text" placeholder="Buscar comunidad">
+    <input type="button" id="enablePolygon" value="Seleccionar area del NAI" />
+    <input type="button" id="resetPolygon" value="Borrar y volver a dibujar" style="display: none;" />
+
+    <div id="googleMap" style="width:100%;height:400px;"></div>
+
 
 
 
@@ -91,5 +128,209 @@
             closeOnSelect: false
         });
     </script>
+
+    <script>
+
+        var all_overlays = [];
+        function myMap() {
+
+
+
+            //Map options
+            var mapOptions = {
+                zoom: 11,
+                center: new google.maps.LatLng(11.6691329, -70.1802039,10),
+                mapTypeId: google.maps.MapTypeId.TERRAIN,
+                scaleControl: false,
+                mapTypeControl: trueor uno y guardar en pdf el 1x10 confirmado,
+                zoomControl: false,
+                draggable: true,
+                disableDoubleClickZoom: true,
+                keyboardShortcuts: false,
+
+            }
+
+            map = new google.maps.Map(document.getElementById('googleMap'), mapOptions );
+
+
+
+
+            var polyOptions = {
+                strokeWeight: 0,
+                fillOpacity: 0.45,
+                editable: true,
+                fillColor: '#FF1493'
+            };
+
+
+            var drawingManager = new google.maps.drawing.DrawingManager({
+
+                drawingControl: false,
+                markerOptions: {
+                    draggable: true
+                },
+                polygonOptions: polyOptions
+            });
+
+            $('#enablePolygon').click(function() {
+                drawingManager.setMap(map);
+                drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+            });
+
+            $('#resetPolygon').click(function() {
+                if (selectedShape) {
+                    selectedShape.setMap(null);
+                }
+                drawingManager.setMap(null);
+                $('#showonPolygon').hide();
+                $('#resetPolygon').hide();
+                $('#enablePolygon').show();
+            });
+
+
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById('pac-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            // Bias the SearchBox results towards current map's viewport.
+            map.addListener('bounds_changed', function() {
+                searchBox.setBounds(map.getBounds());
+            });
+
+            var markers = [];
+            // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+            searchBox.addListener('places_changed', function() {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                // Clear out the old markers.
+                markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+
+                // For each place, get the icon, name and location.
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function(place) {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
+
+                    // Create a marker for each place.
+                    markers.push(new google.maps.Marker({
+                        map: map,
+                        icon: icon,
+                        title: place.name,
+                        position: place.geometry.location
+                    }));
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+            });
+
+            google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
+                all_overlays.push(e);
+                if (e.type != google.maps.drawing.OverlayType.MARKER) {
+                    // Switch back to non-drawing mode after drawing a shape.
+                    drawingManager.setDrawingMode(null);
+
+                    // Add an event listener that selects the newly-drawn shape when the user
+                    // mouses down on it.
+                    var newShape = e.overlay;
+                    newShape.type = e.type;
+                    google.maps.event.addListener(newShape, 'click', function() {
+                        setSelection(newShape);
+                    });
+                    setSelection(newShape);
+                }
+            });
+
+
+            drawingManager.addListener('polygoncomplete', function (event) {
+                getPathVariableCode(event);
+                $('#resetPolygon').show();
+                $('#enablePolygon').hide();
+            });
+
+            drawingManager.addListener('click', function (event) {
+                getPathVariableCode(event);
+            });
+
+
+
+            drawingManager.setMap(map);
+        }
+
+
+        function getPathVariableCode(line){
+            var codeStr = "";
+            var pathArr = line.getPath();
+            line.addListener('click', function () {
+                getPathVariableCode(line);
+            });
+            for (var i = 0; i < pathArr.length; i++){
+                codeStr += '    {lat: ' + pathArr.getAt(i).lat() + ', lng: ' + pathArr.getAt(i).lng() + '}' ;
+                if (i !== pathArr.length-1) {
+                    codeStr += ',\n';
+                };
+
+            };
+
+
+            //the coordinates path it´s print on the console of the browser
+
+            console.log (codeStr);
+            $(".coordenadas").val(codeStr);
+            console.log(pathArr.length);
+
+        };
+
+        var selectedShape;
+
+        function clearSelection() {
+            if (selectedShape) {
+                selectedShape.setEditable(false);
+                selectedShape = null;
+            }
+        }
+
+
+        function setSelection(shape) {
+            clearSelection();
+            selectedShape = shape;
+            shape.setEditable(true);
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDL162oU3_vrXSCoF7d31Yubcu7p65Wdts&libraries=drawing,places&callback=myMap"
+            async defer></script>
 {% endblock %}
 
