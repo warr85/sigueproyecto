@@ -83,103 +83,117 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    {{ form_label(edit_persona.fechaNacimiento) }}
-                                    <div class="col-sm-8">
-                                        {{ form_errors(edit_persona.fechaNacimiento) }}
-                                        {{ form_widget(edit_persona.fechaNacimiento) }}
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    {{ form_label(edit_persona.idGenero) }}
-                                    <div class="col-sm-8">
-                                        {{ form_errors(edit_persona.idGenero) }}
-                                        {{ form_widget(edit_persona.idGenero) }}
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    {{ form_label(edit_persona.idEstadoCivil) }}
-                                    <div class="col-sm-8">
-                                        {{ form_errors(edit_persona.idEstadoCivil) }}
-                                        {{ form_widget(edit_persona.idEstadoCivil) }}
-                                    </div>
-                                </div>
+                        <div class="col-sm-6">
 
-                                <div class="form-group">
-                                    {{ form_label(edit_persona.correoElectronico) }}
-                                    <div class="col-sm-8">
-                                        {{ form_errors(edit_persona.correoElectronico) }}
-                                        {{ form_widget(edit_persona.correoElectronico) }}
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    {{ form_label(edit_persona.direccionResidencia) }}
-                                    <div class="col-sm-8">
-                                        {{ form_errors(edit_persona.direccionResidencia) }}
-                                        {{ form_widget(edit_persona.direccionResidencia) }}
-                                    </div>
-
+                            <div class="form-group">
+                                {{ form_label(edit_persona.fechaNacimiento) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_persona.fechaNacimiento) }}
+                                    {{ form_widget(edit_persona.fechaNacimiento) }}
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="familiares form-group col-sm-12" id="familiares" data-prototype="{{ form_widget(edit_persona.familiares.vars.prototype)|e('html_attr') }}">
-                                    {% for familia in edit_persona.familiares %}
+                            <div class="form-group">
+                                {{ form_label(edit_persona.idGenero) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_persona.idGenero) }}
+                                    {{ form_widget(edit_persona.idGenero) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.idEstadoCivil) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_persona.idEstadoCivil) }}
+                                    {{ form_widget(edit_persona.idEstadoCivil) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.correoElectronico) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_persona.correoElectronico) }}
+                                    {{ form_widget(edit_persona.correoElectronico) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(edit_persona.direccionResidencia) }}
+                                <div class="col-sm-8">
+                                    {{ form_errors(edit_persona.direccionResidencia) }}
+                                    {{ form_widget(edit_persona.direccionResidencia) }}
+                                </div>
+                            </div>
+
+
+
+                            <div class="telefonos form-group col-sm-12" id="telefonos" data-prototype="{{ form_widget(edit_persona.telefonos.vars.prototype)|e('html_attr') }}">
+                                {% for telefono in edit_persona.telefonos %}
                                     <div class="form-group">
-                                        {{ form_label(familia.nombre) }}
+                                        {{ form_label(telefono.idCodigoArea) }}
 
-                                            {{ form_widget(familia.nombre) }}
+                                        {{ form_widget(telefono.idCodigoArea) }}
 
                                     </div>
 
-                                        <div class="form-group">
-                                            {{ form_label(familia.idParentesco) }}
+                                    <div class="form-group">
+                                        {{ form_label(telefono.numero) }}
 
-                                                {{ form_widget(familia.idParentesco) }}
+                                        {{ form_widget(telefono.numero) }}
 
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            {{ form_label(familia.jefeFamiliar) }}
-
-                                                {{ form_widget(familia.jefeFamiliar) }}
-
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            {{ form_label(familia.idNivelInstruccion) }}
-
-                                                {{ form_widget(familia.idNivelInstruccion) }}
-
-                                        </div>
-
-                                    {% endfor %}
-                                </div>
+                                    </div >
+                                {% endfor %}
                             </div>
-
-
-
                         </div>
                     </div>
-                    <!-- /.box-body -->
 
-                    <div class="box-footer">
+                    <div class="col-sm-8">
+                        <div class="familiares form-group col-sm-12" id="familiares" data-prototype="{{ form_widget(edit_persona.familiares.vars.prototype)|e('html_attr') }}">
+                            {% for familia in edit_persona.familiares %}
+                            <div class="form-group">
+                                {{ form_label(familia.nombre) }}
 
+                                    {{ form_widget(familia.nombre) }}
+
+                            </div>
+
+                                <div class="form-group">
+                                    {{ form_label(familia.idParentesco) }}
+
+                                        {{ form_widget(familia.idParentesco) }}
+
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    {{ form_label(familia.jefeFamiliar) }}
+
+                                        {{ form_widget(familia.jefeFamiliar) }}
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    {{ form_label(familia.idNivelInstruccion) }}
+
+                                        {{ form_widget(familia.idNivelInstruccion) }}
+
+                                </div>
+
+                            {% endfor %}
+                        </div>
                     </div>
 
-                </div>
-                <!-- /.box -->
-            </div>
-        </div>
 
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box-primary -->
+
+
+        </div>
 
 
         <div class="col-md-6">
@@ -250,19 +264,16 @@
                         <div class="col-sm-12">
 
                             <div class="misiones col-sm-10"  id="misiones" data-prototype="{{ form_widget(edit_persona.misiones.vars.prototype)|e('html_attr') }}">
-
+                                {% for mision in edit_persona.misiones %}
                                     <div class="form-group">
-                                        {{ form_label(edit_mision.idMision) }}
+                                        {{ form_label(mision.idMision) }}
 
-                                        {{ form_errors(edit_mision.idMision) }}
-                                        {{ form_widget(edit_mision.idMision) }}
-
-                                        {{ form_widget(edit_mision) }}
+                                        {{ form_widget(mision.idMision) }}
 
                                     </div>
 
 
-
+                                {% endfor %}
                             </div>
                         </div>
 
@@ -390,20 +401,25 @@
         var $addFamiliaresLink = $('<a href="#" class="add_familiares_link">Agregar Familiar</a>');
         var $addMisionesLink = $('<a href="#" class="add_misiones_link">Agregar Mision</a>');
         var $addAcademicoLink = $('<a href="#" class="add_academico_link">Agregar Nuevo Estado Académico</a>');
+        var $addTelefonosLink = $('<a href="#" class="add_telefono_link">Agregar Nuevo Telefono</a>');
         var $newLinkLi = $("<div></div>").prepend($addFamiliaresLink);
         var $newLinkLiM = $('<div></div>').prepend($addMisionesLink);
         var $newLinkLiA = $("<div></div>").prepend($addAcademicoLink);
+        var $newLinkLiT = $("<div></div>").prepend($addTelefonosLink);
+
 
         jQuery(document).ready(function() {
             // Get the ul that holds the collection of tags
             $collectionHolder = $('div.familiares');
             $collectionMision = $('div.misiones');
             $collectionAcademico = $('div.academicos');
+            $collectionTelefonos = $('div.telefonos');
 
             // add the "add a tag" anchor and li to the tags ul
             $collectionHolder.prepend($newLinkLi);
             $collectionMision.prepend($newLinkLiM);
             $collectionAcademico.prepend($newLinkLiA);
+            $collectionTelefonos.prepend($newLinkLiT);
 
             // count the current form inputs we have (e.g. 2), use that as the new
             // index when inserting a new item (e.g. 2)
@@ -434,6 +450,14 @@
 
                 // add a new tag form (see next code block)
                 addAcademicoForm($collectionAcademico, $newLinkLiA);
+            });
+
+            $addTelefonosLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addTelefonosForm($collectionTelefonos, $newLinkLiT);
             });
 
             function addFamiliaresForm($collectionHolder, $newLinkLi) {
@@ -541,6 +565,43 @@
 
                 // handle the removal, just for this example
                 $('.remove-academico').click(function(e) {
+                    e.preventDefault();
+
+                    $(this).parent().remove();
+
+                    return false;
+                });
+
+
+            }
+
+            function addTelefonosForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                console.log(prototype);
+
+                // get the new index
+                var index = $collectionHolder.data('index');
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $('<div></div>').prepend(newForm);
+                $newLinkLi.after($newFormLi);
+
+
+
+                $newFormLi.prepend('<a href="#" class="remove-telefonos">x</a>');
+
+                $newLinkLi.after($newFormLi);
+
+                // handle the removal, just for this example
+                $('.remove-telefonos').click(function(e) {
                     e.preventDefault();
 
                     $(this).parent().remove();

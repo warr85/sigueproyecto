@@ -19,7 +19,7 @@ class TelefonoPersonaType extends AbstractType
             ->add('idCodigoArea', EntityType::class, array(
                 'class' => 'AppBundle\Entity\CodigoArea',
                 'attr' => array('class' => 'form-control'),
-                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label_attr' => array('class' => 'col-sm-6 control-label'),
                 'label' => 'Código de Área',
                 'placeholder' => "Codigo de Area",
                 'required'      => false
