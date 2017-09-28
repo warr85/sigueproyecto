@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Persona;
 use AppBundle\Entity\PersonaComunitaria;
 use AppBundle\Entity\PersonaDiscapacidad;
+use AppBundle\Entity\PersonaMision;
 use AppBundle\Entity\PersonaSocioEconomico;
 use AppBundle\Entity\PersonaInstitucion;
 use AppBundle\Entity\Invitation;
@@ -204,16 +205,21 @@ class PersonaController extends Controller
      */
     public function editAction(Request $request, Persona $persona)
     {
+        //var_dump($persona->getMisiones());
         $deleteForm = $this->createDeleteForm($persona);       
         $economico = $this->getDoctrine()->getRepository('AppBundle:PersonaSocioEconomico')->findOneByIdPersona($persona);
         $discapacidades = $this->getDoctrine()->getRepository('AppBundle:PersonaDiscapacidad')->findOneByIdPersona($persona);
         $instituciones = $this->getDoctrine()->getRepository('AppBundle:PersonaInstitucion')->findOneByIdPersona($persona);
         $comunitaria = $this->getDoctrine()->getRepository('AppBundle:PersonaComunitaria')->findOneByIdPersona($persona);
+        $mision = $this->getDoctrine()->getRepository('AppBundle:PersonaMision')->findOneByIdPersona($persona);
+
+
 
         if(!$economico){ $economico = new PersonaSocioEconomico(); }
         if(!$discapacidades){ $discapacidades = new PersonaDiscapacidad(); }
         if(!$instituciones){ $instituciones = new PersonaInstitucion(); }
         if(!$comunitaria){ $comunitaria = new PersonaComunitaria(); }
+        if(!$mision){ $mision = new PersonaMision(); }
 
 
         $editPersona = $this->createForm('AppBundle\Form\PersonaType', $persona);
@@ -221,10 +227,15 @@ class PersonaController extends Controller
         $editDiscapacidades = $this->createForm('AppBundle\Form\PersonaDiscapacidadType', $discapacidades);
         $editInstituciones = $this->createForm('AppBundle\Form\PersonaInstitucionType', $instituciones);
         $editComunitaria = $this->createForm('AppBundle\Form\PersonaComunitariaType', $comunitaria);
+        $editMision = $this->createForm('AppBundle\Form\PersonaMisionType', $mision);
 
 
         $editPersona->handleRequest($request);
         $editEconomico->handleRequest($request);
+        $editMision->handleRequest($request);
+
+
+
 
         $editDiscapacidades->handleRequest($request);
         $editInstituciones->handleRequest($request);
@@ -238,12 +249,12 @@ class PersonaController extends Controller
                 $persona->addFamiliare($familiar);
             }
 
-            if($persona->getMisiones() != NULL) {
+            /*if($persona->getMisiones() != NULL) {
                 foreach ($persona->getMisiones() as $mision) {
                     $mision->setIdPersona($persona);
                     $persona->addMisione($mision);
                 }
-            }
+            }*/
 
 
             foreach ($instituciones->getEstadosAcademicos() as $academico){
@@ -285,6 +296,12 @@ class PersonaController extends Controller
             }
 
 
+            if($mision->getIdMision()) {
+                $mision->setIdPersona($persona);
+                $em->persist($mision);
+            }
+
+
             $em->persist($persona);
             $em->persist($economico);
             $em->flush();
@@ -299,6 +316,7 @@ class PersonaController extends Controller
             'edit_discapacidades' => $editDiscapacidades->createView(),
             'edit_instituciones' => $editInstituciones->createView(),
             'edit_comunitaria' => $editComunitaria->createView(),
+            'edit_mision' => $editMision->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

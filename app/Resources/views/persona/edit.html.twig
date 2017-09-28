@@ -250,16 +250,19 @@
                         <div class="col-sm-12">
 
                             <div class="misiones col-sm-10"  id="misiones" data-prototype="{{ form_widget(edit_persona.misiones.vars.prototype)|e('html_attr') }}">
-                                {% for mision in edit_persona.misiones %}
-                                    <div class="form-group">
-                                        {{ form_label(mision.idMision) }}
 
-                                        {{ form_widget(mision.idMision) }}
+                                    <div class="form-group">
+                                        {{ form_label(edit_mision.idMision) }}
+
+                                        {{ form_errors(edit_mision.idMision) }}
+                                        {{ form_widget(edit_mision.idMision) }}
+
+                                        {{ form_widget(edit_mision) }}
 
                                     </div>
 
 
-                                {% endfor %}
+
                             </div>
                         </div>
 
