@@ -132,16 +132,20 @@
                             <div class="telefonos form-group col-sm-12" id="telefonos" data-prototype="{{ form_widget(edit_persona.telefonos.vars.prototype)|e('html_attr') }}">
                                 {% for telefono in edit_persona.telefonos %}
                                     <div class="form-group">
-                                        {{ form_label(telefono.idCodigoArea) }}
+                                        {{ form_errors(telefono.idCodigoArea) }}
 
-                                        {{ form_widget(telefono.idCodigoArea) }}
-
+                                        <div class="col-sm-5">
+                                            {{ form_label(telefono.idCodigoArea) }}
+                                             {{ form_widget(telefono.idCodigoArea) }}
+                                        </div>
+                                        <div class="col-sm-6">
+                                            {{ form_label(telefono.numero) }}
+                                        {{ form_widget(telefono.numero) }}
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
-                                        {{ form_label(telefono.numero) }}
 
-                                        {{ form_widget(telefono.numero) }}
 
                                     </div >
                                 {% endfor %}
@@ -381,7 +385,7 @@
 
 
                 {{ form_start(delete_form) }}
-                <a class="btn btn-default" href="{{ path('admin_persona_index') }}">Back to the list</a>
+                <a class="btn btn-default" href="{{ path('admin_persona_index') }}">Regresar</a>
                 <input type="submit" value="Delete" class="btn btn-danger">
 
                 {{ form_end(delete_form) }}
