@@ -1,0 +1,35 @@
+{% extends 'admin.html.twig' %}
+
+{% block page_title %} Mostrando {% endblock %}
+{% block page_subtitle %} Período académico {% endblock %}
+
+{% block page_content %}
+
+    <table id="tabla_seccion" class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ periodo.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Estatus</th>
+                <td>{{ periodo.idEstatus }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-lg-1">
+            <a class="btn btn-xs btn-default" href="{{ path('admin_periodo_index') }}">Regresar</a>
+        </div>
+        <div class="col-lg-1">
+            <a class="btn btn-xs btn-warning"href="{{ path('admin_periodo_edit', { 'id': periodo.id }) }}">Edit</a>
+        </div>
+            {{ form_start(delete_form) }}
+        <div class="col-lg-1">
+                <input class="btn btn-xs btn-danger" type="submit" value="Borrar">
+        </div>
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

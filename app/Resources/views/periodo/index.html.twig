@@ -1,0 +1,60 @@
+{% extends 'admin.html.twig' %}
+
+{% block page_title %} Períodos Académicos {% endblock %}
+{% block page_subtitle %} Disponibles {% endblock %}
+
+{% block page_content %}
+<div class="box">
+    <div class="box-header">
+
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        <table id="tabla_ofertas" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Estatus</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for periodo in periodos %}
+            <tr>
+                <td>{{ periodo.idEstatus }}</td>
+                <td><a href="{{ path('admin_periodo_show', { 'id': periodo.id }) }}">{{ periodo.nombre }}</a></td>
+                <td>
+                    <a class="btn btn-xs btn-dropbox" href="{{ path('admin_periodo_show', { 'id': periodo.id }) }}">Ver</a>
+                    <a class="btn btn-xs btn-default" href="{{ path('admin_periodo_edit', { 'id': periodo.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+
+    <ul>
+        <li>
+            <a class="btn btn-xs btn-success" href="{{ path('admin_periodo_new') }}">Crear un nuevo Período</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/adminlte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script>
+        $('#tabla_ofertas').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No existe esa persona - lo siento",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros para mostrar",
+                "infoFiltered": "(Buscando en los _MAX_ registros disponibles)",
+                "search" : "Buscar:"
+            }
+        } );
+    </script>
+{% endblock %}

@@ -370,12 +370,22 @@
 
                 <li class="treeview">
                     <a href="{{ path('admin_inscripcion_index') }}">
-                        <i class="fa fa-edit"></i> <span>Inscripciones</span>
+                        <i class="fa fa-edit"></i> <span>Inscribir</span>
+
+                    </a>
+
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-cogs"></i> <span>Configuración</span>
                         <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                     </a>
-
+                    <ul class="treeview-menu">
+                        <li><a href="{{ path('admin_periodo_index') }}"><i class="fa fa-circle-o"></i> Períodos Académicos</a></li>
+                    </ul>
                 </li>
 
             </ul>

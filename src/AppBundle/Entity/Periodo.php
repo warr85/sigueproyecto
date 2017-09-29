@@ -15,7 +15,7 @@ class Periodo
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=8, nullable=false, options={"comment" = "nombre periodo"})
+     * @ORM\Column(name="nombre", type="string", length=8, nullable=false, options={"comment" = "Nombre del Período"})
      */
     private $nombre;
 
@@ -40,13 +40,21 @@ class Periodo
     private $id;
 
 
-
-
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 
     /**
      * Set nombre
      *
      * @param string $nombre
+     *
      * @return Periodo
      */
     public function setNombre($nombre)
@@ -59,7 +67,7 @@ class Periodo
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
@@ -69,7 +77,7 @@ class Periodo
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -80,6 +88,7 @@ class Periodo
      * Set idEstatus
      *
      * @param \AppBundle\Entity\Estatus $idEstatus
+     *
      * @return Periodo
      */
     public function setIdEstatus(\AppBundle\Entity\Estatus $idEstatus)
@@ -92,20 +101,10 @@ class Periodo
     /**
      * Get idEstatus
      *
-     * @return \AppBundle\Entity\Estatus 
+     * @return \AppBundle\Entity\Estatus
      */
     public function getIdEstatus()
     {
         return $this->idEstatus;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getNombre();
     }
 }

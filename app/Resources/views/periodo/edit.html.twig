@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block page_title %} Editando {% endblock %}
+{% block page_subtitle %} Período académico {% endblock %}
+
+{% block page_content %}
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+    <div clas="row">
+        <div class="col-lg-1">
+            <input class="btn btn-xs btn-success" type="submit" value="Editar" />
+        </div>
+    {{ form_end(edit_form) }}
+
+        <div class="col-lg-1">
+            <a class="btn btn-xs btn-warning" href="{{ path('admin_periodo_index') }}">Regresar</a>
+        </div>
+
+            {{ form_start(delete_form) }}
+        <div class="col-lg-1">
+                <input class="btn btn-xs btn-danger" type="submit" value="Delete">
+        </div>
+            {{ form_end(delete_form) }}
+    </div>
+
+{% endblock %}

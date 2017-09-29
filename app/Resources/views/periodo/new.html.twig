@@ -1,0 +1,56 @@
+{% extends 'admin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/select2/select2.min.css') }}">
+{% endblock %}
+
+{% block page_title %} Período Académico {% endblock %}
+{% block page_subtitle %} Nuevo  {% endblock %}
+
+{% block page_content %}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'novalidate' : 'novalidate'}}) }}
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Nueva Oferta Académica</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-11">
+
+                    <div class="form-group">
+                        {{ form_label(form.nombre) }}
+                        <div class="col-sm-9">
+                            {{ form_errors(form.nombre) }}
+                            {{ form_widget(form.nombre) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.idEstatus) }}
+                        <div class="col-sm-9">
+                            {{ form_errors(form.idEstatus) }}
+                            {{ form_widget(form.idEstatus) }}
+                        </div>
+                        {{ form_widget(form) }}
+                    </div>
+
+                    <input class="btn btn-xs btn-success" type="submit" value="Registrar" />
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <ul>
+        <li>
+            <a class="btn btn-xs btn-default" href="{{ path('admin_periodo_index') }}">Regresar</a>
+        </li>
+    </ul>
+{% endblock %}
