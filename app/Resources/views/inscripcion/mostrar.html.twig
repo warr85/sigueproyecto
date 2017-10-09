@@ -85,10 +85,24 @@
                                     <td>{{ e.idSeccion.ofertaAcademica }}</a></td>
                                     <td>{{ e.idSeccion }}</td>
                                     <td>
-                                        <a class="btn btn-success btn-xs" href="{{ path('admin_inscripcion_delete', { 'id': e.id }) }}">Crear Datos</a>
+                                        <a class="btn btn-success btn-xs" href="{{ path('admin_inscripcion_delete', { 'id': e.id }) }}">Ver Datos</a>
                                     </td>
                                 </tr>
                                 {% endfor %}
+
+
+                                {% for u in inscripcion.ubicaciones %}
+                                    <tr>
+                                        <td colspan="3"><strong>proyecto:</strong> <span class="btn btn-default btn-xs">{{ u.nombreProyecto }}</span></td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for c in inscripcion.idSeccion.comunidades %}
+                                    <tr>
+                                        <td colspan="3"><strong>Ubicación:</strong> <span class="btn btn-default btn-xs">{{ c.nombre }}</span></td>
+                                    </tr>
+                                {% endfor %}
+
                             </tbody>
                         </table>
                     </div>
@@ -97,7 +111,7 @@
     </div>
 
         {% endif %}
-                <a class="btn btn-primary btn-xs" href="{{ path('admin_inscripcion_new', { 'id': estado.id }) }}">Crear inscripcion</a>
+                {% if estado.hasInscripcion is empty  %} <a class="btn btn-success btn-xs" href="{{ path('admin_inscripcion_new', { 'id': estado.id }) }}">Crear inscripcion</a>{% endif %}
 
     {% endif %}
 {% endblock %}

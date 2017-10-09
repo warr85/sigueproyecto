@@ -61,7 +61,7 @@ class InscripcionController extends Controller
 
 
         $form = $this->createForm('AppBundle\Form\FindEstadoAcademicoType');
-
+        $inscripcion = $this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findOneByIdEstadoAcademico($estado);
 
         $form->handleRequest($request);
 
@@ -79,7 +79,8 @@ class InscripcionController extends Controller
 
         return $this->render('inscripcion/mostrar.html.twig', array(
             'form'          => $form->createView(),
-            'estado'        => $estado
+            'estado'        => $estado,
+            'inscripcion'   => $inscripcion
         ));
     }
 

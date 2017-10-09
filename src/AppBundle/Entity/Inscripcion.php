@@ -228,4 +228,45 @@ class Inscripcion
     public function __toString() {
         return $this->getIdEstadoAcademico()->getIdPersonaInstitucion()->getIdPersona()->getPrimerNombre();
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ubicaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add ubicacione
+     *
+     * @param \AppBundle\Entity\InscripcionUbicacion $ubicacione
+     *
+     * @return Inscripcion
+     */
+    public function addUbicacione(\AppBundle\Entity\InscripcionUbicacion $ubicacione)
+    {
+        $this->ubicaciones[] = $ubicacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove ubicacione
+     *
+     * @param \AppBundle\Entity\InscripcionUbicacion $ubicacione
+     */
+    public function removeUbicacione(\AppBundle\Entity\InscripcionUbicacion $ubicacione)
+    {
+        $this->ubicaciones->removeElement($ubicacione);
+    }
+
+    /**
+     * Get ubicaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUbicaciones()
+    {
+        return $this->ubicaciones;
+    }
 }
