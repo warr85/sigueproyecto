@@ -40,7 +40,7 @@ class InscripcionUbicacion
     /**
      * @var string
      *
-     * @ORM\Column(name="comuna", type="string", length=200, nullable=false, options={"comment" = "nombre de la comuna"})
+     * @ORM\Column(name="comuna", type="string", length=200, nullable=true, options={"comment" = "nombre de la comuna"})
      */
     private $comuna;
 

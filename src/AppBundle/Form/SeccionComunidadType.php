@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,6 +30,23 @@ class SeccionComunidadType extends AbstractType
                 'placeholder' => "Escribe el PFG que deses buscar",
                 'group_by' => 'ofertaAcademica',
                 'multiple' => true
+            ))
+
+            ->add('idPersonaInstitucion', EntityType::class, array(
+                'class' => 'AppBundle\Entity\PersonaInstitucion',
+                'attr' => array('class' => 'form-control col-sm-12', 'data-combo' => 'true'),
+                'label_attr' => array('class' => 'col-sm-3 control-label'),
+                'label' => 'Docente Asignado',
+                'placeholder' => "Escriba el nombre del docente a buscar",
+                'multiple' => false,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->orderBy('p.idPersona', 'ASC')
+                        ->where('p.roles LIKE :roles')
+                        ->setParameter('roles', '%"ROLE_DOCENTE"%'); //Que el usuario solo sea docente
+
+                },
+
             ))
             ->add('ubicacion', TextType::class, array(
                 'attr' => array('class' => 'form-control coordenadas'),

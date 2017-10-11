@@ -112,20 +112,29 @@ class InscripcionController extends Controller
 
 
         $seccion = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findAll();
+        $estatusUc = $this->getDoctrine()->getRepository('AppBundle:EstatusUc')->findAll();
+        $comunidades = $this->getDoctrine()->getRepository('AppBundle:SeccionComunidad')->findAll();
+
         if ($request->isMethod("POST")) {
 
             $em = $this->getDoctrine()->getManager();
 
-            foreach ($request->request->get('seccion') as $s ){
-                if (strlen($s) >= 1 && strlen($s) <= 5) {
+            foreach ($request->request->get('seccion') as $key => $value ){
+                if (strlen($value) >= 1 && strlen($value) <= 5) {
 
-                    $secc = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findOneById($s);
+                    $secc = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findOneById($request->request->get('seccion')[$key]);
+                    $est = $this->getDoctrine()->getRepository('AppBundle:EstatusUc')->findOneById($request->request->get('estatus')[$key]);
+                    $com = $this->getDoctrine()->getRepository('AppBundle:SeccionComunidad')->findOneById($request->request->get('comunidad')[$key]);
+
+
                     if($secc) {
                         $estatus = $this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(2);
 
                         $inscripcion = new Inscripcion();
                         $inscripcion->setIdEstadoAcademico($estado);
                         $inscripcion->setIdSeccion($secc);
+                        $inscripcion->setIdEstatusUc($est);
+                        $inscripcion->setIdSeccionComunidad($com);
                         $inscripcion->setIdEstatus($estatus);
                         $em->persist($inscripcion);
                         $em->flush();
@@ -140,9 +149,11 @@ class InscripcionController extends Controller
         }
 
         return $this->render('inscripcion/new.html.twig', array(
-            'estado'  => $estado,
-            'oferta'       => $oferta,
+            'estado'        => $estado,
+            'oferta'        => $oferta,
             'seccion'       => $seccion,
+            'estatusUc'     => $estatusUc,
+            'comunidades'   => $comunidades
         ));
     }
 
@@ -240,5 +251,25 @@ class InscripcionController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+
+    /**
+     * Lists all inscripcion entities.
+     *
+     * @Route("/listar/todas", name="admin_inscripcion_list")
+     * @Method("GET")
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $inscritos = $em->getRepository('AppBundle:Inscripcion')->findBy(array(), array('id' => 'ASC'));
+
+
+        return $this->render('inscripcion/list.html.twig', array(
+            'inscritos' => $inscritos
+        ));
     }
 }

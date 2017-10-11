@@ -46,16 +46,16 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12">
+
     <form class="form-inline" method="post" name="seccion">
         <div id="seccion">
 
             {% for o in oferta %}
-                <div class="form-group col-lg-8">
+            <div class="row">
+                <div class="form-group col-lg-5">
                 <b>{{ o.idMallaCurricularUc }}</b>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                     <select name="seccion[{{ o.idMallaCurricularUc }}]" class="form-control">
                         <option value="">Seleccione una sección</option>
                 {% for seccion in o.seccion %}
@@ -68,13 +68,44 @@
                 {% endfor %}
                     </select>
                     </div>
+            <div class="col-lg-2">
+                        <select name="estatus[{{ o.idMallaCurricularUc }}]" class="form-control">
+                            <option value="">Seleccione estatus</option>
+                            {% for estatus in estatusUc %}
+                                <option value="{{estatus.id}}">{{ estatus.nombre }}</option>
+                                {# <div class="form-group">
+                                     <label>
+                                         <input class="flat-red" id="seccion_idSeccion_{{seccion.id}}" type="radio" value="{{seccion.id}}" name="seccion[idSeccion][{{o.idMallaCurricularUc}}]">{{ seccion.nombre }}
+                                     </label>
+                                 </div>#}
+                            {% endfor %}
+                        </select>
+            </div>
 
+
+                <div class="col-lg-2">
+                    <select name="comunidad[{{ o.idMallaCurricularUc }}]" class="form-control">
+                        <option value="">Seleccione Comunidad</option>
+                        {% for comunidad in comunidades %}
+                            <option value="{{comunidad.id}}">{{ comunidad.nombre }}</option>
+                            {# <div class="form-group">
+                                 <label>
+                                     <input class="flat-red" id="seccion_idSeccion_{{seccion.id}}" type="radio" value="{{seccion.id}}" name="seccion[idSeccion][{{o.idMallaCurricularUc}}]">{{ seccion.nombre }}
+                                 </label>
+                             </div>#}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
             {% endfor %}
-        </div>
+
+            <div class="col-lg-2">
+                <input type="submit" class="btn btn-success" value="Inscribir" />
+            </div>
+
         <input id="seccion__token" type="hidden" value="WbDyIPXIxm9WxU4oOf2a4_4CnXg3rxuY46e_TbVAggY" name="seccion[_token]">
-        <input type="submit" class="btn btn-success" value="Inscribir" />
-    </form>
         </div>
+    </form>
     </div>
 {% endblock %}
 

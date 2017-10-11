@@ -38,6 +38,12 @@ class InscripcionType extends AbstractType
                     },
 
             ))
+            ->add('idEstatusUc', EntityType::class, array(
+                'class' => 'AppBundle:EstatusUc',
+                'expanded'  => true,
+                'multiple'  => true,
+
+            ))
 
         ;
     }

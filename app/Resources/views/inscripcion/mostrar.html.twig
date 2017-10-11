@@ -82,7 +82,7 @@
                             <tbody>
                                 {% for e in estado.hasInscripcion %}
                                 <tr>
-                                    <td>{{ e.idSeccion.ofertaAcademica }}</a></td>
+                                    <td>{{ e.idSeccion.ofertaAcademica }} ({{ e.idEstatusUc }})</td>
                                     <td>{{ e.idSeccion }}</td>
                                     <td>
                                         <a class="btn btn-success btn-xs" href="{{ path('admin_inscripcion_delete', { 'id': e.id }) }}">Ver Datos</a>
@@ -99,7 +99,7 @@
 
                                 {% for c in inscripcion.idSeccion.comunidades %}
                                     <tr>
-                                        <td colspan="3"><strong>Ubicación:</strong> <span class="btn btn-default btn-xs">{{ c.nombre }}</span></td>
+                                        <td colspan="3"><strong>Ubicación:</strong> <span class="btn btn-default btn-xs">{{ c.nombre }} ({{ c.idPersonaInstitucion }})</span></td>
                                     </tr>
                                 {% endfor %}
 

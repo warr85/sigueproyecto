@@ -1,0 +1,94 @@
+{% extends 'admin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/DataTables/Buttons-1.4.2/css/buttons.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/DataTables/Buttons-1.4.2/css/buttons.dataTables.min.css') }}">
+{% endblock %}
+
+{% block page_content %}
+    <div class="box">
+        <div class="box-header">
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div id="botones"></div>
+            <table id="tabla_personas" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>cedula</th>
+                    <th>Nombres</th>
+                    <th>Proyecto</th>
+                    <th>Pfg</th>
+                    <th>Seccion</th>
+                    <th>Comunidad</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for inscrito in inscritos %}
+                    <tr>
+                        <td>{{ inscrito.id }}</td>
+                        <td>{{ inscrito.idEstadoAcademico.idPersonaInstitucion.idPersona.cedulaPasaporte }}</td>
+                        <td><a href="{{ path('admin_persona_show', { 'id': inscrito.idEstadoAcademico.idPersonaInstitucion.idPersona.id }) }}">{{ inscrito.idEstadoAcademico.idPersonaInstitucion.idPersona | upper }}</a></td>
+                        <td>{{ inscrito.idSeccion.ofertaAcademica }}</td>
+                        <td>{{ inscrito.idEstadoAcademico.idMallaCurricular }}</td>
+                        <td>{{ inscrito.idSeccion.nombre }}</td>
+                        <td>{{ inscrito.idSeccionComunidad.nombre }}</td>
+
+                        <td>
+
+                            <a class="btn btn-xs btn-default" href="{{ path('admin_inscripcion_mostrar', { 'id': inscrito.idEstadoAcademico.id }) }}">ver mas</a>
+
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/datatables.min.js')}}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/Buttons-1.4.2/js/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/Buttons-1.4.2/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/Buttons-1.4.2/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/JSZip-2.5.0/jszip.min.js') }}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/pdfmake-0.1.32/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/pdfmake-0.1.32/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('bundles/adminlte/plugins/DataTables/Buttons-1.4.2/js/buttons.html5.min.js') }}"></script>
+
+    <script>
+        var table = $('#tabla_personas').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No existe esa persona - lo siento",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros para mostrar",
+                "infoFiltered": "(Buscando en los _MAX_ registros disponibles)",
+                "search" : "Buscar:"
+            },
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'copy', text: 'Copiar' },
+                { extend: 'pdf', text: 'PDF' },
+                { extend: 'print', text: 'Imprimir' },
+                { extend: 'excel', text: 'Hoja de Calculo' }
+            ]
+
+        } );
+
+
+    </script>
+{% endblock %}

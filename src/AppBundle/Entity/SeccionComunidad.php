@@ -46,6 +46,18 @@ class SeccionComunidad
      */
     private $nombre;
 
+
+    /**
+     * @var \AppBundle\Entity\PersonaInstitucion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PersonaInstitucion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_persona_institucion", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idPersonaInstitucion;
+
+
     /**
      * @var string
      *
@@ -169,5 +181,29 @@ class SeccionComunidad
     public function getUbicacion()
     {
         return $this->ubicacion;
+    }
+
+    /**
+     * Set idPersonaInstitucion
+     *
+     * @param \AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion
+     *
+     * @return SeccionComunidad
+     */
+    public function setIdPersonaInstitucion(\AppBundle\Entity\PersonaInstitucion $idPersonaInstitucion)
+    {
+        $this->idPersonaInstitucion = $idPersonaInstitucion;
+
+        return $this;
+    }
+
+    /**
+     * Get idPersonaInstitucion
+     *
+     * @return \AppBundle\Entity\PersonaInstitucion
+     */
+    public function getIdPersonaInstitucion()
+    {
+        return $this->idPersonaInstitucion;
     }
 }

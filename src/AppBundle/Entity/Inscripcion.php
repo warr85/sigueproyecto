@@ -37,6 +37,29 @@ class Inscripcion
 
 
     /**
+     * @var \AppBundle\Entity\EstatusUc
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\EstatusUc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_estatus_uc", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idEstatusUc;
+
+
+    /**
+     * @var \AppBundle\Entity\SeccionComunidad
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SeccionComunidad")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_seccion_comunidad", referencedColumnName="id", nullable=false)
+     * })
+     */
+    private $idSeccionComunidad;
+
+
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\InscripcionUbicacion", mappedBy="idInscripcion", cascade={"persist","remove"})
      */
     private $ubicaciones;
@@ -268,5 +291,53 @@ class Inscripcion
     public function getUbicaciones()
     {
         return $this->ubicaciones;
+    }
+
+    /**
+     * Set idEstatusUc
+     *
+     * @param \AppBundle\Entity\EstatusUc $idEstatusUc
+     *
+     * @return Inscripcion
+     */
+    public function setIdEstatusUc(\AppBundle\Entity\EstatusUc $idEstatusUc)
+    {
+        $this->idEstatusUc = $idEstatusUc;
+
+        return $this;
+    }
+
+    /**
+     * Get idEstatusUc
+     *
+     * @return \AppBundle\Entity\EstatusUc
+     */
+    public function getIdEstatusUc()
+    {
+        return $this->idEstatusUc;
+    }
+
+    /**
+     * Set idSeccionComunidad
+     *
+     * @param \AppBundle\Entity\SeccionComunidad $idSeccionComunidad
+     *
+     * @return Inscripcion
+     */
+    public function setIdSeccionComunidad(\AppBundle\Entity\SeccionComunidad $idSeccionComunidad)
+    {
+        $this->idSeccionComunidad = $idSeccionComunidad;
+
+        return $this;
+    }
+
+    /**
+     * Get idSeccionComunidad
+     *
+     * @return \AppBundle\Entity\SeccionComunidad
+     */
+    public function getIdSeccionComunidad()
+    {
+        return $this->idSeccionComunidad;
     }
 }
