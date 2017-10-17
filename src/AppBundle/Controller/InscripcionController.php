@@ -5,10 +5,16 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\EstadoAcademico;
 use AppBundle\Entity\Inscripcion;
 use AppBundle\Entity\InscripcionUbicacion;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 
 /**
  * Inscripcion controller.
@@ -121,7 +127,7 @@ class InscripcionController extends Controller
 
             foreach ($request->request->get('seccion') as $key => $value ){
                 if (strlen($value) >= 1 && strlen($value) <= 5) {
-
+                   // var_dump($key); var_dump ($request->request);
                     $secc = $this->getDoctrine()->getRepository('AppBundle:Seccion')->findOneById($request->request->get('seccion')[$key]);
                     $est = $this->getDoctrine()->getRepository('AppBundle:EstatusUc')->findOneById($request->request->get('estatus')[$key]);
                     $com = $this->getDoctrine()->getRepository('AppBundle:SeccionComunidad')->findOneById($request->request->get('comunidad')[$key]);
@@ -129,7 +135,7 @@ class InscripcionController extends Controller
 
                     if($secc) {
                         $estatus = $this->getDoctrine()->getRepository('AppBundle:Estatus')->findOneById(2);
-
+                        //var_dump($com->getId()); exit;
                         $inscripcion = new Inscripcion();
                         $inscripcion->setIdEstadoAcademico($estado);
                         $inscripcion->setIdSeccion($secc);
@@ -272,4 +278,49 @@ class InscripcionController extends Controller
             'inscritos' => $inscritos
         ));
     }
+
+
+    /**
+     * Lists all inscripcion entities.
+     *
+     * @Route("/ajax/comunidad", name="inscripcion_ajax_comunidad")
+     * @Method({"GET", "POST"})
+     */
+    public function ajaxComunidadAction(Request $request)
+    {
+
+
+        if ($request->isXmlHttpRequest()) {
+            $normalizer = new ObjectNormalizer(null);
+
+            $normalizer->setCircularReferenceHandler(function ($object) {
+                return $object->getId();
+            });
+            $encoder = new JsonEncoder();
+//$serializer = $this->get('serializer');
+            $serializer = new Serializer(array($normalizer), array($encoder));
+
+            $id = $request->request->get('id');
+            $em = $this->getDoctrine()->getManager();
+
+            $repository = $em->getRepository('AppBundle:SeccionComunidad');
+            $query = $repository->createQueryBuilder('u')
+                ->where(':platform MEMBER OF u.idSeccion')
+                ->setParameter('platform', $id)
+                ->getQuery()->getResult();
+
+
+            $response = new JsonResponse();
+            $response->setStatusCode(200);
+            $response->setData(array(
+                'response' => 'success',
+                'posts' => $serializer->serialize($query, 'json')
+            ));
+            return $response;
+        }
+    }
+
+
+
+
 }

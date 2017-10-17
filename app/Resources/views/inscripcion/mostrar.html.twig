@@ -97,11 +97,11 @@
                                     </tr>
                                 {% endfor %}
 
-                                {% for c in inscripcion.idSeccion.comunidades %}
+
                                     <tr>
-                                        <td colspan="3"><strong>Ubicación:</strong> <span class="btn btn-default btn-xs">{{ c.nombre }} ({{ c.idPersonaInstitucion }})</span></td>
+                                        <td colspan="3"><strong>Ubicación:</strong> <span class="btn btn-default btn-xs">{{ inscripcion.idSeccionComunidad.nombre }} ({{ inscripcion.idSeccionComunidad.idPersonaInstitucion }})</span></td>
                                     </tr>
-                                {% endfor %}
+
 
                             </tbody>
                         </table>

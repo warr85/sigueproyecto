@@ -56,7 +56,7 @@
                 <b>{{ o.idMallaCurricularUc }}</b>
                     </div>
                     <div class="col-lg-2">
-                    <select name="seccion[{{ o.idMallaCurricularUc }}]" class="form-control">
+                    <select name="seccion[{{ o.idMallaCurricularUc }}]" class="form-control" id="seccion[{{ o.idMallaCurricularUc }}]">
                         <option value="">Seleccione una sección</option>
                 {% for seccion in o.seccion %}
                     <option value="{{seccion.id}}">{{ seccion.nombre }}</option>
@@ -84,7 +84,7 @@
 
 
                 <div class="col-lg-2">
-                    <select name="comunidad[{{ o.idMallaCurricularUc }}]" class="form-control">
+                    <select name="comunidad[{{ o.idMallaCurricularUc }}]" class="form-control" id="comunidad[{{ o.idMallaCurricularUc }}]">
                         <option value="">Seleccione Comunidad</option>
                         {% for comunidad in comunidades %}
                             <option value="{{comunidad.id}}">{{ comunidad.nombre }}</option>
@@ -120,6 +120,50 @@
                 checkboxClass: 'icheckbox_flat-green',
                 radioClass: 'iradio_flat-green'
             });
+
+
+            $( "select[name^='seccion']" ).change(function() {
+                valor = $(this).val();
+                ident = $(this).attr('id');
+                console.log(valor);
+                console.log(ident);
+                x = ident.split("[");
+                x = x[1].slice(0, -1);
+                console.log(x);
+
+
+                $.ajax({
+                    url:'{{ (path('inscripcion_ajax_comunidad')) }}',
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "id": valor
+                    },
+                    async: true,
+                    success: function (data)
+                    {
+                        var posts = JSON.parse(data.posts);
+                        //console.log(posts[0]);
+                        for(var i = 0; i < posts.length; i++){
+                            console.log(posts[i]);
+                            $("#comunidad\\[" + x + "\\]").append($('<option>', {
+                                value: posts[i].id,
+                                text: posts[i].nombre
+                            }));
+
+
+                        }
+                        //$('div#ajax-results').html(data.output);
+
+                    }
+                });
+
+
+
+                return false;
+
+            });
+
 
         });
     </script>
