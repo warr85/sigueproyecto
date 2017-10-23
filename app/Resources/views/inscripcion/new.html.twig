@@ -121,7 +121,7 @@
                 radioClass: 'iradio_flat-green'
             });
 
-
+            $( "select[name^='comunidad']" ).empty();
             $( "select[name^='seccion']" ).change(function() {
                 valor = $(this).val();
                 ident = $(this).attr('id');
@@ -143,10 +143,13 @@
                     success: function (data)
                     {
                         var posts = JSON.parse(data.posts);
+                        $( "select[name^='comunidad']" ).empty();
+                        console.log(posts);
                         //console.log(posts[0]);
                         for(var i = 0; i < posts.length; i++){
-                            console.log(posts[i]);
-                            $("#comunidad\\[" + x + "\\]").append($('<option>', {
+                            //console.log(posts[i]);
+                            var combo = "comunidad[" + x + "]";
+                            $( "select[name^='" + combo + "']" ).append($('<option>', {
                                 value: posts[i].id,
                                 text: posts[i].nombre
                             }));
