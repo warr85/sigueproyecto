@@ -31,14 +31,44 @@ class PersonaController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $usersRepository = $em->getRepository('AppBundle:Persona');
+        $qb = $usersRepository->createQueryBuilder('p');
+        $qb->select('p')
+            ->innerJoin('p.instituciones', 'i', 'with', 'i.roles LIKE :role')
+            ->setParameter('role', '%"ROLE_ESTUDIANTE"%' );
 
-        $personas = $em->getRepository('AppBundle:Persona')->findBy(array(), array('id' => 'ASC'));
+        $personas = $qb->getQuery()->getResult();
         $inscritos = $em->getRepository('AppBundle:Inscripcion')->findBy(array(), array('id' => 'ASC'));
 
 
         return $this->render('persona/index.html.twig', array(
             'personas' => $personas,
             'inscritos' => $inscritos
+        ));
+    }
+
+
+
+    /**
+     * Lists all docentes entities.
+     *
+     * @Route("/docente", name="admin_docente_index")
+     * @Method("GET")
+     */
+    public function docenteIndexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usersRepository = $em->getRepository('AppBundle:Persona');
+        $qb = $usersRepository->createQueryBuilder('p');
+        $qb->select('p')
+            ->innerJoin('p.instituciones', 'i', 'with', 'i.roles LIKE :role')
+            ->setParameter('role', '%"ROLE_DOCENTE"%' );
+
+        $personas = $qb->getQuery()->getResult();
+
+
+        return $this->render('persona/docente.html.twig', array(
+            'personas' => $personas
         ));
     }
 

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block page_title %} Listado {% endblock %}
-{% block page_subtitle %} Estudiantes {% endblock %}
+{% block page_subtitle %} Docente {% endblock %}
 
 {% block page_content %}
 <div class="box">
@@ -22,7 +22,6 @@
                 <th>Cedulapasaporte</th>
                 <th>Nombres</th>
                 <th>Fechanacimiento</th>
-                <th>Inscrito</th>
                 <th>Correoelectronico</th>
                 <th>Actions</th>
             </tr>
@@ -34,16 +33,6 @@
                 <td>{{ persona.cedulaPasaporte }}</td>
                 <td><a href="{{ path('admin_persona_show', { 'id': persona.id }) }}">{{ persona | upper }}</a></td>
                 <td>{% if persona.fechaNacimiento %}{{ persona.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
-                <td>
-
-
-                    {# este script genera mucha carga a doctrine.  Revisar ma adelante #}
-                    {% if persona.instituciones.first.EstadosAcademicos.first.hasInscripcion is defined and persona.instituciones.first.EstadosAcademicos.first.hasInscripcion | length > 0  %}
-                        <a href="{{ path('admin_inscripcion_mostrar', { 'id': persona.instituciones.first.EstadosAcademicos.first.id }) }}"> <span class="label label-success">Inscrito</span></a>
-                    {% else %}
-                        <a href="{{ path('admin_inscripcion_mostrar', { 'id': persona.instituciones.first.EstadosAcademicos.first.id }) }}"> <span class="label label-warning">Inscribir</span></a>
-                    {% endif %}
-                </td>
                 <td>{{ persona.correoElectronico }}</td>
                 <td>
 
