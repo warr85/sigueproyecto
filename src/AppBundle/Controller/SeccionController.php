@@ -70,7 +70,7 @@ class SeccionController extends Controller
             $em->persist($seccion);
             $em->flush();
 
-            return $this->redirectToRoute('admin_oferta_seccion_show', array('id' => $seccion->getId()));
+            return $this->redirectToRoute('admin_oferta_seccion_index');
         }
 
         return $this->render('seccion/new.html.twig', array(
