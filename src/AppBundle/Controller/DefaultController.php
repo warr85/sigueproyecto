@@ -24,22 +24,32 @@ class DefaultController extends Controller
      */
     public function adminAction(Request $request)
     {
-        // replace this example code with whatever you need
-        /*$query = $this->getDoctrine()->getEntityManager()
-            ->createQuery('SELECT u FROM AppBundle:User u WHERE NOT u.roles LIKE :role'
-            )->setParameter('role', '%"ROLE_ADMIN"%' );
-        $users = $query->getResult();*/
+        $em = $this->getDoctrine()->getManager();
+        $usersRepository = $em->getRepository('AppBundle:PersonaInstitucion');
+        $qb = $usersRepository->createQueryBuilder('p');
+        $qb->select('p')
+            ->Where('p.roles LIKE :role')
+            ->setParameter('role', '%"ROLE_ESTUDIANTE"%' );
 
+        $estudiantes = count($qb->getQuery()->getResult());
 
-        $personas = count($this->getDoctrine()->getRepository("AppBundle:Persona")->findAll());
+        $usersRepository = $em->getRepository('AppBundle:PersonaInstitucion');
+        $qb = $usersRepository->createQueryBuilder('p');
+        $qb->select('p')
+            ->Where('p.roles LIKE :role')
+            ->setParameter('role', '%"ROLE_DOCENTE"%' );
+
+        $docentes = count($qb->getQuery()->getResult());
+
         $ea = count($this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findAll());
         $periodo = $this->getDoctrine()->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
 
 
         return $this->render('default/admin_index.html.twig', array(
             'inscritos' => $ea,
-            'personas' => $personas,
-            'periodo'   => $periodo
+            'personas' => $estudiantes,
+            'periodo'   => $periodo,
+            'docentes' => $docentes
         ));
     }
 }

@@ -12,12 +12,30 @@
                 <div class="inner">
                     <h3>{{ personas  }}</h3>
 
-                    <p>Registros de Personas</p>
+                    <p>Registros de Estudiantes</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-person-add"></i>
+                    <i class="fa fa-user"></i>
                 </div>
                 <a href="{{ path('admin_persona_index') }}" class="small-box-footer">
+                    Más información <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <!-- /.col -->
+
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ docentes  }}</h3>
+
+                    <p>Registros de docentes</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-users"></i>
+                </div>
+                <a href="{{ path('admin_docente_index') }}" class="small-box-footer">
                     Más información <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -32,10 +50,10 @@
                 <div class="inner">
                     <h3>{{ inscritos  }}</h3>
 
-                    <p>Inscripciones Registradas</p>
+                    <p>Estudiantes Inscritos</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+                    <i class="fa fa-id-card"></i>
                 </div>
                 <a href="{{ path('admin_inscripcion_list') }}" class="small-box-footer">
                     Más información <i class="fa fa-arrow-circle-right"></i>
@@ -50,10 +68,10 @@
                 <div class="inner">
                     <h3>{{ periodo  }}</h3>
 
-                    <p>Período Académico Activo</p>
+                    <p>Período Académico</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-android-calendar"></i>
+                    <i class="fa fa-calendar-check-o"></i>
                 </div>
                 <a href="{{ path('admin_periodo_index') }}" class="small-box-footer">
                     Más información <i class="fa fa-arrow-circle-right"></i>
