@@ -289,18 +289,23 @@ class InscripcionController extends Controller
     public function ajaxComunidadAction(Request $request)
     {
 
+        /* PENSAR MEJOR MAS ADELANTE RESULTA QUE TIENE MUCHAS RELACIONES Y SE TARDA MUCHO EN SERIALIZAR */
+        //if ($request->isXmlHttpRequest()) {
+        $encoders = array(new JsonEncoder());
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(3);
+        // Add Circular reference handler
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers, $encoders);
+        $normalizer->setIgnoredAttributes(array("primerNombre", "PersonaInstitucion", "invitation", "idPersona"));
 
-        if ($request->isXmlHttpRequest()) {
-            $normalizer = new ObjectNormalizer(null);
 
-            $normalizer->setCircularReferenceHandler(function ($object) {
-                return $object->getId();
-            });
-            $encoder = new JsonEncoder();
-//$serializer = $this->get('serializer');
-            $serializer = new Serializer(array($normalizer), array($encoder));
 
-            $id = $request->request->get('id');
+        //$id = $request->request->get('id');
+            $id = 59;
             $em = $this->getDoctrine()->getManager();
 
             $repository = $em->getRepository('AppBundle:SeccionComunidad');
@@ -308,17 +313,18 @@ class InscripcionController extends Controller
                 ->where(':platform MEMBER OF u.idSeccion')
                 ->setParameter('platform', $id)
                 ->getQuery()->getResult();
-
-
+            var_dump($query[0]->getId());
+            $comunidad = $em->getRepository("AppBundle:SeccionComunidad")->findOneById(36);
             $response = new JsonResponse();
             $response->setStatusCode(200);
             $response->setData(array(
                 'response' => 'success',
-                'posts' => $serializer->serialize($query, 'json')
+                'posts' => $serializer->serialize($comunidad, 'json')
             ));
-            return $response;
+            var_dump($response); exit;
+            return $query;
         }
-    }
+    //}
 
 
 

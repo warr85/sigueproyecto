@@ -1,4 +1,16 @@
 {% extends 'admin.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        select{
+            font-size:12px!important;
+        }
+        .comunidad{
+            font-size:12px!important;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ asset('bundles/adminlte/plugins/select2/select2.min.css') }}">
+{% endblock %}
 
 {% block page_title %} Inscripción {% endblock %}
 {% block page_subtitle %} Crear nueva {% endblock %}
@@ -55,9 +67,9 @@
                 <div class="form-group col-lg-5">
                 <b>{{ o.idMallaCurricularUc }}</b>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-1">
                     <select name="seccion[{{ o.idMallaCurricularUc }}]" class="form-control" id="seccion[{{ o.idMallaCurricularUc }}]">
-                        <option value="">Seleccione una sección</option>
+                        <option value="">sección</option>
                 {% for seccion in o.seccion %}
                     <option value="{{seccion.id}}">{{ seccion.nombre }}</option>
                    {# <div class="form-group">
@@ -68,9 +80,9 @@
                 {% endfor %}
                     </select>
                     </div>
-            <div class="col-lg-2">
+            <div class="col-lg-1">
                         <select name="estatus[{{ o.idMallaCurricularUc }}]" class="form-control">
-                            <option value="">Seleccione estatus</option>
+                            <option value=""> estatus</option>
                             {% for estatus in estatusUc %}
                                 <option value="{{estatus.id}}">{{ estatus.nombre }}</option>
                                 {# <div class="form-group">
@@ -84,7 +96,7 @@
 
 
                 <div class="col-lg-2">
-                    <select name="comunidad[{{ o.idMallaCurricularUc }}]" class="form-control" id="comunidad[{{ o.idMallaCurricularUc }}]">
+                    <select  name="comunidad[{{ o.idMallaCurricularUc }}]" class="form-control comunidad" id="comunidad[{{ o.idMallaCurricularUc }}]">
                         <option value="">Seleccione Comunidad</option>
                         {% for comunidad in comunidades %}
                             <option value="{{comunidad.id}}">{{ comunidad.nombre }}</option>
@@ -111,18 +123,19 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{ asset('bundles/adminlte/plugins/select2/select2.full.min.js')}}"></script>
 
     <script>
         $(function () {
 
-            //Flat red color scheme for iCheck
-            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-                checkboxClass: 'icheckbox_flat-green',
-                radioClass: 'iradio_flat-green'
+            $(".comunidad").select2({
+                dropdownAutoWidth: true,
+                minimumInputLength: 3,
+                casesensitive: false
             });
-
-            $( "select[name^='comunidad']" ).empty();
-            $( "select[name^='seccion']" ).change(function() {
+            /*SE TARDA MUCHO EN SERIALIZAR Y NO LLEGA LA RESPUESTA */
+            //$( "select[name^='comunidad']" ).empty();
+           /*$( "select[name^='seccion']" ).change(function() {
                 valor = $(this).val();
                 ident = $(this).attr('id');
                 console.log(valor);
@@ -139,23 +152,15 @@
                     data: {
                         "id": valor
                     },
-                    async: true,
+                    async: false,
                     success: function (data)
                     {
-                        var posts = JSON.parse(data.posts);
+                        //var posts = JSON.parse(data.posts);
+                        posts = data;
                         $( "select[name^='comunidad']" ).empty();
                         console.log(posts);
                         //console.log(posts[0]);
-                        for(var i = 0; i < posts.length; i++){
-                            //console.log(posts[i]);
-                            var combo = "comunidad[" + x + "]";
-                            $( "select[name^='" + combo + "']" ).append($('<option>', {
-                                value: posts[i].id,
-                                text: posts[i].nombre
-                            }));
 
-
-                        }
                         //$('div#ajax-results').html(data.output);
 
                     }
@@ -165,7 +170,7 @@
 
                 return false;
 
-            });
+            });*/
 
 
         });
