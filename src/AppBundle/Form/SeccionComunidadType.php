@@ -16,6 +16,7 @@ class SeccionComunidadType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->periodo = $options['periodo_activo'];
         $builder
             ->add('nombre', TextType::class, array(
                 'attr' => array('class' => 'form-control'),
@@ -29,7 +30,18 @@ class SeccionComunidadType extends AbstractType
                 'label' => 'Malla',
                 'placeholder' => "Escribe el PFG que deses buscar",
                 'group_by' => 'ofertaAcademica',
-                'multiple' => true
+                'multiple' => true,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('s')
+                        ->orderBy('s.ofertaAcademica', 'ASC')
+                        ->innerJoin('s.ofertaAcademica', 'o')
+                        ->innerJoin('o.idOfertaMallaCurricular', 'p')
+                        ->where('p.idPeriodo = ?1')
+                        ->setParameters(array(
+                            1 => $this->periodo
+                        ,
+                        ));
+                },
             ))
 
             ->add('idPersonaInstitucion', EntityType::class, array(
@@ -61,7 +73,8 @@ class SeccionComunidadType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\SeccionComunidad'
+            'data_class' => 'AppBundle\Entity\SeccionComunidad',
+            'periodo_activo' => null,
         ));
     }
 

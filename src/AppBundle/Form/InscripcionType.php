@@ -1,5 +1,5 @@
 <?php
-
+/*Atención NO ESTA EN USO */
 namespace AppBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
@@ -30,10 +30,13 @@ class InscripcionType extends AbstractType
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.idMallaCurricularUc', 'ASC')
                         ->innerJoin('u.idMallaCurricularUc', 'm', 'WITH', 'm.idTrayectoTramoModalidadTipoUc = ?2')
+                        ->innerJoin('u.idOfertaMallaCurricular', 'o')
                         ->where('u.idOfertaMallaCurricular = ?1') //que las uc conicidan con la malla del estado academico
+                        ->where('o.idPeriodo = ?3')
                         ->setParameters(array(
                             1 => $this->estado_academico->getIdMallaCurricular(),
                             2 => 1,
+                            3 => '2'
                         ));
                     },
 

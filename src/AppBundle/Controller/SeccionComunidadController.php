@@ -24,6 +24,7 @@ class SeccionComunidadController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+
         $seccionComunidads = $em->getRepository('AppBundle:SeccionComunidad')->findAll();
 
         return $this->render('seccioncomunidad/index.html.twig', array(
@@ -39,8 +40,9 @@ class SeccionComunidadController extends Controller
      */
     public function newAction(Request $request)
     {
+        $periodo = $this->getDoctrine()->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
         $seccionComunidad = new Seccioncomunidad();
-        $form = $this->createForm('AppBundle\Form\SeccionComunidadType', $seccionComunidad);
+        $form = $this->createForm('AppBundle\Form\SeccionComunidadType', $seccionComunidad, array('periodo_activo' => $periodo));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

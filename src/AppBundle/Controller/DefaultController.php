@@ -40,9 +40,17 @@ class DefaultController extends Controller
             ->setParameter('role', '%"ROLE_DOCENTE"%' );
 
         $docentes = count($qb->getQuery()->getResult());
+        $em = $this->getDoctrine()->getManager();
+        $periodo = $em->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
+        $omc = $em->getRepository("AppBundle:OfertaMallaCurricular")->findBy(array('idPeriodo' => $periodo));
+        $oa = $em->getRepository("AppBundle:OfertaAcademica")->findBy(array('idOfertaMallaCurricular' => $omc));
+        $seccion = $em->getRepository("AppBundle:Seccion")->findBy(array('ofertaAcademica' => $oa));
 
-        $ea = count($this->getDoctrine()->getRepository("AppBundle:Inscripcion")->findAll());
-        $periodo = $this->getDoctrine()->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
+        $ea = count($inscritos = $em->getRepository('AppBundle:Inscripcion')->findBy(
+            array('idSeccion' => $seccion),
+            array('id' => 'ASC')
+        ));
+
 
 
         return $this->render('default/admin_index.html.twig', array(

@@ -101,17 +101,26 @@ class InscripcionController extends Controller
 
         //var_dump($request->isMethod("POST")); exit;
 
-
+        $em = $this->getDoctrine()->getManager();
+        $periodo = $em->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
 
         $mallaCurricularUc = $this->getDoctrine()->getRepository('AppBundle:MallaCurricularUc')->findBy(
             array('idMallaCurricular'   =>  $estado->getIdMallaCurricular()),
             array('idMallaCurricular' => 'ASC')
         );
 
+        $ofertaActual = $this->getDoctrine()->getRepository('AppBundle:OfertaMallaCurricular')->findBy(
+            array('idPeriodo'   =>  $periodo),
+            array('id' => 'ASC')
+        );
+
 
 
         $oferta = $this->getDoctrine()->getRepository('AppBundle:OfertaAcademica')->findBy(
-            array('idMallaCurricularUc'   =>  $mallaCurricularUc),
+            array(
+                'idMallaCurricularUc'   =>  $mallaCurricularUc,
+                'idOfertaMallaCurricular' => $ofertaActual
+            ),
             array('idMallaCurricularUc' => 'ASC')
         );
 
@@ -123,7 +132,7 @@ class InscripcionController extends Controller
 
         if ($request->isMethod("POST")) {
 
-            $em = $this->getDoctrine()->getManager();
+
 
             foreach ($request->request->get('seccion') as $key => $value ){
                 if (strlen($value) >= 1 && strlen($value) <= 5) {
@@ -270,8 +279,15 @@ class InscripcionController extends Controller
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $periodo = $em->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
+        $omc = $em->getRepository("AppBundle:OfertaMallaCurricular")->findBy(array('idPeriodo' => $periodo));
+        $oa = $em->getRepository("AppBundle:OfertaAcademica")->findBy(array('idOfertaMallaCurricular' => $omc));
+        $seccion = $em->getRepository("AppBundle:Seccion")->findBy(array('ofertaAcademica' => $oa));
 
-        $inscritos = $em->getRepository('AppBundle:Inscripcion')->findBy(array(), array('id' => 'ASC'));
+        $inscritos = $em->getRepository('AppBundle:Inscripcion')->findBy(
+            array('idSeccion' => $seccion),
+            array('id' => 'ASC')
+        );
 
 
         return $this->render('inscripcion/list.html.twig', array(

@@ -63,7 +63,7 @@ class SeccionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $seccion = new Seccion();
         $periodo = $em->getRepository("AppBundle:Periodo")->findOneByIdEstatus('1');
-        $form = $this->createForm('AppBundle\Form\SeccionType', $seccion);
+        $form = $this->createForm('AppBundle\Form\SeccionType', $seccion, array('periodo_activo' => $periodo));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
